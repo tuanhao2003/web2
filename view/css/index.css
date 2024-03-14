@@ -276,7 +276,6 @@ section {
 .productItemCard:hover {
     transform: scale(1.2);
     box-shadow: 0px 0px 20px lightgray;
-    color: white;
 }
 .productItemCard:hover ~ .productItemCard:not(.productItemCard:hover){
     transform: scale(0.8);
@@ -305,13 +304,25 @@ section {
     position: absolute;
     top: 0;
     left: 0;
-    border-radius: 50px;
+    border-radius: 50%;
+    transition: 0.2s ease-in-out;
+    scale: 150%;
+}
+.itemName, .itemPrize{
+    position: relative;
+    z-index: 100;
+    color: black;
     transition: 0.5s ease-in-out;
 }
 
 .productItemCard:hover .colorEffect{
-    transform: scale(0);
+    transform: translateY(-70%);
+    scale: 0;
     background-color: #333;
+}
+
+.productItemCard:hover .itemName, .productItemCard:hover .itemPrize{
+    color: white;
 }
 
 .backgroundProduct{
