@@ -1,8 +1,21 @@
 /* initialize */
+*{
+    margin:0;
+    list-style: none;
+    scroll-padding-top: 1rem;
+    scroll-behavior: smooth;
+    text-decoration: none;
+    box-sizing: border-box;
+}
 body {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
+}
+:root{
+    --main-color: goldenrod;
+    --text-color: #020102;
+    --bg-color: #fff;
 }
 
 section {
@@ -102,7 +115,6 @@ section {
     top: 0;
     width: 100%;
 }
-
 .list-style-none {
     list-style-type: none;
     display: flex;
@@ -253,7 +265,30 @@ section {
     height: 50%;
     right: 0;
 }
-
+/* about1 */
+.about1{
+    display:flex;
+    flex-wrap:wrap;
+    align-items: center;
+    gap:1.5rem;
+}
+.about1-img {
+    flex: 1 1 50rem;
+}
+.about1-text{
+    flex : 1 1 21rem;
+}
+.about1-text span{
+    font-weight:500;
+    color:var(--main-color);
+}
+.about1-text h2{
+    font-size: 1.7rem;
+}
+.about1-text p{
+    font-size: 0.938rem;
+    margin:0.5rem 0 1.4rem;
+}
 /* products section */
 .products {
     display: flex;
@@ -382,7 +417,7 @@ section {
     transition: 0.5s ease-in-out;
 }
 
-/* footer */
+/* footer
 .footerContainer {
     display: flex;
     justify-content: space-evenly;
@@ -412,4 +447,80 @@ section {
 .mapContainer {
     width: 30%;
     height: 100%;
+} */
+/* --------------------------------t lam---------------------------------------------- */
+.footer{
+    background:var(--text-color);
+    color:#f6f6f6;
+    border-top:2px solid var(--main-color);
+}
+.footer-container{
+    display:flex;
+    justify-content: space-between;
+    gap:1rem;
+}
+.footer-container .logo{
+    color:var(--bg-color);
+    margin-bottom:1rem;
+}
+.footer-container .footer-box{
+    display:flex;
+    flex-direction: column;
+    max-width:1060px;
+    margin-left:auto;
+    margin-right:auto;
+}
+.social{
+    display:flex;
+    align-items: center;
+}
+.social a{
+    font-size:24px;
+    color:var(--bg-color);
+    margin-right: 1rem;
+}
+.social a:hover{
+    color:var(--main-color);
+}
+.footer-box h3{
+    font-size: 50px;
+    font-weight: 400;
+    margin-bottom: 1rem;
+    color:goldenrod;
+}
+.footer-box a.logol{
+    color:#818181;
+    font-size: 50px;
+    margin-bottom: 10px;
+}
+.footer-box a{
+    color:#818181;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+.footer-box p{
+    color:#818181;
+    font-size: 24px;
+    margin-bottom: 60px;
+    
+}
+
+.footer-box p a{
+    color:goldenrod;
+    text-decoration: underline;
+    
+}
+.footer-box a:hover{
+    color:var(--bg-color);
+}
+.coppyright{
+    padding:20px;
+    text-align: center;
+    font-size: 20px;
+    color:var(--bg-color);
+    background:var(--text-color);
+}
+
+.logol span{
+    color : var(--main-color);
 }
