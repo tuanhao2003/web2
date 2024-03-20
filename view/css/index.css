@@ -25,8 +25,9 @@ section {
 
 .container{
     height: 100%;
-    width: 100%; 
+    width: 85%; 
     padding:  5rem 0;
+    margin: auto;
 }
 
 ::-webkit-scrollbar {
@@ -77,15 +78,20 @@ section {
     width: 100%;
 }
 
-.d-flex > div{
-    box-sizing: border-box;
-    height: 100%;
-    width: 50%;
-    margin: 0 0.5rem;
-}
+
 
 .rounded {
     border-radius: 20px;
+    overflow: hidden;
+}
+
+.rounded-right {
+    border-radius: 0 20px 20px 0;
+    overflow: hidden;
+}
+
+.rounded-left {
+    border-radius: 20px 0 0 20px;
     overflow: hidden;
 }
 
@@ -241,29 +247,47 @@ section {
 
 /* about section */
 .about{
-    background: url("../data/bg (3).jpg");
+    /* background: url("../data/bg (3).jpg"); */
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .doubleImage{
     position: relative;
 }
 
+.about .doubleImage{
+    height: 100%;
+    width: 40%;
+}
+
+.aboutContent{
+    width: 60%;
+    padding-right: 3rem;
+    text-align:justify;
+    font-size: x-large;
+}
+
 .doubleImageFirst{
     position: absolute;
     top: 0;
-    width: 60%;
-    height: 70%;
+    width: 70%;
+    height: 90%;
     left: 0;
+    box-shadow: 5px 10px 10px lightgray;
 }
 
 .doubleImageSecond{
     position: absolute;
     bottom: 0;
-    width: 60%;
-    height: 50%;
+    width: 50%;
+    height: 60%;
     right: 0;
+    box-shadow: 5px 10px 10px lightgray;
+
 }
 /* about1 */
 .about1{
@@ -289,13 +313,71 @@ section {
     font-size: 0.938rem;
     margin:0.5rem 0 1.4rem;
 }
+
+
+/* image  section*/
+
+.image > div{
+    width: 100%;
+    height: 100%;
+    margin: auto;
+}
+
+.image .d-flex > div{
+    box-sizing: border-box;
+    height: 100%;
+    width: 50%;
+    margin: 0 0.5rem;
+}
+
+.image > .d-flex > div:nth-child(2){
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.image > .d-flex > div:nth-child(2) > div{
+    height: 49%;
+}
+
+
+.image img{
+    transition: 0.5s ease-in-out;
+}
+
+.image img:hover{
+    scale: 110%;
+    transition: 0.5s ease-in-out;
+}
+
+.image .imgFlu:has(img:hover){
+    box-shadow: 0 0 5px white;
+}
+
+/* contact section */
+.contact > div{
+    border: 1px solid #333;
+}
+
+.contact .d-flex{
+    height: 100%;
+    box-shadow: 10px 1px 5px lightgray;
+}
+
+.formContentContainer{
+    background-color: white;
+}
+
+.formContent{
+    font-size: large;
+}
 /* products section */
-.products {
+.products{
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     position: relative;
-    margin: 5rem 0;
+    margin: 5rem auto;
+    z-index: 5;
 }
 
 .productItemCard {
@@ -310,7 +392,7 @@ section {
 
 .productItemCard:hover {
     transform: scale(1.2);
-    box-shadow: 0px 0px 20px lightgray;
+    box-shadow: 0px 0px 20px goldenrod;
 }
 .productItemCard:hover ~ .productItemCard:not(.productItemCard:hover){
     transform: scale(0.8);
@@ -370,6 +452,7 @@ section {
     z-index: -1;
     background-size: cover;
     background: #333;
+    background-repeat: no-repeat;
 }
 
 .productItemCard:nth-child(1):hover ~ .backgroundProduct{
@@ -388,34 +471,9 @@ section {
 .filter{
     width: 100%;
     height: 100%;
-    backdrop-filter: blur(2px);
-}
-/* image  section*/
-
-.image > div{
-    width: 80%;
-    height: 100%;
-    margin: auto;
+    backdrop-filter: blur(1px);
 }
 
-.image > .d-flex > div:nth-child(2){
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-.image > .d-flex > div:nth-child(2) > div{
-    height: 49%;
-}
-
-
-.image img{
-    transition: 0.5s ease-in-out;
-}
-
-.image img:hover{
-    scale: 110%;
-    transition: 0.5s ease-in-out;
-}
 
 /* footer
 .footerContainer {
