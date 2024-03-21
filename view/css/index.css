@@ -30,6 +30,17 @@ section {
     margin: auto;
 }
 
+.btn{
+    padding: 1rem 2rem;
+    background-color: goldenrod;
+    border-radius: 1rem;
+    color: white;
+}
+
+.btn:hover{
+    filter: brightness(90%);
+}
+
 ::-webkit-scrollbar {
     width: 1px;
     background: #333;
@@ -314,62 +325,6 @@ section {
     margin:0.5rem 0 1.4rem;
 }
 
-
-/* image  section*/
-
-.image > div{
-    width: 100%;
-    height: 100%;
-    margin: auto;
-}
-
-.image .d-flex > div{
-    box-sizing: border-box;
-    height: 100%;
-    width: 50%;
-    margin: 0 0.5rem;
-}
-
-.image > .d-flex > div:nth-child(2){
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-.image > .d-flex > div:nth-child(2) > div{
-    height: 49%;
-}
-
-
-.image img{
-    transition: 0.5s ease-in-out;
-}
-
-.image img:hover{
-    scale: 110%;
-    transition: 0.5s ease-in-out;
-}
-
-.image .imgFlu:has(img:hover){
-    box-shadow: 0 0 5px white;
-}
-
-/* contact section */
-.contact > div{
-    border: 1px solid #333;
-}
-
-.contact .d-flex{
-    height: 100%;
-    box-shadow: 10px 1px 5px lightgray;
-}
-
-.formContentContainer{
-    background-color: white;
-}
-
-.formContent{
-    font-size: large;
-}
 /* products section */
 .products{
     display: flex;
@@ -442,7 +397,7 @@ section {
     color: white;
 }
 
-.backgroundProduct{
+/* .backgroundProduct{
     display: block;
     position: absolute;
     top: 0;
@@ -453,27 +408,124 @@ section {
     background-size: cover;
     background: #333;
     background-repeat: no-repeat;
-}
+} */
 
-.productItemCard:nth-child(1):hover ~ .backgroundProduct{
+section.bg-dark:has(:nth-child(1) .productItemCard:nth-child(1):hover){
     background: url("../data/img (7).jpg");
-}
-.productItemCard:nth-child(2):hover ~ .backgroundProduct{
-    background: url("../data/img (8).jpg");
-}
-.productItemCard:nth-child(3):hover ~ .backgroundProduct{
-    background: url("../data/img (9).jpg");
-}
-.productItemCard:nth-child(4):hover ~ .backgroundProduct{
-    background: url("../data/img (10).jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
-.filter{
+section.bg-dark:has(:nth-child(1) .productItemCard:nth-child(2):hover){
+    background: url("../data/img (8).jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+section.bg-dark:has(:nth-child(1) .productItemCard:nth-child(3):hover){
+    background: url("../data/img (9).jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+section.bg-dark:has(:nth-child(1) .productItemCard:nth-child(4):hover){
+    background: url("../data/img (10).jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
+/* contact section */
+.contact > div{
+    border: 1px solid #333;
+}
+
+.contact .imgFlu{
+    border-right: 1px solid #333;
+}
+
+.contact .d-flex{
+    height: 100%;
+}
+
+.formContentContainer{
+    background-color: white;
+    width: 70%;
+}
+
+.formContent{
+    font-size: large;
+    width: 70%;
+    padding: 0 3rem;
+}
+
+.form{
+    width: 40%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items:center;
+}
+
+.form div{
+    width: 70%;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.form b{
+    color: white;
+}
+
+.formInp{
+    width: 60%;
+    padding: 1.5rem;
+    border-radius: 1rem;
+}
+/* image  section*/
+
+.image > div{
     width: 100%;
     height: 100%;
-    backdrop-filter: blur(1px);
+    margin: auto;
 }
 
+.image .d-flex > div{
+    box-sizing: border-box;
+    height: 100%;
+    width: 50%;
+    margin: 0 0.5rem;
+}
+
+.image > .d-flex > div:nth-child(2){
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.image > .d-flex > div:nth-child(2) > div{
+    height: 49%;
+}
+
+
+.image img{
+    transition: 0.5s ease-in-out;
+}
+
+.image img:hover{
+    scale: 110%;
+    transition: 0.5s ease-in-out;
+}
+
+.image .imgFlu:has(img:hover){
+    box-shadow: 0 0 5px white;
+}
 
 /* footer
 .footerContainer {
