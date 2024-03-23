@@ -91,10 +91,19 @@ document.addEventListener("DOMContentLoaded", function () {
         if (navBottom < 0) {
             if (!document.querySelector(".navBar").classList.contains("sticky")) {
                 document.querySelector(".navBar").classList.add("sticky");
-
+                setTimeout(function(){
+                    document.querySelector(".hideBox").classList.add("hide")
+                },300);
             }
         } if (window.scrollY == 0) {
-            document.querySelector(".navBar").classList.remove("sticky");
+            document.querySelector(".hideBox").classList.remove("hide");
+            setTimeout(function(){
+                document.querySelector(".navBar").classList.remove("sticky")
+            },300);
         }
     })
+
+    document.querySelector(".searchIcon").addEventListener("click", function(){
+        document.querySelector(".hideBox").classList.remove("hide");
+    });
 });

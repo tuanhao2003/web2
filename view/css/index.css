@@ -1,6 +1,5 @@
 /* initialize */
 *{
-    margin:0;
     list-style: none;
     scroll-padding-top: 1rem;
     scroll-behavior: smooth;
@@ -159,32 +158,34 @@ section {
 .logo {
     height: 100%;
     width: 10%;
-    background-image: url(../data/logo.jpg);
+    /* background-image: url(../data/logo.jpg);
     background-size: cover;
-    background-position: center;
+    background-position: center; */
 }
 
 .navBar {
+    box-sizing: border-box;
     position: relative;
-    height: 15vh;
+    height: 10vh;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 5% 0 5%;
     background-color: transparent;
     z-index: 100;
+    width: 100%;
+    transition: 0.3s ease-in-out;
 }
 
 .navBar.sticky {
     position: fixed;
     background-color: black;
     top: 0;
-    width: 100%;
 }
 .list-style-none {
     list-style-type: none;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     width: 50%;
 }
 
@@ -196,10 +197,17 @@ section {
     font-size: larger;
     color: white;
 }
+.list-style-none li a{
+    color: white;
+}
 
-.list-style-none li:hover {
+.list-style-none li:hover, .list-style-none li:hover a {
     color: goldenrod;
     transition: 0.5s ease-out;
+}
+
+.list-style-none li:hover a{
+    color: goldenrod;
 }
 
 .list-style-none li::after {
@@ -219,6 +227,62 @@ section {
     border-color: goldenrod;
     transition: 0.5s ease-out;
 }
+.searchBar .d-flex{
+    justify-content: center;
+    width: 100%;
+}
+
+.searchBar{
+    flex: 1;
+    padding: 0 5%;
+}
+.searchBar div:nth-child(1){
+    color: white;
+    margin-right: 10px;
+}
+
+.searchBoxContainer{
+    flex: 1;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+#searchBox{
+    border: none;
+    border-bottom: 1px solid white;
+    background-color: transparent;
+    color: white;
+    transition: 0.5s ease-in-out;
+    height: 100%;
+    width: 100%;
+}
+
+
+#searchBox:focus{
+    border: none;
+    outline: none;
+    border-bottom: 1px solid goldenrod;
+}
+.hideBox{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: translateX(100%);
+    opacity: 0;
+    transition: 0.5s ease-in-out;
+    background-color: black;
+}
+.hideBox.hide {
+    opacity: 1;
+    transform: translateX(0);
+}
+.hideBox.hide #searchBox{
+    visibility: hidden;
+}
+
 
 /* banner */
 
