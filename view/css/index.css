@@ -257,9 +257,9 @@ section {
 }
 
 /* about section */
-.about{
+/* .about{ */
     /* background: url("../data/bg (3).jpg"); */
-    background-repeat: no-repeat;
+    /* background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     display: flex;
@@ -299,29 +299,41 @@ section {
     right: 0;
     box-shadow: 5px 10px 10px lightgray;
 
-}
+} */
 /* about1 */
-.about1{
+.about{
     display:flex;
     flex-wrap:wrap;
     align-items: center;
     gap:1.5rem;
 }
-.about1-img {
+.about-img {
     flex: 1 1 50rem;
+    width:100px;
 }
-.about1-text{
+.about-text{
     flex : 1 1 21rem;
+    margin:20px;
+    
 }
-.about1-text span{
+.about-text a{
+    font-size: 30px;
+}
+.about-text a:hover{
+    color:var(--main-color);
+    background:var(--text-color);
+}
+.about-text span{
+    font-size: 100px;
     font-weight:500;
     color:var(--main-color);
+    
 }
-.about1-text h2{
-    font-size: 1.7rem;
+.about-text h2{
+    font-size: 56px;
 }
-.about1-text p{
-    font-size: 0.938rem;
+.about-text p{
+    font-size: 20px;
     margin:0.5rem 0 1.4rem;
 }
 
@@ -591,6 +603,9 @@ section.bg-dark:has(:nth-child(1) .productItemCard:nth-child(4):hover){
 }
 .social a:hover{
     color:var(--main-color);
+}
+.footer-container{
+    margin-top: 30px;
 }
 .footer-box h3{
     font-size: 50px;
