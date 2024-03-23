@@ -271,12 +271,10 @@ section {
     width: 100%;
     height: 100%;
     transform: translateX(100%);
-    opacity: 0;
     transition: 0.5s ease-in-out;
     background-color: black;
 }
 .hideBox.hide {
-    opacity: 1;
     transform: translateX(0);
 }
 .hideBox.hide #searchBox{
