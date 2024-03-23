@@ -1,14 +1,20 @@
 document.addEventListener("DOMContentLoaded", function () {
-    let active = 0;
-    let prev = 2;
-    let next = 1;
-    document.querySelectorAll(".slide").forEach(sld => {
-        let itemList = sld.querySelectorAll(".slide-item");
+    function slide(itemList, activeIndex) {
+        let prev, next = 0;
+        if (activeIndex - 1 < 0) {
+            prev = itemList.length - 1;
+        } else {
+            prev = activeIndex - 1;
+        }
 
-    });
-    
-    function slide(itemList) {
-        itemList[active].classList.toggle("active");
+        if (activeIndex + 1 > itemList.length - 1) {
+            next = 0;
+        } else {
+            next = activeIndex + 1;
+        }
+
+
+        itemList[activeIndex].classList.toggle("active");
         itemList[next].classList.toggle("active");
 
 
@@ -17,20 +23,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
         itemList[prev].classList.toggle("prev");
-        itemList[active].classList.toggle("prev");
+        itemList[activeIndex].classList.toggle("prev");
 
-
-
-        active ^= prev;
-        prev ^= active;
-        active ^= prev;
-
-        active ^= next;
-        next ^= active;
-        active ^= next;
+        activeIndex = next;
+        return activeIndex;
     }
 
-    setInterval(slide, 5000);
+    document.querySelectorAll(".slide").forEach(sld => {
+        let itemList = sld.querySelectorAll(".slide-item");
+        let index = 0;
+        
+        setInterval(function(){
+            index = slide(itemList, index);
+        }, 5000)
+    });
+
 
     // document.querySelector(".prevItem").addEventListener("click", function () {
     //     itemList[active].classList.toggle("active");
