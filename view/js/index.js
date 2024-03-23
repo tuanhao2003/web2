@@ -2,9 +2,12 @@ document.addEventListener("DOMContentLoaded", function () {
     let active = 0;
     let prev = 2;
     let next = 1;
-    let itemList = document.querySelectorAll(".slide-item");
+    document.querySelectorAll(".slide").forEach(sld => {
+        let itemList = sld.querySelectorAll(".slide-item");
 
-    function slide() {
+    });
+    
+    function slide(itemList) {
         itemList[active].classList.toggle("active");
         itemList[next].classList.toggle("active");
 
