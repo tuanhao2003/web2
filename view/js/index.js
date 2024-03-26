@@ -1,89 +1,47 @@
 document.addEventListener("DOMContentLoaded", function () {
     function slide(itemList, activeIndex) {
         let prev, next = 0;
+
         if (activeIndex - 1 < 0) {
             prev = itemList.length - 1;
         } else {
             prev = activeIndex - 1;
         }
-
         if (activeIndex + 1 > itemList.length - 1) {
             next = 0;
         } else {
             next = activeIndex + 1;
         }
 
+        itemList[prev].classList.remove("active");
+        itemList[activeIndex].classList.add("active");
 
-        itemList[activeIndex].classList.toggle("active");
-        itemList[next].classList.toggle("active");
+        if(prev == 0){
+            itemList[itemList.length-1].classList.remove("prev");
+        }else{
+            itemList[prev-1].classList.remove("prev");
+        }
+        itemList[prev].classList.add("prev");
 
-
-        itemList[next].classList.toggle("next");
-        itemList[prev].classList.toggle("next");
-
-
-        itemList[prev].classList.toggle("prev");
-        itemList[activeIndex].classList.toggle("prev");
+        if(next == 0){
+            itemList[itemList.length-1].classList.remove("next");
+        }else{
+            itemList[next-1].classList.remove("next");
+        }
+        itemList[next].classList.add("next"); 
 
         activeIndex = next;
         return activeIndex;
     }
 
     document.querySelectorAll(".slide").forEach(sld => {
-        let itemList = sld.querySelectorAll(".slide-item");
-        let index = 0;
+        let itemList = Array.from(sld.querySelectorAll(".slide-item"));
+        let index = itemList.indexOf(sld.querySelector(".slide-item.active"));
         
         setInterval(function(){
             index = slide(itemList, index);
         }, 5000)
     });
-
-
-    // document.querySelector(".prevItem").addEventListener("click", function () {
-    //     itemList[active].classList.toggle("active");
-    //     itemList[prev].classList.toggle("active");
-
-
-    //     itemList[next].classList.toggle("next");
-    //     itemList[active].classList.toggle("next");
-
-
-    //     itemList[prev].classList.toggle("prev");
-    //     itemList[next].classList.toggle("prev");
-
-
-
-    //     active ^= next;
-    //     next ^= active;
-    //     active ^= next;
-
-    //     active ^= prev;
-    //     prev ^= active;
-    //     active ^= prev;
-    // })
-
-    // document.querySelector(".nextItem").addEventListener("click", function () {
-    //     itemList[active].classList.toggle("active");
-    //     itemList[next].classList.toggle("active");
-
-
-    //     itemList[next].classList.toggle("next");
-    //     itemList[prev].classList.toggle("next");
-
-
-    //     itemList[prev].classList.toggle("prev");
-    //     itemList[active].classList.toggle("prev");
-
-
-
-    //     active ^= prev;
-    //     prev ^= active;
-    //     active ^= prev;
-
-    //     active ^= next;
-    //     next ^= active;
-    //     active ^= next;
-    // })
 
     window.addEventListener("scroll", function () {
         let navbarPos = document.querySelector(".navBar").getBoundingClientRect();
