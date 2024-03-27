@@ -686,6 +686,7 @@ section.bg-dark:has(:nth-child(1) .productItemCard:nth-child(4):hover){
 .footer-box h3{
     font-size: 50px;
     font-weight: 400;
+    margin:0;
     margin-bottom: 1rem;
     color:goldenrod;
 }
