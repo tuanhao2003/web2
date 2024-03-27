@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/index.css">
-    <link rel="stylesheet" href="../css/responsive.css">
-    <script src="../js/index.js"></script>
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/responsive.css">
+    <script src="./js/index.js"></script>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <title>Watch Me</title>
 </head>
@@ -42,7 +42,7 @@
                 <li>Contact Us</li>
                 <li>News</li>
                 <li>
-                    <a href>
+                    <a href="login.php">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                             class="bi bi-person-circle" viewBox="0 0 16 16">
                             <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
@@ -67,16 +67,16 @@
         <div class="banner">
             <div class="slide">
                 <div class="slide-item active">
-                    <img loading="lazy" src="../data/banner1.jpg" alt=".">
+                    <img loading="lazy" src="./data/banner1.jpg" alt=".">
                     <div class="bannerContent">
 
                     </div>
                 </div>
                 <div class="slide-item next">
-                    <img loading="lazy" src="../data/banner2.jpg" alt=".">
+                    <img loading="lazy" src="./data/banner2.jpg" alt=".">
                 </div>
                 <div class="slide-item prev">
-                    <img loading="lazy" src="../data/banner3.jpg" alt=".">
+                    <img loading="lazy" src="./data/banner3.jpg" alt=".">
                 </div>
             </div>
         </div>
@@ -98,7 +98,7 @@
 
     <section class="about container" id="about">
         <div class="about-img">
-            <img src="../data/img (6).jpg" alt="" style="max-width : 70%;">
+            <img src="./data/img (6).jpg" alt="" style="max-width : 70%;">
         </div>
         <div class="about-text">
             <span>About us</span>
@@ -116,7 +116,7 @@
         <div class="products container">
             <div class="productItemCard rounded">
                 <div class="imgFlu cardImg">
-                    <img loading="lazy" src="../data/img (7).jpg" alt=".">
+                    <img loading="lazy" src="./data/img (7).jpg" alt=".">
                 </div>
                 <div class="cardInfor">
                     <div class="colorEffect">
@@ -131,23 +131,7 @@
 
             <div class="productItemCard rounded">
                 <div class="imgFlu cardImg">
-                    <img loading="lazy" src="../data/img (8).jpg" alt=".">
-                </div>
-                <div class="cardInfor">
-                    <div class="colorEffect">
-                        <br>
-                    </div>
-                    <div>
-
-                        <h3 class="itemName">Rolex Pro</h3>
-                        <h4 class="itemPrize">$1000<span class="oldPrize"></span></h4>
-                    </div>
-                </div>
-            </div>
-
-            <div class="productItemCard rounded">
-                <div class="imgFlu cardImg">
-                    <img loading="lazy" src="../data/img (9).jpg" alt=".">
+                    <img loading="lazy" src="./data/img (8).jpg" alt=".">
                 </div>
                 <div class="cardInfor">
                     <div class="colorEffect">
@@ -163,7 +147,23 @@
 
             <div class="productItemCard rounded">
                 <div class="imgFlu cardImg">
-                    <img loading="lazy" src="../data/img (10).jpg" alt=".">
+                    <img loading="lazy" src="./data/img (9).jpg" alt=".">
+                </div>
+                <div class="cardInfor">
+                    <div class="colorEffect">
+                        <br>
+                    </div>
+                    <div>
+
+                        <h3 class="itemName">Rolex Pro</h3>
+                        <h4 class="itemPrize">$1000<span class="oldPrize"></span></h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="productItemCard rounded">
+                <div class="imgFlu cardImg">
+                    <img loading="lazy" src="./data/img (10).jpg" alt=".">
                 </div>
                 <div class="cardInfor">
                     <div class="colorEffect">
@@ -184,7 +184,7 @@
             <div class="bg-dark d-flex rounded">
                 <div class="rounded-right d-flex formContentContainer">
                     <div class="imgFlu rounded-right d-flex">
-                        <img src="../data/img (11).jpg" alt=".">
+                        <img src="./data/img (11).jpg" alt=".">
                     </div>
 
                     <div class="formContent">
@@ -212,19 +212,19 @@
     <section class="bg-dark">
         <div class="container image">
             <div class="d-flex">
-                <div class="imgFlu rounded"><img loading="lazy" src="../data/img (4).jpg" alt=""></div>
+                <div class="imgFlu rounded"><img loading="lazy" src="./data/img (4).jpg" alt=""></div>
 
                 <div>
                     <div class="d-flex topImgContainer ">
                         <div class="imgFlu rounded" style="margin-left: 0;"><img loading="lazy"
-                                src="../data/img (1).jpg" alt="."></div>
+                                src="./data/img (1).jpg" alt="."></div>
 
                         <div class="imgFlu rounded" style="margin-right: 0;"><img loading="lazy"
-                                src="../data/img (2).jpg" alt="."></div>
+                                src="./data/img (2).jpg" alt="."></div>
                     </div>
 
                     <div class="imgFlu rounded bottomImgContainer">
-                        <img loading="lazy" src="../data/img (3).jpg" alt=".">
+                        <img loading="lazy" src="./data/img (3).jpg" alt=".">
                     </div>
                 </div>
             </div>
