@@ -33,7 +33,7 @@ function login($username, $password)
             session_start();
             $_SESSION['isLoggedIn'] = true;
             echo "<script>alert('Welcome to page admin!!');</script>";
-            header("Location: ../view/index.php"); // Chuyển hướng đến trang chào mừng sau khi đăng nhập thành công
+            header("Location: ./user/index.php"); // Chuyển hướng đến trang chào mừng sau khi đăng nhập thành công
             exit();
         } else {
             // Đăng nhập thất bại
@@ -43,5 +43,9 @@ function login($username, $password)
     }
 
     $conn->close();
+}
+function returnLogin(){
+    header("Location: ./login.php"); // Chuyển hướng đến trang chào mừng sau khi đăng nhập thành công
+            exit();
 }
 ?>
