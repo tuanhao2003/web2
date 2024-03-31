@@ -1,5 +1,5 @@
 <?php
-    include '../config/database.php';
+require 'database.php';
 
 function login($username, $password)
 {
@@ -7,10 +7,10 @@ function login($username, $password)
 
     if (empty($username)) {
         echo "<script>alert('Please do not leave the username field blank!');</script>";
-        header("Refresh: 0; url=".$_SERVER['HTTP_REFERER']);
+        header("Refresh: 0; url=" . $_SERVER['HTTP_REFERER']);
     } else if (empty($password)) {
         echo "<script>alert('Please do not leave the password field blank!');</script>";
-        header("Refresh: 0; url=".$_SERVER['HTTP_REFERER']);
+        header("Refresh: 0; url=" . $_SERVER['HTTP_REFERER']);
     } else {
         // Chống SQL Injection
         $username = mysqli_real_escape_string($conn, $username);
@@ -33,19 +33,20 @@ function login($username, $password)
             session_start();
             $_SESSION['isLoggedIn'] = true;
             echo "<script>alert('Welcome to page admin!!');</script>";
-            header("Location: ./user/index.php"); // Chuyển hướng đến trang chào mừng sau khi đăng nhập thành công
+            header("Location: ./home"); // Chuyển hướng đến trang chào mừng sau khi đăng nhập thành công
             exit();
         } else {
             // Đăng nhập thất bại
             echo "<script>alert('Incorrect username or password!');</script>";
-            header("Refresh: 0; url=".$_SERVER['HTTP_REFERER']);
+            header("Refresh: 0; url=" . $_SERVER['HTTP_REFERER']);
         }
     }
 
     $conn->close();
 }
-function returnLogin(){
-    header("Location: ./login.php"); // Chuyển hướng đến trang chào mừng sau khi đăng nhập thành công
-            exit();
+function returnLogin()
+{
+    header("Location: ./home"); // Chuyển hướng đến trang chào mừng sau khi đăng nhập thành công
+    exit();
 }
 ?>
