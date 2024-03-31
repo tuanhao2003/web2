@@ -7,9 +7,9 @@ class app
 
     function __construct()
     {
-        $page = "home";
-        $func = "";
-        $params = [];
+        $this->page = "home";
+        $this->func = "";
+        $this->params = [];
 
         $this->mapping();
     }

@@ -1,5 +1,5 @@
 <?php
     session_start();
-    require_once "mvc/view/lead.php";
+    require_once "mvc/core/app.php";
     $run = new app();
 ?>

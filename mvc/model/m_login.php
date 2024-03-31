@@ -1,5 +1,5 @@
 <?php
-require 'database.php';
+require 'mvc/config/database.php';
 
 function login($username, $password)
 {
