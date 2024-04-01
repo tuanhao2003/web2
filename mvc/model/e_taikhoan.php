@@ -1,5 +1,5 @@
 <?php
-class taikhoan{
+class e_taikhoan{
     protected $matk;
     protected $tenDangNhap;
     protected $matKhau;
@@ -7,11 +7,11 @@ class taikhoan{
     protected $urlHinh;
 
     public function __construct(){
-        $this->matk = "";
-        $this->tenDangNhap = "";
-        $this->matKhau = "";
+        $this->matk = null;
+        $this->tenDangNhap = null;
+        $this->matKhau = null;
         $this->trangThai = 0;
-        $this->urlHinh = "";
+        $this->urlHinh = null;
     }
 
     public function setMatk($matk){

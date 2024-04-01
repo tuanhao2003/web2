@@ -7,7 +7,7 @@ class app
 
     function __construct()
     {
-        $this->page = "home";
+        $this->page = "notFound";
         $this->func = "";
         $this->params = [];
 
@@ -22,6 +22,7 @@ class app
             if(file_exists("mvc/controller/c_" . $urlPath[0] . ".php")) {
                 $this->page = $urlPath[0];
             }
+            
             require_once "mvc/controller/c_" . $this->page . ".php";
         }
     }

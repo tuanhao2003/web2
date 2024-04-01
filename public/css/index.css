@@ -1,4 +1,3 @@
-/* initialize */
 *{
     list-style: none;
     scroll-padding-top: 1rem;
@@ -6,6 +5,7 @@
     text-decoration: none;
     box-sizing: border-box;
 }
+/* Hào: initialize */
 body {
     margin: 0;
     padding: 0;
@@ -88,6 +88,12 @@ section {
     width: 100%;
 }
 
+.gridRow-2 {
+    display: grid;
+    grid-template-columns: auto auto;
+    width: 100%;
+    height: 100%;
+}
 
 
 .rounded {
@@ -105,7 +111,7 @@ section {
     overflow: hidden;
 }
 
-/* animation */
+/* Hào: index-animation */
 .slide {
     padding: 0;
     margin: 0;
@@ -155,7 +161,7 @@ section {
     }
 }
 
-/* navbar */
+/* Hào: index-navbar */
 .logo {
     height: 100%;
     width: 10%;
@@ -289,7 +295,7 @@ section {
 }
 
 
-/* banner */
+/* Hào: index-banner */
 
 .banner {
     position: absolute;
@@ -407,7 +413,7 @@ section {
     margin:0.5rem 0 1.4rem;
 }
 
-/* products section */
+/* Hào: index-products section */
 .products{
     display: flex;
     justify-content: space-evenly;
@@ -521,7 +527,7 @@ section.bg-dark:has(:nth-child(1) .productItemCard:nth-child(4):hover){
 }
 
 
-/* contact section */
+/* Hào: index-contact section */
 .contact > div{
     border: 1px solid #333;
 }
@@ -571,7 +577,7 @@ section.bg-dark:has(:nth-child(1) .productItemCard:nth-child(4):hover){
     padding: 1.5rem;
     border-radius: 1rem;
 }
-/* image  section*/
+/* Hào: index-image  section*/
 
 .image > div{
     width: 100%;
@@ -610,7 +616,7 @@ section.bg-dark:has(:nth-child(1) .productItemCard:nth-child(4):hover){
 }
 
 
-/* rating section */
+/* Hào: index-rating section */
 .rate{
     position: relative;
 }
@@ -731,4 +737,29 @@ section.bg-dark:has(:nth-child(1) .productItemCard:nth-child(4):hover){
 
 .logol span{
     color : var(--main-color);
+}
+
+/* Hào: page not found */
+.notFoundContainer {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    color: white;
+    background-color: skyblue;
+    justify-content: center;
+}
+
+.notFoundContainer div:nth-child(1) {
+    font-size: 100px;
+}
+
+.notFoundContainer div:nth-child(2) {
+    font-size: 30px;
+}
+
+.notFoundImage {
+    background: url("../data/notFound.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
