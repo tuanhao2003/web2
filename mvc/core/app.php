@@ -12,6 +12,7 @@ class app
         $this->params = [];
 
         $this->mapping();
+        $this->httpReq();
     }
 
     function mapping()
@@ -25,6 +26,20 @@ class app
             
             require_once "mvc/controller/c_" . $this->page . ".php";
         }
+    }
+
+    //home/hao?name=asdf method: get
+    function httpReq(){
+        $url = $_SERVER("REQUEST_URI");
+        $method = $_SERVER("REQUEST_METHOD");
+        if($method == "GET"){
+            
+        }else if($method == "POST"){
+            
+        }else if($method == "DELETE"){
+            
+        }
+
     }
 }
 ?>

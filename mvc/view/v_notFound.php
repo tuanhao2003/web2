@@ -20,10 +20,7 @@
     <section>
         <div class="gridRow-2">
             <div class="notFoundContainer">
-                <div>
-                    <b>404</b>
-                </div>
-                <div><b>page not found!</b></div>
+                <div><span >Watch</span><span class="text-golden">Store</span></div>
             </div>
             <div class="notFoundImage"></div>
         </div>
