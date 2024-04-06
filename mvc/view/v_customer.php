@@ -5,16 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="public/css/index.css">
 
-    <link rel="stylesheet" href="public/css/khachhang.css">
+    <link rel="stylesheet" href="public/css/customer.css">
     <title>Information_Customer</title>
 </head>
 <body >
     <?php require "mvc/view/absolutePart/header.php"; ?>
-
+    <section>
+        <div class="infor_column">
+            <div class="img_text">
+                <div>
+                    <img class="infor_img" src="public/data/banner1.jpg" alt=""><br>
+                </div>
+                <div class="infor_text">
+                    <p>Danh2003</p>
+                </div>
+            </div>
+            <div class="infor_personal">
+                <img src="public/data/address.png" alt="">
+                <a href="">Địa chỉ</a>
+            </div>
+            <div class="infor_personal">
+                <img src="public/data/discount.png" alt="">
+                <a href="">Khuyến mãi</a>
+            </div>
+            <div class="infor_personal">
+                <img src="public/data/bill.png" alt="">
+                <a href="">Hóa đơn</a>
+            </div>
+        </div>
         <div class="information_customer">
             <div class="information_customer_text">
                 <form action="" method="post">
-                <h2 class="title_form">Thông tin khách hàng</h2>
+                <h1 class="title_form">Thông tin khách hàng</h1>
                     <table>
                         <tr>
                             <td class="td_name">
@@ -78,17 +100,15 @@
                 </form>
             </div>
             <div class="information_customer_image">
-                <div class="avatar_infor">
-                    <img src="public/data/banner1.jpg" alt=""><br>
-                    <button>Chọn ảnh</button>
-
+                <img src="public/data/banner1.jpg" alt=""><br>
+                <button>Chọn ảnh</button>
+                <div>
                     <p>Dung lượng file tối đa 1MB</p>
                     <p>Định dạng: JPG, PNG</p>
                 </div>
-                
             </div>
         </div>
-        
+    </section>
     <?php require "mvc/view/absolutePart/footer.html"; ?>
 </body>
 </html>

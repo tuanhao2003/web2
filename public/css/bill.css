@@ -1,0 +1,102 @@
+body{
+    background-color: black;
+}
+
+
+section{
+    height: 500px;
+    background-color: rgb(240, 240, 240);
+    display: flex;
+    justify-content: center;
+
+}
+
+.infor_column {
+    align-items: center;
+    margin-right: 50px;
+    padding-bottom: 210px;
+    background-color: brown;
+}
+
+.infor_column .img_text{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.infor_column .img_text p{
+    font-size: 20px;
+    
+}
+
+.infor_column .infor_img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.infor_column .infor_text{
+    margin: 10px;
+}
+
+.infor_personal{
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+
+
+.infor_column .infor_personal img{
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+.infor_personal a{
+    font-size: 20px;
+}
+
+
+.infor_bill{
+    background-color: aquamarine;
+}
+
+.bill{
+    width: 800px;
+    height: 250px;
+    background-color: chocolate;
+    display: flex;
+}
+
+.bill .bill_img_item{
+    width: 250px;
+    height: 250px;
+}
+
+.bill .bill_items_infor{
+    color: aqua;
+    margin-left: 10px;
+}
+.bill .Name_product{
+    font-size: 30px;
+    display: flex;
+}
+
+.bill .Date_buy{
+    /* font-size: 20px; */
+    display: flex;
+}
+
+.bill .Date_delivery{
+    /* font-size: 20px; */
+    display: flex;
+}
+
+.bill .total{
+    /* font-size: 30px; */
+    display: flex;
+}
