@@ -10,8 +10,41 @@
 </head>
 
 <body>
-    <?php require "mvc/view/absolutePart/header.php"; ?>
-    
+    <?php require "mvc/view/absolutePart/header.php";?>
+    <section>
+        <div class="d-flex">
+            <div class="adminSideBar">
+                <ul class="controlMenu">
+                    <li>
+                        <a href="./admin/customer">
+                            Customers
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">                            
+                            Products
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">                            
+                            Bills
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">                            
+                            Setting
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">                            
+                            Logout
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
     <?php require "mvc/view/absolutePart/footer.html"; ?>
 </body>
 </html>
