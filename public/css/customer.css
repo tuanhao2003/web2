@@ -22,32 +22,61 @@ section{
 
 .information_customer{
     /* background-color: red; */
-    width: 70%;
+    width: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: rgb(255, 255, 255);
 }
 
+.infor_column {
+    align-items: center;
+    display: block;
+    margin-right: 50px;
+    padding-bottom: 210px;
+}
+
 .infor_column .img_text{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: brown;
+    
+}
+
+.infor_column .img_text p{
+    font-size: 20px;
     
 }
 
 .infor_column .infor_img{
-    width: 70px;
-    height: 70px;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
-    margin: 10px;
+    margin-right: 10px;
 }
 
 .infor_column .infor_text{
     margin: 10px;
 }
 
+.infor_personal{
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+
+
+.infor_column .infor_personal img{
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+.infor_personal a{
+    font-size: 20px;
+}
 
 
 /* .information_customer .infor_column .img_icon{
@@ -62,6 +91,8 @@ section{
     width: 550px;
     margin: 20px;
     padding: 20px;
+    
+
 }
 .information_customer_text h2{
     margin-left: 20px;
@@ -113,6 +144,7 @@ section{
     align-items: center;
     flex-direction: column;
     padding: 40px;
+    border-left:1px solid rgb(202, 202, 202) ;
 }
 
 .information_customer_image img{

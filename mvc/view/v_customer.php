@@ -11,29 +11,29 @@
 <body >
     <?php require "mvc/view/absolutePart/header.php"; ?>
     <section>
-        <div class="information_customer">
-            <div class="infor_column">
-                <div class="img_text">
-                    <div>
-                        <img class="infor_img" src="public/data/banner1.jpg" alt=""><br>
-                    </div>
-                    <div class="infor_text">
-                        <p>Danh2003</p>
-                    </div>
-                </div>
+        <div class="infor_column">
+            <div class="img_text">
                 <div>
-                    <p>Tài khoản của tôi</p>
+                    <img class="infor_img" src="public/data/banner1.jpg" alt=""><br>
                 </div>
-                <div>
-                    <p>Tài khoản của tôi</p>
-                </div>
-                <div>
-                    <p>Tài khoản của tôi</p>
-                </div>
-                <div>
-                    <p>Tài khoản của tôi</p>
+                <div class="infor_text">
+                    <p>Danh2003</p>
                 </div>
             </div>
+            <div class="infor_personal">
+                <img src="public/data/address.png" alt="">
+                <a href="">Địa chỉ</a>
+            </div>
+            <div class="infor_personal">
+                <img src="public/data/discount.png" alt="">
+                <a href="">Khuyến mãi</a>
+            </div>
+            <div class="infor_personal">
+                <img src="public/data/bill.png" alt="">
+                <a href="">Hóa đơn</a>
+            </div>
+        </div>
+        <div class="information_customer">
             <div class="information_customer_text">
                 <form action="" method="post">
                 <h1 class="title_form">Thông tin khách hàng</h1>
