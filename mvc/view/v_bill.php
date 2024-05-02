@@ -9,7 +9,7 @@
 <body>
     <?php require "mvc/view/absolutePart/header.php"; ?>
     <section>
-    <div class="infor_column">
+        <div class="infor_column">
             <div class="img_text">
                 <div>
                     <img class="infor_img" src="public/data/banner1.jpg" alt=""><br>
@@ -32,29 +32,51 @@
             </div>
         </div>
         <div class="infor_bill">
-            <h2>Hóa đơn khách hàng</h2>
+            <h2 class="title_name">Hóa đơn khách hàng</h2>
             <div class="bill">
-                <img class="bill_img_item" src="public/data/banner1.jpg" alt="">
-                <div class="bill_items_infor">
-                    <div class="Name_product">
-                        <p>Rolex Pro</p>
+                <div class="bill_items">
+                    <img class="bill_img_item" src="public/data/banner1.jpg" alt="">
+                    <div class="bill_items_infor">
+                        <div class="Name_product">
+                            <p>Rolex Pro</p>
+                        </div>
+                        <div class="Date_buy">
+                            <p>Ngày mua: </p>
+                            <p>01/01/2000</p>
+                        </div>
+                        <div class="Date_delivery">
+                            <p>Ngày giao: </p>
+                            <p>01/01/2000</p>
+                        </div>
+                        <div class="total">
+                            <p class="money_title">Thành tiền: </p>
+                            <p class="money">10.000.000đ</p>
+                        </div>
                     </div>
-                    <div class="Date_buy">
-                        <p>Ngày mua: </p>
-                        <p>01/01/2000</p>
-                    </div>
-                    <div class="Date_delivery">
-                        <p>Ngày giao: </p>
-                        <p>01/01/2000</p>
-                    </div>
-                    <div class="total">
-                        <p>Tổng tiền: </p>
-                        <p>10.000.000đ</p>
-                        <button>Mua lại</button>
+                </div>
+                <div class="bill_items">
+                    <img class="bill_img_item" src="public/data/banner1.jpg" alt="">
+                    <div class="bill_items_infor">
+                        <div class="Name_product">
+                            <p>Rolex Pro</p>
+                        </div>
+                        <div class="Date_buy">
+                            <p>Ngày mua: </p>
+                            <p>01/01/2000</p>
+                        </div>
+                        <div class="Date_delivery">
+                            <p>Ngày giao: </p>
+                            <p>01/01/2000</p>
+                        </div>
+                        <div class="total">
+                            <p class="money_title">Thành tiền: </p>
+                            <p class="money">10.000.000đ</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        
     </section>
                 <!-- <label for="ma_hd">Mã hóa đơn: </label>
                 <label for="ma_hd">HD001</label> <br>

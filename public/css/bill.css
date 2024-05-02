@@ -2,9 +2,14 @@ body{
     background-color: black;
 }
 
+:root {
+    --main-color: goldenrod;
+    --text-color: #020102;
+    --bg-color: #fff;
+}
 
 section{
-    height: 500px;
+    height: 700px;
     background-color: rgb(240, 240, 240);
     display: flex;
     justify-content: center;
@@ -15,7 +20,8 @@ section{
     align-items: center;
     margin-right: 50px;
     padding-bottom: 210px;
-    background-color: brown;
+    /* background-color: brown; */
+    margin-top: 70px;
 }
 
 .infor_column .img_text{
@@ -62,41 +68,66 @@ section{
 
 
 .infor_bill{
-    background-color: aquamarine;
+    /* background-color: white; */
 }
 
-.bill{
+.infor_bill h2{
+   color: goldenrod;
+   font-size: 30px;
+}
+
+
+.infor_bill .bill{
+    
+}
+
+.bill_items{
     width: 800px;
     height: 250px;
-    background-color: chocolate;
+    background-color: white;
     display: flex;
+    border-radius: 10px;
+    margin-bottom: 40px;
 }
 
-.bill .bill_img_item{
+.bill_items .bill_img_item{
     width: 250px;
     height: 250px;
+    border-radius: 10px;
 }
 
-.bill .bill_items_infor{
-    color: aqua;
+.bill_items .bill_items_infor{
     margin-left: 10px;
+    position: relative;
 }
-.bill .Name_product{
+.bill_items .Name_product{
     font-size: 30px;
     display: flex;
 }
 
-.bill .Date_buy{
+.bill_items .Date_buy{
     /* font-size: 20px; */
     display: flex;
 }
 
-.bill .Date_delivery{
+.bill_items .Date_delivery{
     /* font-size: 20px; */
     display: flex;
 }
 
-.bill .total{
+.bill_items .total{
     /* font-size: 30px; */
     display: flex;
+    margin-left: auto;
+    /* position: absolute; */
+    font-size: 25px;
+    color: goldenrod;
+}
+
+.bill_items .total .money{
+    
+}
+
+.bill_items .total .money_title{
+    
 }
