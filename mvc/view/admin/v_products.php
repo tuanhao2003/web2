@@ -16,9 +16,10 @@
 </head>
 
 <body>
+
     <section>
         <div class="d-flex">
-            <?php require "mvc/view/absolutePart/adminSideBar.php"; ?>
+            
             <div class="dataContainer">
                 <?php echo($controller->getAllProducts());?>
 

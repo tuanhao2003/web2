@@ -31,9 +31,29 @@ class e_hoadon{
     public function setTongGiaSauGiam($tongGiaSauGiam){
         $this ->tongGiaSauGiam = $tongGiaSauGiam;
     }
-    public function settongGiaGoc($tongGiaGoc){
-        $this ->tongGiaGoc = $tongGiaGoc;
+    public function setTongGiaGoc($TongGiaGoc){
+        $this ->TongGiaGoc = $TongGiaGoc;
     }
+
+    public function getMaHD(){
+        return $this->maHD;
+    }
+    public function getMaKH(){
+        return $this->maKH;
+    }
+    public function getNgayLap(){
+        return $this->ngayLap;
+    }
+    public function getNgayXuat(){
+        return $this->ngayXuat;
+    }
+    public function getTongGiaSauGiam(){
+        return $this->tongGiaSauGiam;
+    }
+    public function getTongGiaGoc(){
+        return $this->tongGiaGoc;
+    }
+
 
 }
 ?>

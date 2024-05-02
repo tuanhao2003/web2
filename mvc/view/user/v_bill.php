@@ -1,13 +1,18 @@
 <!DOCTYPE html> 
+<?php 
+    require_once "mvc/controller/c_admin.php";
+    $controller = new c_bill();
+?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="public/css/index.css">
     <link rel="stylesheet" href="public/css/bill.css">
+    <link rel="stylesheet" href="/web2/public/css/index.css">
+    <link rel="stylesheet" href="/web2/public/css/admin.css">
     <title>Hóa đơn</title>
 </head>
 <body>
-    <?php require "mvc/view/absolutePart/header.php"; ?>
     <section>
         <div class="infor_column">
             <div class="img_text">
@@ -54,6 +59,7 @@
                         </div>
                     </div>
                 </div>
+                <?php echo($controller->getAllbills());?> 
                 <div class="bill_items">
                     <img class="bill_img_item" src="public/data/banner1.jpg" alt="">
                     <div class="bill_items_infor">
@@ -77,7 +83,9 @@
             </div>
         </div>
         
+        
     </section>
+    
                 <!-- <label for="ma_hd">Mã hóa đơn: </label>
                 <label for="ma_hd">HD001</label> <br>
 

@@ -131,3 +131,16 @@ section{
 .bill_items .total .money_title{
     
 }
+
+.dataRow {
+    font-size: 1.5rem;
+    background-color: black;
+    color: goldenrod;
+    border: 1px solid goldenrod;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding: 0 2rem;
+}
