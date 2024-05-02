@@ -24,10 +24,10 @@ class e_khachhang{
     public function setTenKH($tenKH){
         $this->tenKH = $tenKH;
     }
-    public function setdiaChi($diaChi){
+    public function setDiaChi($diaChi){
         $this->diaChi = $diaChi;
     }
-    public function setngaySinh($ngaySinh){
+    public function setNgaySinh($ngaySinh){
         $this->ngaySinh = $ngaySinh;
     }
     public function setEmail($email){
@@ -36,20 +36,20 @@ class e_khachhang{
     public function setSdt($sdt){
         $this->sdt = $sdt;
     }
-    public function setSmaKH($maKH){
-        $this->maKH = $maKH;
+    public function setMaTK($maTK){
+        $this->maTK = $maTK;
     }
 
-    public function getmaKH(){
+    public function getMaKH(){
         return $this->maKH;
     }
-    public function gettenKH(){
+    public function getTenKH(){
         return $this->tenKH;
     }
-    public function getdiaChi(){
+    public function getDiaChi(){
         return $this->diaChi;
     }
-    public function getngaySinh(){
+    public function getNgaySinh(){
         return $this->ngaySinh;
     }
     public function getEmail(){
@@ -58,8 +58,8 @@ class e_khachhang{
     public function getSdt(){
         return $this->sdt;
     }
-    public function getSmaKH(){
-        return $this->maKH;
+    public function getMaTK(){
+        return $this->maTK;
     }
 
 }

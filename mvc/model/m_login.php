@@ -1,7 +1,8 @@
 <?php
-require 'mvc/config/database.php';
 class m_login{
-    public function __construct(){}
+    public function __construct(){
+        require 'mvc/config/database.php';
+    }
     public function login($username, $password)
     {
         $conn = connect(); // Hàm connect() cần phải được định nghĩa ở một nơi khác
@@ -30,11 +31,18 @@ class m_login{
             $rows_count = mysqli_num_rows($result);
     
             if ($rows_count == 1) {
+                $matk = $result->fetch_assoc()["MaTK"];
+                $query = "select PhanQuyen from quyen where MaTK='$matk'";
+                
                 // Đăng nhập thành công
                 session_start();
                 $_SESSION['isLoggedIn'] = true;
                 echo "<script>alert('Welcome to page admin!!');</script>";
-                header("Location: ./home"); // Chuyển hướng đến trang chào mừng sau khi đăng nhập thành công
+                if($conn->query($query)->fetch_assoc()["PhanQuyen"] == "admin"){
+                    header("Location: /web2/admin");
+                }else{
+                    header("Location: /web2/home"); // Chuyển hướng đến trang chào mừng sau khi đăng nhập thành công
+                }
                 exit();
             } else {
                 // Đăng nhập thất bại
@@ -45,10 +53,6 @@ class m_login{
     
         $conn->close();
     }
-    public function returnLogin()
-    {
-        header("Location: ./home"); // Chuyển hướng đến trang chào mừng sau khi đăng nhập thành công
-        exit();
-    }
+
 }
 ?>

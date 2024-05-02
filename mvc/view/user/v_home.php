@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="public/css/index.css">
-    <script src="public/js/index.js"></script>
+    <link rel="stylesheet" href="/web2/public/css/index.css">
+    <script src="/web2/public/js/index.js"></script>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <title>Watch Store</title>
 </head>
@@ -18,16 +18,16 @@
         <div class="banner">
             <div class="slide">
                 <div class="slide-item active">
-                    <img loading="lazy" src="public/data/banner1.jpg" alt=".">
+                    <img loading="lazy" src="/web2/public/data/banner1.jpg" alt=".">
                     <div class="bannerContent">
 
                     </div>
                 </div>
                 <div class="slide-item next">
-                    <img loading="lazy" src="public/data/banner2.jpg" alt=".">
+                    <img loading="lazy" src="/web2/public/data/banner2.jpg" alt=".">
                 </div>
                 <div class="slide-item prev">
-                    <img loading="lazy" src="public/data/banner3.jpg" alt=".">
+                    <img loading="lazy" src="/web2/public/data/banner3.jpg" alt=".">
                 </div>
             </div>
         </div>
@@ -49,7 +49,7 @@
 
     <section class="about container" id="about">
         <div class="about-img">
-            <img src="public/data/img (6).jpg" alt="" style="max-width : 70%;">
+            <img src="/web2/public/data/img (6).jpg" alt="" style="max-width : 70%;">
         </div>
         <div class="about-text">
             <span>About us</span>
@@ -67,7 +67,7 @@
         <div class="products container">
             <div class="productItemCard rounded">
                 <div class="imgFlu cardImg">
-                    <img loading="lazy" src="public/data/img (7).jpg" alt=".">
+                    <img loading="lazy" src="/web2/public/data/img (7).jpg" alt=".">
                 </div>
                 <div class="cardInfor">
                     <div class="colorEffect">
@@ -82,23 +82,7 @@
 
             <div class="productItemCard rounded">
                 <div class="imgFlu cardImg">
-                    <img loading="lazy" src="public/data/img (8).jpg" alt=".">
-                </div>
-                <div class="cardInfor">
-                    <div class="colorEffect">
-                        <br>
-                    </div>
-                    <div>
-
-                        <h3 class="itemName">Rolex Pro</h3>
-                        <h4 class="itemPrize">$1000<span class="oldPrize"></span></h4>
-                    </div>
-                </div>
-            </div>
-
-            <div class="productItemCard rounded">
-                <div class="imgFlu cardImg">
-                    <img loading="lazy" src="public/data/img (9).jpg" alt=".">
+                    <img loading="lazy" src="/web2/public/data/img (8).jpg" alt=".">
                 </div>
                 <div class="cardInfor">
                     <div class="colorEffect">
@@ -114,7 +98,23 @@
 
             <div class="productItemCard rounded">
                 <div class="imgFlu cardImg">
-                    <img loading="lazy" src="public/data/img (10).jpg" alt=".">
+                    <img loading="lazy" src="/web2/public/data/img (9).jpg" alt=".">
+                </div>
+                <div class="cardInfor">
+                    <div class="colorEffect">
+                        <br>
+                    </div>
+                    <div>
+
+                        <h3 class="itemName">Rolex Pro</h3>
+                        <h4 class="itemPrize">$1000<span class="oldPrize"></span></h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="productItemCard rounded">
+                <div class="imgFlu cardImg">
+                    <img loading="lazy" src="/web2/public/data/img (10).jpg" alt=".">
                 </div>
                 <div class="cardInfor">
                     <div class="colorEffect">
@@ -135,7 +135,7 @@
             <div class="bg-dark d-flex rounded">
                 <div class="rounded-right d-flex formContentContainer">
                     <div class="imgFlu rounded-right d-flex">
-                        <img src="public/data/img (11).jpg" alt=".">
+                        <img src="/web2/public/data/img (11).jpg" alt=".">
                     </div>
 
                     <div class="formContent">
@@ -163,19 +163,19 @@
     <section class="bg-dark">
         <div class="container image">
             <div class="d-flex">
-                <div class="imgFlu rounded"><img loading="lazy" src="public/data/img (4).jpg" alt=""></div>
+                <div class="imgFlu rounded"><img loading="lazy" src="/web2/public/data/img (4).jpg" alt=""></div>
 
                 <div>
                     <div class="d-flex topImgContainer ">
                         <div class="imgFlu rounded" style="margin-left: 0;"><img loading="lazy"
-                                src="public/data/img (1).jpg" alt="."></div>
+                                src="/web2/public/data/img (1).jpg" alt="."></div>
 
                         <div class="imgFlu rounded" style="margin-right: 0;"><img loading="lazy"
-                                src="public/data/img (2).jpg" alt="."></div>
+                                src="/web2/public/data/img (2).jpg" alt="."></div>
                     </div>
 
                     <div class="imgFlu rounded bottomImgContainer">
-                        <img loading="lazy" src="public/data/img (3).jpg" alt=".">
+                        <img loading="lazy" src="/web2/public/data/img (3).jpg" alt=".">
                     </div>
                 </div>
             </div>

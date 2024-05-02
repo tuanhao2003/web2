@@ -1,2 +1,2 @@
 <?php
-require_once "mvc/view/v_discount.php";
+require_once "mvc/view/user/v_discount.php";
