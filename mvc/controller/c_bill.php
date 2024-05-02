@@ -1,4 +1,5 @@
 <?php
+
 require_once "mvc/view/v_bill.php";
 
 class c_bill{
@@ -10,3 +11,6 @@ class c_bill{
 
     
 }
+
+require_once "mvc/view/user/v_bill.php";
+

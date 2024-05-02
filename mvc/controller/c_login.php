@@ -1,10 +1,9 @@
 <?php
-require_once "mvc/model/m_login.php";
-require_once "mvc/view/v_login.php";
-
 class c_login{
     protected $mlogin;
     public function __construct(){
+        require_once "mvc/model/m_login.php";
+        require_once "mvc/view/absolutePart/v_login.php";
         $this->mlogin = new m_login();
     }
     public function login()
