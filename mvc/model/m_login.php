@@ -8,7 +8,7 @@ class m_login{
         $conn = connect(); // Hàm connect() cần phải được định nghĩa ở một nơi khác
     
         if (empty($username)) {
-            echo "<script>alert('Please do not leave the username field blank!');</script>";
+            echo "<script>alert('Please do not leave the username LOGINNNNNNNNN field blank!');</script>";
             header("Refresh: 0; url=" . $_SERVER['HTTP_REFERER']);
         } else if (empty($password)) {
             echo "<script>alert('Please do not leave the password field blank!');</script>";
@@ -55,10 +55,14 @@ class m_login{
     }
     public function register($username, $password, $email, $phone)
     {
+        echo "<script>alert('aaaaaaaaaaaaaaaaaaaaaaa');</script>";
         $conn = connect(); // Hàm connect() cần phải được định nghĩa ở một nơi khác
 
+        echo "<script>alert('aaaa'. $username . 'aloooooooooooooooooooooooo');</script>";
+
         if (empty($username)) {
-            echo "<script>alert('Please do not leave the username field blank!');</script>";
+            // echo "<script>alert('Please do not leave the username REGISTER field blank!');</script>";
+            echo "<script>alert('Username: $username');</script>";
             header("Refresh: 0; url=" . $_SERVER['HTTP_REFERER']);
         } else if (empty($password)) {
             echo "<script>alert('Please do not leave the password field blank!');</script>";
@@ -80,7 +84,7 @@ class m_login{
             $phone = mysqli_real_escape_string($conn, $phone);
 
             // Kiểm tra xem username đã tồn tại chưa
-            $check_query = "SELECT * FROM TaiKhoan WHERE TenDangNhap = '$username'";
+            $check_query = "SELECT * FROM taikhoan WHERE TenDangNhap = '$username'";
             $check_result = mysqli_query($conn, $check_query);
             if (mysqli_num_rows($check_result) > 0) {
                 echo "<script>alert('Username already exists!');</script>";
@@ -89,7 +93,7 @@ class m_login{
             }
 
             // Kiểm tra xem email đã tồn tại chưa
-            $check_query = "SELECT * FROM TaiKhoan WHERE Email = '$email'";
+            $check_query = "SELECT * FROM taikhoan WHERE Email = '$email'";
             $check_result = mysqli_query($conn, $check_query);
             if (mysqli_num_rows($check_result) > 0) {
                 echo "<script>alert('Email already exists!');</script>";
@@ -97,7 +101,7 @@ class m_login{
                 exit();
             }
 
-            $sql = "SELECT COUNT(*) AS total FROM TaiKhoan";
+            $sql = "SELECT COUNT(*) AS total FROM taikhoan";
             $result = mysqli_query($conn, $sql);
             $row = mysqli_fetch_assoc($result);
             $totalAccounts = $row['total'];
@@ -109,10 +113,10 @@ class m_login{
             } else {
                 $MaTK = "TK" . $totalAccounts;
             }
-
+            echo "<script>alert($MaTK);</script>";
 
             // Thêm người dùng mới vào CSDL
-            $sql = "INSERT INTO TaiKhoan (MaTK,TenDangNhap, MatKhau, TrangThai) VALUES ('$MaTK','$username', '$password', 0)";
+            $sql = "INSERT INTO taikhoan (MaTK,TenDangNhap, MatKhau, TrangThai) VALUES ('$MaTK','$username', '$password', 0)";
             if ($conn->query($sql) === TRUE) {
                 // Đăng ký thành công
                 echo "<script>alert('Registration successful!');</script>";

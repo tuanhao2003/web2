@@ -12,30 +12,7 @@ $loginController = new c_login();
 </head>
 <body>
    
-    <!-- <div class="Login">
-        <div class="Login1">
-            <div class="Part">
-                <div class="Img-login">
-                    Hình ảnh
-                </div>
-            </div>
-            <div class="Part">
-                <div class="Information">
-                    <h2>Đăng nhập</h2>
-                    <form action="<?php $loginController->login(); ?>" method="post">
-                        
-                        <input type="text" id="username" name="username" placeholder="username..." required><br>
-                        
-                        <input type="password" id="password" name="password" placeholder="password..." required><br><br>
-                        <button class= "submit" type="submit" value="Login">Login</button>
-                    </form>
-                </div>
-            </div>
-        
-        
-        </div>
-        
-    </div> -->
+   
     <div class="wrapper">
         <div class="form-box login">
             <h2>Login</h2>
@@ -51,7 +28,7 @@ $loginController = new c_login();
                     <label>Password</label>
                 </div>
                 
-                <button type="submit" class="btn">Login</button>
+                <button type="submit" class="btn" id="Login" name="Login">Login</button>
                 <div class="login-register">
                     <p?>Don't have an account? <a href="#" class="register-link">Register</a></p>
                 </div>
@@ -62,26 +39,26 @@ $loginController = new c_login();
             <form action="<?php $loginController->register(); ?>" method="post">
                 <div class="input-box">
                     <span class="icon"><ion-icon name="person-outline"></ion-icon></span>
-                    <input type="text" id="username" name="username" required>
+                    <input type="text" id="username-rg" name="username-rg" required>
                     <label>Username</label>
                 </div>
                 <div class="input-box">
                     <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
-                    <input type="password" id="password" name="password"  required>
+                    <input type="password" id="password-rg" name="password-rg"  required>
                     <label>Password</label>
                 </div>
                 <div class="input-box">
                     <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
-                    <input type="email" id="email" name="email" required>
+                    <input type="email" id="email-rg" name="email-rg" required>
                     <label>Email</label>
                 </div>
                 <div class="input-box">
                     <span class="icon"><ion-icon name="call-outline"></ion-icon></span>
-                    <input type="tel" id="phone" name="phone" required>
+                    <input type="tel" id="phone-rg" name="phone-rg" required>
                     <label>Phone</label>
                 </div>
                 
-                <button type="submit" class="btn">Register</button>
+                <input type="submit" class="btn" value="Register">
                 <div class="login-register">
                     <p?>Already havve an account? <a href="#" class="login-link">Login</a></p>
                 </div>
