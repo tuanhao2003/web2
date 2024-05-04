@@ -29,7 +29,6 @@ create table SanPham
     MaSP                CHAR(7)                 NOT NULL,
     TenSP               VARCHAR(20)             NOT NULL,
     DonGia              INT                     NOT NULL,
-    GiaBan              INT,
     HinhAnh             VARCHAR(200)            NOT NULL,
     MoTa                VARCHAR(1000)           ,
     TrangThaiTonTai     INT                     NOT NULL,
@@ -84,7 +83,7 @@ create table GiaoHang
 (
     MaVanDon           CHAR(7)                 NOT NULL,
     NgayGiao           DATETIME,
-    NgayNhan            DATETIME,
+    NgayNhán            DATETIME,
     TinhTrang          VARCHAR(20)             NOT NULL,
     DiaDiem            VARCHAR(200),
     MaHD               CHAR(7)                 NOT NULL,
