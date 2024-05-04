@@ -7,17 +7,24 @@ $loginController = new c_login();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/web2/public/css/login.css">
     <title>Login</title>
 </head>
 <body>
-    <h2>Login</h2>
-    <form action="<?php $loginController->login(); ?>" method="post">
-        <label for="username">Username:</label><br>
-        <input type="text" id="username" name="username" required><br>
-        <label for="password">Password:</label><br>
-        <input type="password" id="password" name="password" required><br><br>
-        <input type="submit" value="Login">
-    </form>
+   
+    <div class="Login">
+        <div class="Login1">
+        <h2>Login</h2>
+        <form action="<?php $loginController->login(); ?>" method="post">
+            <label for="username">Username:</label><br>
+            <input type="text" id="username" name="username" required><br>
+            <label for="password">Password:</label><br>
+            <input type="password" id="password" name="password" required><br><br>
+            <input type="submit" value="Login">
+        </form>
+        </div>
+        
+    </div>
     
 </body>
 </html>

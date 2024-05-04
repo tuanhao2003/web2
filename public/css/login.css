@@ -1,0 +1,19 @@
+*{
+    margin:0px;
+    padding:0px;
+    z-index: none;
+    
+}
+
+.Login{
+    background-color: blueviolet;
+    height:100vh;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.Login .Login1{
+    background-color: aquamarine;
+    height:30vh;
+}
