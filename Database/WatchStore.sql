@@ -65,9 +65,7 @@ create table HoaDon
     MaKH                CHAR(7)                 NOT NULL,
     HinhThucTra         NVARCHAR(40),
     NgayLap             DATETIME,
-    NgayXuat            DATETIME,
     TongGiaGoc          INT                     NOT NULL,
-    TongGiaSauGiam      INT,
     PRIMARY KEY (MaHD),
     FOREIGN KEY (MaKH) REFERENCES KhachHang(MaKH)
 );
@@ -86,7 +84,7 @@ create table GiaoHang
 (
     MaVanDon           CHAR(7)                 NOT NULL,
     NgayGiao           DATETIME,
-    NgayDen            DATETIME,
+    NgayNhan            DATETIME,
     TinhTrang          VARCHAR(20)             NOT NULL,
     DiaDiem            VARCHAR(200),
     MaHD               CHAR(7)                 NOT NULL,

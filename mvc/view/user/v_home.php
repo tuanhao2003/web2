@@ -257,7 +257,7 @@
         </div>
     </section>
 
-    <?php require "mvc/view/absolutePart/footer.html"; ?>
+    <?php require "mvc/view/absolutePart/footer.php"; ?>
 </body>
 
 </html>

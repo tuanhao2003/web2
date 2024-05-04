@@ -4,6 +4,12 @@
     z-index: none;
     
 }
+:root {
+    --main-color: goldenrod;
+    --text-color: #020102;
+    --bg-color: #fff;
+}
+
 
 .Login{
     background-color: blueviolet;
@@ -15,5 +21,37 @@
 }
 .Login .Login1{
     background-color: aquamarine;
-    height:30vh;
+    height:60vh;
+    width:120vh;
+    display:flex;
 }
+.Part{
+    width:60vh;
+    padding:50px;
+    display:flex;
+    justify-content: center;
+
+    
+}
+.Part h2{
+    font-size: 50px;
+    text-align:center;
+}
+.Part input{
+    border-radius: 7px;
+    height:40px;
+    width:40vh;
+    margin-top: 20px;
+
+}
+.submit{
+    background-color: goldenrod;
+    height:30px;
+    width:40vh;
+    border-radius: 7px;
+    margin-top:50px;
+}
+
+
+
+

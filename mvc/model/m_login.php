@@ -1,7 +1,7 @@
 <?php
 class m_login{
     public function __construct(){
-        require 'mvc/config/database.php';
+        require_once 'mvc/config/database.php';
     }
     public function login($username, $password)
     {
