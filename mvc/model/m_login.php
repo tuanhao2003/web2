@@ -53,6 +53,81 @@ class m_login{
     
         $conn->close();
     }
+    public function register($username, $password, $email, $phone)
+    {
+        $conn = connect(); // Hàm connect() cần phải được định nghĩa ở một nơi khác
+
+        if (empty($username)) {
+            echo "<script>alert('Please do not leave the username field blank!');</script>";
+            header("Refresh: 0; url=" . $_SERVER['HTTP_REFERER']);
+        } else if (empty($password)) {
+            echo "<script>alert('Please do not leave the password field blank!');</script>";
+            header("Refresh: 0; url=" . $_SERVER['HTTP_REFERER']);
+        } else if (empty($email)) {
+            echo "<script>alert('Please do not leave the email field blank!');</script>";
+            header("Refresh: 0; url=" . $_SERVER['HTTP_REFERER']);
+        } else if (empty($phone)) {
+            echo "<script>alert('Please do not leave the phone field blank!');</script>";
+            header("Refresh: 0; url=" . $_SERVER['HTTP_REFERER']);
+        } else if (!preg_match('/^[0-9]{10}$/', $phone)) {
+            echo "<script>alert('Phone number must contain exactly 10 digits and only digits!');</script>";
+            header("Refresh: 0; url=" . $_SERVER['HTTP_REFERER']);
+        } else {
+            // Chống SQL Injection
+            $username = mysqli_real_escape_string($conn, $username);
+            $password = mysqli_real_escape_string($conn, $password);
+            $email = mysqli_real_escape_string($conn, $email);
+            $phone = mysqli_real_escape_string($conn, $phone);
+
+            // Kiểm tra xem username đã tồn tại chưa
+            $check_query = "SELECT * FROM TaiKhoan WHERE TenDangNhap = '$username'";
+            $check_result = mysqli_query($conn, $check_query);
+            if (mysqli_num_rows($check_result) > 0) {
+                echo "<script>alert('Username already exists!');</script>";
+                header("Refresh: 0; url=" . $_SERVER['HTTP_REFERER']);
+                exit();
+            }
+
+            // Kiểm tra xem email đã tồn tại chưa
+            $check_query = "SELECT * FROM TaiKhoan WHERE Email = '$email'";
+            $check_result = mysqli_query($conn, $check_query);
+            if (mysqli_num_rows($check_result) > 0) {
+                echo "<script>alert('Email already exists!');</script>";
+                header("Refresh: 0; url=" . $_SERVER['HTTP_REFERER']);
+                exit();
+            }
+
+            $sql = "SELECT COUNT(*) AS total FROM TaiKhoan";
+            $result = mysqli_query($conn, $sql);
+            $row = mysqli_fetch_assoc($result);
+            $totalAccounts = $row['total'];
+            $MaTK = "";
+            if ($totalAccounts < 10) {
+                $MaTK = "TK00" . $totalAccounts;
+            } elseif ($totalAccounts >= 10 && $totalAccounts < 100) {
+                $MaTK = "TK0" . $totalAccounts;
+            } else {
+                $MaTK = "TK" . $totalAccounts;
+            }
+
+
+            // Thêm người dùng mới vào CSDL
+            $sql = "INSERT INTO TaiKhoan (MaTK,TenDangNhap, MatKhau, TrangThai) VALUES ('$MaTK','$username', '$password', 0)";
+            if ($conn->query($sql) === TRUE) {
+                // Đăng ký thành công
+                echo "<script>alert('Registration successful!');</script>";
+                header("Refresh: 0; url=" . $_SERVER['HTTP_REFERER']);
+                exit();
+            } else {
+                // Đăng ký thất bại
+                echo "<script>alert('Registration error');</script>";
+                echo "Error: " . $sql . "<br>" . $conn->error;
+            }
+        }
+
+        $conn->close();
+    }
+
 
 }
 ?>

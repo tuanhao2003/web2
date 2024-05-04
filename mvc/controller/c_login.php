@@ -17,5 +17,19 @@ class c_login{
             $this->mlogin->login($username, $password);
         }
     }
+    public function register()
+    {
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            // Lấy dữ liệu từ form
+            $username = $_POST['username'];
+            $password = $_POST['password'];
+            $email = $_POST['email'];
+            $phone = $_POST['phone'];
+
+            // Gọi hàm register
+            $this->mlogin->register($username, $password, $email, $phone);
+        }
+    }
+
 }
 ?>
