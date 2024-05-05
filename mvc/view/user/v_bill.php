@@ -7,9 +7,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="public/css/index.css">
-    <link rel="stylesheet" href="public/css/bill1.css">
-    <!-- <link rel="stylesheet" href="/web2/public/css/index.css">
-    <link rel="stylesheet" href="/web2/public/css/admin.css"> -->
+    <link rel="stylesheet" href="public/css/bill.css">
+    <link rel="stylesheet" href="/web2/public/css/index.css">
+    <link rel="stylesheet" href="/web2/public/css/admin.css">
     <title>Hóa đơn</title>
 </head>
 <body>
@@ -39,28 +39,42 @@
         <div class="infor_bill">
             <h2 class="title_name">Hóa đơn khách hàng</h2>
             <div class="bill">
-                <!-- <div class="bill_items">
-                    <img class="bill_img_item" src="public/data/banner1.jpg" alt="">
-                    <div class="bill_items_infor">
-                        <div class="Name_product">
-                            <p>Rolex Pro</p>
-                        </div>
-                        <div class="Date_buy">
-                            <p>Ngày mua: </p>
-                            <p>01/01/2000</p>
-                        </div>
-                        <div class="Date_delivery">
-                            <p>Ngày giao: </p>
-                            <p>01/01/2000</p>
-                        </div>
-                        <div class="total">
-                            <p class="money_title">Thành tiền: </p>
-                            <p class="money">10.000.000đ</p>
-                        </div>
-                    </div>
-                </div> -->
                 <?php echo($controller->getAllbills());?> 
-                <div class="bill_items2">
+
+
+                <!-- <?php 
+                $data = $controller->getAllbills();
+
+                foreach($data as $bill){
+                    echo '<div class="bill_items2">
+                        <div class="bill_details">
+                            <div class="id_bill">
+                                <p>' . $bill->getMaHD() . '</p>
+                            </div>
+                            <button>Xem chi tiết</button>
+                        </div>
+                        <div class="bill_product">
+                            <img class="img_product" src="public/data/banner1.jpg" alt="">
+                            <div class="product_infor">
+                                <p>Rolex Pro . </p>
+                                <p>Số lượng 1 . </p>
+                            </div>
+                        </div>
+                        <div class="bill_total">
+                            <div class="bill_time">
+                                <p>Ngày Lập: ' . $bill->getNgayLap() . '</p>
+                                <p>Hình thức thanh toán: ' . $bill->getHinhThucTra() . '</p>
+                            </div>
+                            <div class="bill_tong">
+                                <p>Trạng thái: Đã giao</p>
+                                <p>Thành tiền: ' . $bill->getTongGiaGoc() . '</p>
+                            </div>
+                        </div>
+                    </div>';
+                }
+                
+                ?> -->
+                <!-- <div class="bill_items2">
                     <div class="bill_details">
                         <div class="id_bill">
                             <p>HD001</p>
@@ -76,22 +90,18 @@
                     </div>
                     <div class="bill_total">
                         <div class="bill_time">
-                            <p>Ngày đặt: 01/01/2000</p>
-                            <p>Ngày giao: 02/02/2002</p>
+                            <p>Ngày Lập: 01/01/2000</p>
+                            <p>Hình thức thanh toán: Momo</p>
                         </div>
                         <div class="bill_tong">
                             <p>Trạng thái: Đã giao hàng</p>
                             <p>Thành tiền: 5.000.000đ</p>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
-        
-        
     </section>
-    
-        
     <?php require "mvc/view/absolutePart/footer.html"; ?>
 </body>
 </html>

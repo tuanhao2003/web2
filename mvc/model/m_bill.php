@@ -20,9 +20,8 @@ class m_bill{
                     $entity->setMaHD($row["MaHD"]);
                     $entity->setMaKH($row["MaKH"]);
                     $entity->setNgayLap($row["NgayLap"]);
-                    $entity->setNgayXuat($row["NgayXuat"]);
                     $entity->setTongGiaGoc($row["TongGiaGoc"]);
-                    $entity->setTongGiaSauGiam($row["TongGiaSauGiam"]);
+                    $entity->setHinhThucTra($row["HinhThucTra"]);
                     $arr[] = $entity;
                 }
             }
