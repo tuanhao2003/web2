@@ -1,42 +1,46 @@
 <?php
 class c_login{
-    protected $mlogin;
+    protected $m_login;
     public function __construct(){
         require_once "mvc/model/m_login.php";
-        require_once "mvc/view/absolutePart/v_login.php";
-        $this->mlogin = new m_login();
+        require_once "mvc/entity/e_taikhoan.php";
+        require_once "mvc/entity/e_khachhang.php";
+        $this->m_login = new m_login();
     }
     public function login()
     {
-            if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                if (isset($_POST['Login'])) {
-                // Lấy dữ liệu từ form
-                    $username = $_POST['username'];
-                    $password = $_POST['password'];
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $username = $_POST['username'];
+            $password = $_POST['password'];
 
-                    // Gọi hàm login
-                    $this->mlogin->login($username, $password);
-                }
-            }
-        
+            $this->m_login->login($username, $password);
+        }
     }
-    public function register()
-    {
-            if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                echo "<script>alert('aaaaaaaaaaaaaaaaaaaaaaaREGISTER11111111111');</script>";
-                if (isset($_POST['Register'])) {
-                    echo "<script>alert('aaaaaaaaaaaaaaaaaaaaaaaREGISTER');</script>";
-                    // Lấy dữ liệu từ form
-                    $username = $_POST['username-rg'];
-                    $password = $_POST['password-rg'];
-                    $email = $_POST['email-rg'];
-                    $phone = $_POST['phone-rg'];
-                    echo "<script>alert('aaaaaaaaaaaaaaaaaaaaaaaREGISTER22222222222222222222222222222');</script>";
-                    // Gọi hàm register
-                    $this->mlogin->register($username, $password, $email, $phone);
-                    echo "<script>alert('aaaaaaaaaaaaaaaaaaaaaaaREGISTER333333333333333333');</script>";
+
+    public function register(){
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $customer = $this->m_login->getCustomerByPhone($_POST['phone']);
+            if($customer != null){
+                $account = $this->m_login->getAccountByID($customer->getMaTK());
+                if($account != null){
+                    echo "<script>alert('Customer with phone number ".$customer->getSdt()." already registed account, please login')</script>";
+                    echo "<script>document.querySelector('a .login-link').click();</script>";
+                }else{
+                    $account = new e_taikhoan();
+                    $account->setTenDangNhap($_POST['registAccount']);
+                    $account->setMatKhau($_POST['registPass']);
+                    $this->m_login->register($account, $customer);
                 }
+            }else{
+                $account = new e_taikhoan();
+                $customer = new e_khachhang();
+                $customer->setEmail($_POST['email']);
+                $customer->setSdt($_POST['phone']);
+                $account->setTenDangNhap($_POST['registAccount']);
+                $account->setMatKhau($_POST['registPass']);
+                $this->m_login->register($account, $customer);
             }
+        }
     }
 }
 ?>

@@ -12,6 +12,7 @@ body{
 }
 
 section{
+
     background-color: rgb(240, 240, 240);
     display: flex;
     justify-content: center;
@@ -70,7 +71,7 @@ section{
 
 
 .infor_bill{
-   margin-top: 60px;
+   
 }
 
 .infor_bill h2{
@@ -78,8 +79,13 @@ section{
    font-size: 30px;
 }
 
+
+.infor_bill .bill{
+    
+}
+
 .bill_items2{
-    width: 800px;
+    width: 700px;
     background-color: #ffffff;
     border-radius: 10px;
     margin-bottom: 40px;
@@ -166,13 +172,9 @@ section{
 /* Chi tiết hóa đơn ở đây */
 
 .infor_bill_detail{
-    margin-top: 60px;
+    margin-top: 80px;
     display: flex;
-    height: 400px;
     flex-direction: column;
-    background-color: white;
-    border-radius: 10px;
-    padding: 20px;
 }
 
 
@@ -180,21 +182,20 @@ section{
 .infor_bill_detail h2{
     color: goldenrod;
     font-size: 30px;
-    padding-bottom: 10px;
  }
 
  .infor_bill_detail .title_detail{
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
  }
-
 
  .infor_bill_detail .bill_time_infor{
     width: 700px;
     height: 100px;
     border-bottom: 2px solid hsl(0, 0%, 73%);
     border-top: 2px solid hsl(0, 0%, 73%);
-    display: flex;
-    justify-content: space-between;
+
 }
 
 .infor_bill_detail .bill_time_infor p{

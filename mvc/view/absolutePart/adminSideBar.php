@@ -1,4 +1,5 @@
 <div class="adminSideBar">
+    <div><h1>Manages</h1></div>
     <ul class="controlMenu">
         <li>
             <a href="/web2/admin/users">

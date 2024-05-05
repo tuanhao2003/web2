@@ -6,8 +6,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="public/css/index.css">
-    <link rel="stylesheet" href="public/css/bill.css">
+    <link rel="stylesheet" href="/web2/public/css/index.css">
+    <link rel="stylesheet" href="/web2/public/css/bill.css">
     <link rel="stylesheet" href="/web2/public/css/index.css">
     <link rel="stylesheet" href="/web2/public/css/admin.css">
     <title>Chi tiết Hóa đơn</title>
@@ -18,22 +18,22 @@
         <div class="infor_column">
             <div class="img_text">
                 <div>
-                    <img class="infor_img" src="public/data/banner1.jpg" alt=""><br>
+                    <img class="infor_img" src="/web2/public/data/banner1.jpg" alt=""><br>
                 </div>
                 <div class="infor_text">
                     <p>Danh2003</p>
                 </div>
             </div>
             <div class="infor_personal">
-                <img src="public/data/address.png" alt="">
+                <img src="/web2/public/data/address.png" alt="">
                 <a href="">Địa chỉ</a>
             </div>
             <div class="infor_personal">
-                <img src="public/data/discount.png" alt="">
+                <img src="/web2/public/data/discount.png" alt="">
                 <a href="">Khuyến mãi</a>
             </div>
             <div class="infor_personal">
-                <img src="public/data/bill.png" alt="">
+                <img src="/web2/public/data/bill.png" alt="">
                 <a href="">Hóa đơn</a>
             </div>
         </div>
@@ -59,7 +59,7 @@
                 <div class="all_product">
                     <div class="product">
                         <div class="img_product">
-                            <img class="img_product" src="public/data/banner1.jpg" alt="">
+                            <img class="img_product" src="/web2/public/data/banner1.jpg" alt="">
                         </div>
                         <div class="infor_product">
                             <p>Apple Watch</p>
@@ -79,6 +79,6 @@
             
         </div>
 </section>
-<?php require "mvc/view/absolutePart/footer.html"; ?>
+<?php require "mvc/view/absolutePart/footer.php"; ?>
 </body>
 </html>

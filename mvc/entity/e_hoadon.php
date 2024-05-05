@@ -30,7 +30,6 @@ class e_hoadon{
         $this ->hinhThucTra = $hinhThucTra;
     }
 
-
     public function getMaHD(){
         return $this->maHD;
     }

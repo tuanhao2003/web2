@@ -16,6 +16,7 @@ class c_bill{
 
     public function getAllbills(){
         require_once "mvc/model/m_bill.php";
+        require_once "mvc/entity/e_hoadon.php";
         $this->m_bill = new m_bill();
     
         $data = $this->m_bill->getAllbills();

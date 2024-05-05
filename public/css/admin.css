@@ -5,11 +5,21 @@
     text-align: center;
 }
 
+.adminSideBar div{
+    height: 100px;
+    background: linear-gradient(90deg, goldenrod 0%, #333);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .controlMenu{
     list-style-type: none;
     font-size: 30px;
     padding:0;
     margin: auto;
+    display: block;
 }
 
 .controlMenu li a{
@@ -24,38 +34,151 @@
 }
 
 .dataContainer {
-    width: 80%;
-    height: 100%;
-    overflow: scroll;
-    position: relative;
+    width: 100%;
+    height: calc(100% - 100px);
+    overflow-y: scroll;
     padding: 0;
-}
-
-.dataRow {
-    font-size: 1.5rem;
+    overflow-x: hidden;
     background-color: black;
-    color: goldenrod;
-    border: 1px solid goldenrod;
-    height: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    box-sizing: border-box;
-    padding: 0 2rem;
 }
 
-.dataRow img{
-    height: 100%;
-    max-width: 20%;
-}
-
-.dataContainer .tools{
-    position: absolute;
-    bottom: 0;
+.tools{
     width: 100%;
     height: 100px;
     background-color: #333;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: end;
     align-items: center;
+}
+
+.tools button{
+    padding: 10px 30px;
+    margin-right: 3%;
+    border-radius: 1rem;
+    border: 0.5px solid white;
+    font-size: 50px;
+    font-weight: bold;
+    background-color: goldenrod;
+    color: white;
+}
+
+.tools button:active {
+    background-color: white;
+    color: goldenrod;
+    border: 0.5px solid goldenrod;
+}
+
+.dataContainer table{
+    width: 100%;
+    border-spacing: 0;
+}
+
+.img-flu{
+    width: 100% !important;
+    object-fit: cover;
+}
+
+/* toggle button */
+.toggle {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.toggle input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggleCircle {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: white;
+    transition: .5s;
+    border-radius: 34px;
+}
+
+.toggleCircle:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: black;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+.toggle input:checked+.toggleCircle {
+    background-color: goldenrod;
+}
+
+.toggle input:checked+.toggleCircle:before {
+    transform: translateX(26px);
+    background-color: white;
+}
+
+.dataContainer tr:nth-child(1){
+    background-color: white;
+    color: black;
+    height: 50px;
+    font-size: 20px;
+}
+
+.dataContainer tr{
+    background-color: transparent;
+    color: white;
+}
+
+.dataContainer td{
+    text-align: center;
+    font-size: large;
+    text-wrap: wrap;
+    vertical-align:middle;
+    border: 1px solid white;
+}
+
+.dataContainer td div{
+    display: flex;
+    height: 100%;
+}
+
+.dataContainer .img-flu{
+    max-height: 200px;
+}
+
+.popup {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 100;
+    top: 0;
+    background: rgba(10, 10, 10, 60%);
+    display: none;
+}
+
+.popup.show{
+    display: block;
+}
+
+.addProductPopup{
+    width: 60%;
+    height: 80%;
+    background-color: white;
+    border-radius: 2rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;    
 }

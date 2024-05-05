@@ -1,6 +1,5 @@
 <?php 
-    require_once "mvc/controller/c_admin.php";
-    $controller = new c_admin();
+    $controller = new c_customersManage();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,7 +19,7 @@
         <div class="d-flex">
             <?php require "mvc/view/absolutePart/adminSideBar.php"; ?>
             <div class="dataContainer">
-                <?php echo($controller->getAllUsers());?>
+                <?php echo $controller->getAllUsers();?>
                 <div class="tools">
                     <h1 style="color: white">Núc 1</h1>
                     <h1 style="color: white">Núc 2</h1>

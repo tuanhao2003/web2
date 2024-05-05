@@ -53,7 +53,7 @@
     --text-color: #020102;
     --bg-color: #fff;
 }
-*{
+.wrapper *{
     padding:0;
     margin:0;
     box-sizing: border-box;
@@ -65,7 +65,7 @@ body{
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: url('/web2/public/img/Background.jpg') no-repeat;
+    background: url("/web2/public/data/Background.jpg") no-repeat;
     background-size: cover;
     background-position: center;
 }

@@ -2,17 +2,18 @@
 
 class m_bill{
 
-    protected $conn;
+    protected $sql;
     public function __construct(){
         require 'mvc/config/database.php';
-        require 'mvc/model/e_hoadon.php';
-        $this->conn = connect();
+        require 'mvc/entity/e_hoadon.php';
+        $this->sql = new database();
     }
 
     public function getAllbills(){
         try {
+            $conn = $this->sql->connect();
             $query = "select * from hoadon";
-            $data = $this->conn->query($query);
+            $data = $conn->query($query);
             $arr = array();
             if($data->num_rows > 0){
                 while ($row = $data->fetch_assoc()) {
@@ -26,9 +27,11 @@ class m_bill{
                 }
             }
 
+            $conn->close();
             return $arr;
         } catch (Exception $e) {
             echo "<script>alert('$e');</script>";
+            $conn->close();
             return null;
         }
     }

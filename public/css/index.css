@@ -787,7 +787,7 @@ section {
         align-items: center;
     }
 
-    .notFoundContainer div{
+    .notFoundContainer div {
         font-size: 70px;
         font-weight: bold;
         text-shadow: 2px 3px 8px white;

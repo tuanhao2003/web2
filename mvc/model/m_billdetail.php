@@ -2,18 +2,19 @@
 
 class m_billdetail{
 
-    protected $conn;
+    protected $sql;
 
     public function __construct(){
         require 'mvc/config/database.php';
-        require 'mvc/model/e_cthoadon.php';
-        $this->conn = connect();
+        require 'mvc/entity/e_cthoadon.php';
+        $this->sql = new database();
     }
 
     public function getAllbillsdetail(){
         try {
+            $conn= $this->sql->connect();
             $query = "select * from cthoadon";
-            $data = $this->conn->query($query);
+            $data = $conn->query($query);
             $arr = array();
             if($data->num_rows > 0){
                 while ($row = $data->fetch_assoc()) {
@@ -26,17 +27,20 @@ class m_billdetail{
                 }
             }
 
+            $conn->close();
             return $arr;
         } catch (Exception $e) {
             echo "<script>alert('$e');</script>";
+            $conn->close();
             return null;
         }
     }
 
     public function getBilldetail_byMaHD($MaHD){
         try {
+            $conn= $this->sql->connect();
             $query = "SELECT * FROM cthoadon WHERE MaHD = '". $MaHD ."'";
-            $data = $this->conn->query($query);
+            $data = $conn->query($query);
             $arr = array();
             if($data->num_rows > 0){
                 while ($row = $data->fetch_assoc()) {
@@ -48,9 +52,11 @@ class m_billdetail{
                     $arr[] = $entity;
                 }
             }
+            $conn->close();
             return $arr;
         } catch (Exception $e) {
             echo "<script>alert('$e');</script>";
+            $conn->close();
             return null;
         }
     }
