@@ -1,190 +1,92 @@
-CREATE TABLE NhaCungCap
+
+create table TaiKhoan
 (
-	MaNCC       CHAR(7)      NOT NULL,
-	TenNCC      VARCHAR(40)  NOT NULL,
-	DiaChiNCC   VARCHAR(40),
-	SDTNCC      VARCHAR(10)
+    MaTK                CHAR(7)                 NOT NULL,
+    TenDangNhap         CHAR(50),
+    MatKhau             VARCHAR(50),
+    TrangThai           INT                     NOT NULL,
+    URLHinh             VARCHAR(200)            NOT NULL,
+    PRIMARY KEY (MaTK)
 );
 
-CREATE TABLE Quyen
+create table Quyen
 (
-	MaTK            CHAR(7)       NOT NULL,
-	PhanQuyen       VARCHAR(20)   NOT NULL
+        MaTK                CHAR(7)                 NOT NULL,
+        PhanQuyen           VARCHAR(20)             NOT NULL,
+        PRIMARY KEY (MaTK),
+        FOREIGN KEY (MaTK) REFERENCES TaiKhoan(MaTK)
 );
 
-CREATE TABLE SanPham
+create table Hang
 (
-	MaSP            CHAR(5)         NOT NULL,
-	TenSP           VARCHAR(20)     NOT NULL,
-	Hang            VARCHAR(20)     NOT NULL,
-	DungLuong       VARCHAR(20)     NOT NULL,
-	DonGia          INT             NOT NULL,
-	GiaBan          INT,
-	SoLuong         INT             NOT NULL,
-    HinhAnh         VARCHAR(100)    NOT NULL,
-	TrangThaiTonTai INT             NOT NULL
+    MaHang              CHAR(7)                 NOT NULL,
+    TenHang             VARCHAR(100),
+    PRIMARY KEY (MaHang)
 );
 
-CREATE TABLE TaiKhoan
+create table SanPham
 (
-	MaTK        CHAR(7)         NOT NULL,
-	TenDangNhap VARCHAR(50),
-	MatKhau     VARCHAR(50),
-	Email       VARCHAR(50),
-	TrangThai   INT             NOT NULL
+    MaSP                CHAR(7)                 NOT NULL,
+    TenSP               VARCHAR(20)             NOT NULL,
+    DonGia              INT                     NOT NULL,
+    HinhAnh             VARCHAR(200)            NOT NULL,
+    MoTa                VARCHAR(1000)           ,
+    TrangThaiTonTai     INT                     NOT NULL,
+    MaHang              CHAR(7)                 NOT NULL,
+    PRIMARY KEY (MaSP),
+    FOREIGN KEY (MaHang) REFERENCES Hang(MaHang)
 );
 
-CREATE TABLE NhanVien
+create table KhachHang
 (
-	MaNV        CHAR(5)         NOT NULL,
-	TenNV       VARCHAR(50)     NOT NULL,
-    GioiTinh    VARCHAR(10)     NOT NULL,
-    DiaChiNV    VARCHAR(100),
-	SDTNV       VARCHAR(20),
-	MaTK        CHAR(7)         NOT NULL
+    MaKH                CHAR(7)                 NOT NULL,
+    TenKH               VARCHAR(40)             NOT NULL,
+    DiaChi              VARCHAR(100),
+    NgaySinh            DATETIME                NOT NULL,
+    Email               VARCHAR(50),
+    SDT                 VARCHAR(10),
+    MaTK                CHAR(7)                 NOT NULL,
+    PRIMARY KEY (MaKH),
+    FOREIGN KEY (MaTK) REFERENCES TaiKhoan(MaTK)
 );
 
-CREATE TABLE KhachHang
+create table GioHang
 (
-	MaKH        CHAR(5)         NOT NULL,
-	TenKH       VARCHAR(40)     NOT NULL,
-	DiaChi      VARCHAR(100),
-	SDT         VARCHAR(10),
-	MaTK        CHAR(7)         NOT NULL
+    MaKH                CHAR(7)                 NOT NULL,
+    MaSP                CHAR(7)                 NOT NULL,
+    FOREIGN KEY (MaKH) REFERENCES KhachHang(MaKH),
+    FOREIGN KEY (MaSP) REFERENCES SanPham(MaSP)
 );
 
-CREATE TABLE ChuongTrinhKhuyenMai
+create table HoaDon
 (
-	MaCTKM                  CHAR(5)         NOT NULL,
-    TenCTKM                 VARCHAR(100)    NOT NULL,
-	MucGiamGia             INT,
-	LoaiSanPhamDuocApDung  VARCHAR(100)    NOT NULL,
-    ThoiGianBatDau         VARCHAR(100)    NOT NULL,
-	ThoiGianKetThuc        VARCHAR(100)    NOT NULL,
-    ThoiGianTaoKM          VARCHAR(100)    NOT NULL,
-    MaSP                    CHAR(5)
+    MaHD                CHAR(7)                 NOT NULL,
+    MaKH                CHAR(7)                 NOT NULL,
+    HinhThucTra         NVARCHAR(40),
+    NgayLap             DATETIME,
+    TongGiaGoc          INT                     NOT NULL,
+    PRIMARY KEY (MaHD),
+    FOREIGN KEY (MaKH) REFERENCES KhachHang(MaKH)
 );
 
-CREATE TABLE HoaDon
+create table CTHoaDon
 (
-	MaHoaDon        CHAR(5)         NOT NULL,
-	MaKH            CHAR(5)         NOT NULL,
-	MaNV            CHAR(5)         NOT NULL,
-	NgayLap         DATETIME,
-    NgayXuat        DATETIME,
-	TongGiaGoc      INT             NOT NULL,
-    TongGiaSauGiam INT,
+    MaHD                CHAR(7)                 NOT NULL,
+    MaSP                CHAR(7)                 NOT NULL,
+    SoLuong             INT,
+    GiaTien             INT,
+    FOREIGN KEY (MaHD) REFERENCES HoaDon(MaHD),
+    FOREIGN KEY (MaSP) REFERENCES SanPham(MaSP)
 );
 
-CREATE TABLE CTHoaDon
+create table GiaoHang
 (
-	MaHoaDon    CHAR(5)         NOT NULL,
-	MaSP        CHAR(5)         NOT NULL,
-	TenSP       VARCHAR(40)     NOT NULL,
-	SoLuong     INT,
-	GiaTien     INT
+    MaVanDon           CHAR(7)                 NOT NULL,
+    NgayGiao           DATETIME,
+    NgayNhán            DATETIME,
+    TinhTrang          VARCHAR(20)             NOT NULL,
+    DiaDiem            VARCHAR(200),
+    MaHD               CHAR(7)                 NOT NULL,
+    PRIMARY KEY (MaVanDon),
+    FOREIGN KEY (MaHD) REFERENCES HoaDon(MaHD)
 );
-
-CREATE TABLE Kho
-(
-	MaKho       CHAR(5)         NOT NULL,
-	TenKho      VARCHAR(40)     NOT NULL,
-	DiaChiKho   VARCHAR(10),
-	SDTKho      VARCHAR(10)
-);
-
-CREATE TABLE PhieuNhapKho
-(
-	MaPhieuNhap CHAR(5)         NOT NULL,
-	MaKho       CHAR(5)         NOT NULL,
-	MaNV        CHAR(5)         NOT NULL,
-	NgayNhap    DATETIME        NOT NULL,
-	TongTien    INT             NOT NULL
-);
-
-CREATE TABLE CTPhieuNhapKho
-(
-	MaPhieuNhap CHAR(5)         NOT NULL,
-	MaNCC       CHAR(7)         NOT NULL,
-	SLNhap      INT,
-	Tamtinh     INT,
-	DonGia      INT             NOT NULL,
-	TenSP       VARCHAR(50)
-);
-
-CREATE TABLE SanPhamNCC
-(
-    MaNCC       CHAR(7)         NOT NULL,
-	MaSP        CHAR(5)         NOT NULL,
-	TenSP       VARCHAR(50)     NOT NULL,
-	DonGia      INT             NOT NULL
-);
-
--- Thiết lập ràng buộc --
--- Khóa chính --
-ALTER TABLE HoaDon
-	ADD CONSTRAINT PK_HoaDon PRIMARY KEY (MaHoaDon);
-
-ALTER TABLE NhaCungCap
-	ADD CONSTRAINT PK_NhaCungCap PRIMARY KEY (MaNCC);
-
-ALTER TABLE SanPham
-	ADD CONSTRAINT PK_SanPham PRIMARY KEY (MaSP);
-
-ALTER TABLE NhanVien
-	ADD CONSTRAINT PK_NhanVien PRIMARY KEY (MaNV);
-
-ALTER TABLE KhachHang
-	ADD CONSTRAINT PK_KhachHang PRIMARY KEY (MaKH);
-
-ALTER TABLE Kho
-	ADD CONSTRAINT PK_Kho PRIMARY KEY (MaKho);
-
-ALTER TABLE PhieuNhapKho
-	ADD CONSTRAINT PK_PhieuNhapKho PRIMARY KEY(MaPhieuNhap);
-
-ALTER TABLE ChuongTrinhKhuyenMai
-	ADD CONSTRAINT PK_ChuongTrinhKhuyenMai PRIMARY KEY(MaCTKM);
-
-ALTER TABLE TaiKhoan
-	ADD CONSTRAINT PK_TaiKhoan PRIMARY KEY(MaTK);
-
--- Khóa ngoại --
-ALTER TABLE HoaDon
-	ADD CONSTRAINT FK_MaKhachHang_HoaDon FOREIGN KEY (MaKH) REFERENCES KhachHang(MaKH);
-
-ALTER TABLE HoaDon
-    ADD CONSTRAINT FK_MaNhanVien_HoaDon FOREIGN KEY (MaNV) REFERENCES NhanVien(MaNV);
-
-ALTER TABLE SanPhamNCC
-    ADD CONSTRAINT FK_MaNCC_SanPhamNCC  FOREIGN KEY (MaNCC) REFERENCES NhaCungCap(MaNCC);
-
-ALTER TABLE SanPhamNCC
-    ADD CONSTRAINT FK_MaSP_SanPhamNCC   FOREIGN KEY (MaSP) REFERENCES SanPham(MaSP);
-
-ALTER TABLE CTHoaDon 
-	ADD CONSTRAINT FK_MaHoaDon_CTHoaDon FOREIGN KEY (MaHoaDon) REFERENCES HoaDon(MaHoaDon);
-
-ALTER TABLE CTHoaDon 
-	ADD CONSTRAINT FK_MaSP_CTHoaDon FOREIGN KEY (MaSP) REFERENCES SanPham(MaSP);
-
-ALTER TABLE KhachHang
-	ADD CONSTRAINT FK_MaTK_KhachHang FOREIGN KEY (MaTK) REFERENCES TaiKhoan(MaTK);
-
-ALTER TABLE NhanVien
-	ADD CONSTRAINT FK_MaTK_NhanVien FOREIGN KEY (MaTK) REFERENCES TaiKhoan(MaTK);
-
-ALTER TABLE Quyen   
-    ADD CONSTRAINT FK_MaTK_Quyen FOREIGN KEY (MaTK) REFERENCES TaiKhoan(MaTK);
-
-ALTER TABLE PhieuNhapKho
-	ADD CONSTRAINT FK_MaKho_PhieuNhapKho FOREIGN KEY (MaKho) REFERENCES Kho(MaKho);
-
-ALTER TABLE PhieuNhapKho
-	ADD CONSTRAINT FK_MaNV_PhieuNhapKho FOREIGN KEY (MaNV) REFERENCES NhanVien(MaNV);
-
-ALTER TABLE CTPhieuNhapKho
-	ADD CONSTRAINT FK_MaPhieuNhap_CTPhieuNhapKho FOREIGN KEY (MaPhieuNhap) REFERENCES PhieuNhapKho(MaPhieuNhap);
-
-ALTER TABLE CTPhieuNhapKho
-	ADD CONSTRAINT FK_MaNCC_CTPhieuNhapKho FOREIGN KEY (MaNCC) REFERENCES NhaCungCap(MaNCC);

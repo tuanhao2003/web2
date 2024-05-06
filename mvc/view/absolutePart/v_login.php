@@ -19,12 +19,12 @@ $controller = new c_login();
             <form action="<?php $controller->login(); ?>" method="POST">
                 <div class="input-box">
                     <span class="icon"><ion-icon name="person-outline"></ion-icon></span>
-                    <input type="text" name="username" required>
+                    <input type="text" name="username"  value="_" required>
                     <label>Username</label>
                 </div>
                 <div class="input-box">
                     <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
-                    <input type="password" name="password" required>
+                    <input type="password" name="password"  required>
                     <label>Password</label>
                 </div>
                 
@@ -40,7 +40,7 @@ $controller = new c_login();
             <form action="<?php $controller->register(); ?>" method="POST">
                 <div class="input-box">
                     <span class="icon"><ion-icon name="person-outline"></ion-icon></span>
-                    <input type="text" name="registAccount" required>
+                    <input type="text" name="registAccount"  value="_" required>
                     <label>Username</label>
                 </div>
                 <div class="input-box">

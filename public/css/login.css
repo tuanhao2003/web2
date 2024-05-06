@@ -209,3 +209,6 @@ body{
     color:var(--main-color);
 }
 
+.wrapper input:not(input:blank) {
+    background-color: transparent !important;
+}
