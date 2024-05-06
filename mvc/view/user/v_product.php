@@ -39,7 +39,7 @@
         <tbody>
             <?php
             // Include the controller
-            require_once '/mvc/controller/c_productsManage.php';
+            require_once 'mvc/controller/c_productsManage.php';
             // Create a new instance of the controller
             $controller = new c_productsManage();
             // Get all products
