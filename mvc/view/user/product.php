@@ -3,14 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Danh sách sản phẩm</title>
-    <link rel="stylesheet" href="/web2/public/css/product.css">
+    <title>List of Products</title>
+    <style>
+        /* CSS styles for table display */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+        img {
+            max-width: 100px;
+            max-height: 100px;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Danh sách sản phẩm</h1>
-        <div id="product-list"></div>
-    </div>
-    <script src="/web2/public/js/product.js"></script>
+    <h2>List of Products</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Product ID</th>
+                <th>Product Name</th>
+                <th>Unit Price</th>
+                <th>Sale Price</th>
+                <th>Description</th>
+                <th>Brand</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            // Include the controller
+            require_once '/mvc/controller/c_productsManage.php';
+            // Create a new instance of the controller
+            $controller = new c_productsManage();
+            // Get all products
+            echo $controller->getAllProducts();
+            ?>
+        </tbody>
+    </table>
 </body>
 </html>
