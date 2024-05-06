@@ -3,49 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>List of Products</title>
-    <style>
-        /* CSS styles for table display */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        table, th, td {
-            border: 1px solid black;
-            padding: 8px;
-            text-align: center;
-        }
-        img {
-            max-width: 100px;
-            max-height: 100px;
-        }
-    </style>
+    <title>Danh mục sản phẩm</title>
+    <link rel="stylesheet" href="public/css/productstyle.css">
 </head>
 <body>
-    <h2>List of Products</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Image</th>
-                <th>Product ID</th>
-                <th>Product Name</th>
-                <th>Unit Price</th>
-                <th>Sale Price</th>
-                <th>Description</th>
-                <th>Brand</th>
-                <th>Status</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-            // Include the controller
-            require_once 'mvc/controller/c_productsManage.php';
-            // Create a new instance of the controller
-            $controller = new c_productsManage();
-            // Get all products
-            echo $controller->getAllProducts();
-            ?>
-        </tbody>
-    </table>
+    <div class="container">
+        <h2>Danh mục sản phẩm</h2>
+        <div class="product-grid">
+            <?php $count = 0; ?>
+            <?php foreach ($products as $product): ?>
+                <?php if ($count % 3 == 0): ?>
+                    <div class="product-row">
+                <?php endif; ?>
+                <div class="product-item">
+                    <img src="public/data/SanPham/<?php echo $product['HinhAnh']; ?>" alt="<?php echo $product['TenSP']; ?>">
+                    <h3><?php echo $product['TenSP']; ?></h3>
+                    <p>Giá: <?php echo number_format($product['DonGia']); ?> VNĐ</p>
+                    <p><?php echo $product['MoTa']; ?></p>
+                </div>
+                <?php if (($count + 1) % 3 == 0 || ($count + 1) == count($products)): ?>
+                    </div>
+                <?php endif; ?>
+                <?php $count++; ?>
+            <?php endforeach; ?>
+        </div>
+        <!-- Pagination -->
+        <div class="pagination">
+            <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+                <a href="?page=<?php echo $i; ?>" <?php if ($currentPage == $i) echo 'class="active"'; ?>><?php echo $i; ?></a>
+            <?php endfor; ?>
+        </div>
+    </div>
+    <script src="public/js/product.js"></script>
 </body>
 </html>
