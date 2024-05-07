@@ -1,25 +1,30 @@
 <?php
 require_once('mvc/config/database.php');
 
-class ListProductModel {
+class m_listproduct {
     public function getProducts($offset, $limit) {
         $db = new database();
         $conn = $db->connect();
-
-        $sql = "SELECT * FROM sanpham LIMIT $offset, $limit";
-        $result = $conn->query($sql);
-
+    
+        $sql = "SELECT * FROM sanpham LIMIT ?, ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("ii", $offset, $limit);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        
         $products = [];
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
                 $products[] = $row;
             }
         }
-
+        
+        $stmt->close();
         $conn->close();
-
+        
         return $products;
     }
+    
 
     public function getTotalProducts() {
         $db = new database();
