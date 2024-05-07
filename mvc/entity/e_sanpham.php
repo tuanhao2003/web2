@@ -4,7 +4,6 @@ class e_sanpham
     protected $masp;
     protected $tensp;
     protected $donGia;
-    protected $giaBan;
     protected $moTa;
     protected $hinhAnh;
     protected $trangThaiTonTai;
@@ -15,7 +14,6 @@ class e_sanpham
         $this->masp=null;
         $this->tensp=null;
         $this->donGia=0;
-        $this->giaBan=0;
         $this->moTa=null;
         $this->hinhAnh=null;
         $this->trangThaiTonTai=null;
@@ -41,13 +39,6 @@ class e_sanpham
     }
     public function setDonGia($donGia){
         $this->donGia = $donGia;
-    }
-
-    public function getGiaBan(){
-        return $this->giaBan;
-    }
-    public function setGiaBan($giaBan){
-        $this->giaBan = $giaBan;
     }
 
     public function getmoTa(){
