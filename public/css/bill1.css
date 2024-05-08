@@ -21,9 +21,11 @@ section{
 .infor_column {
     align-items: center;
     margin-right: 50px;
-    padding-bottom: 210px;
-    /* background-color: brown; */
+    background-color: white;
     margin-top: 70px;
+    padding: 20px;
+    border-radius: 10px;
+    height: 260px;
 }
 
 .infor_column .img_text{
@@ -70,12 +72,13 @@ section{
 
 
 .infor_bill{
-   margin-top: 60px;
+   margin-top: 17px;
 }
 
 .infor_bill h2{
    color: goldenrod;
    font-size: 30px;
+   margin-bottom: 20px;
 }
 
 .bill_items2{
@@ -166,7 +169,7 @@ section{
 /* Chi tiết hóa đơn ở đây */
 
 .infor_bill_detail{
-    margin-top: 60px;
+    margin-top: 72px;
     display: flex;
     flex-direction: column;
     
@@ -220,11 +223,13 @@ section{
 .infor_bill_detail .product .infor_product p{
     padding-top: 10px;
     padding-left: 10px;
+    font-size: large;
 }
 
 .infor_bill_detail .product .price {
     margin-left: auto; /* Đẩy phần tử price sang phải cùng */
     padding-top: 50px;
+    font-size: larger;
 }
 
 .infor_bill_detail .total_price{
