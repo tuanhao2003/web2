@@ -2,6 +2,7 @@
 <?php 
     require_once "mvc/controller/c_admin.php";
     $controller = new c_bill();
+    // $controller2 = new c_billdetail();
 ?>
 <head>
     <meta charset="UTF-8">
@@ -41,7 +42,7 @@
             <div class="bill">
                 <?php 
                     $mang = array();
-                    $mang = $controller->getAllbills();
+                    $mang = $controller->getBillid("HD002");
                     foreach($mang as $bill){
                         $html = 
                         '<div class="bill_items2">
@@ -50,15 +51,30 @@
                                     <p>' . $bill->getMaHD() . '</p>
                                 </div>
                                 <button>Xem chi tiết</button>
+                            </div>';
+
+                            echo($html);
+
+                            
+                            $html2 = 
+                            '<div class="bill_product">
+                            <img class="img_product" src="public/data/banner1.jpg" alt="">
+                            <div class="product_infor">
+                                <p> Rolex pro . </p>
+                                <p> Số lượng 1 . </p>
                             </div>
-                            <div class="bill_product">
-                                <img class="img_product" src="public/data/banner1.jpg" alt="">
-                                <div class="product_infor">
-                                    <p> Rolex Pro . </p>
-                                    <p> Số lượng 1 . </p>
-                                </div>
-                            </div>
-                            <div class="bill_total">
+                            </div>';
+                            echo($html2);
+
+                            $mangsp = array();
+                            // $mangsp = $controller2->getBilldetail_byMaHD("HD002");
+                            foreach($mangsp as $sp){
+
+                            };
+                            
+                            $html3 =
+
+                            '<div class="bill_total">
                                 <div class="bill_time">
                                     <p>Ngày Lập: ' . $bill->getNgayLap() . '</p>
                                     <p>Hình thức thanh toán: ' . $bill->getHinhThucTra() . '</p>
@@ -69,7 +85,7 @@
                                 </div>
                             </div>
                         </div>';
-                        echo($html);
+                        echo($html3);
                     }
                 ?>
             </div>

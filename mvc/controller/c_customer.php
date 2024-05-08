@@ -41,8 +41,12 @@ class c_customer{
             $email = $_POST['email'];
             $diachi = $_POST['diachi'];
             $sdt = $_POST['sdt'];
-
-            $this->m_customer->save_info($name);
+            $result = $this->m_customer->save_info($name);
+            if($result === true) {
+                return "Lưu thông tin thành công!";
+            } else {
+                return "Đã xảy ra lỗi trong quá trình lưu thông tin.";
+            }
         }
     }
     

@@ -45,43 +45,61 @@
                     </div>
                 <?php 
                     $mang = array();
-                    $mang = $controller->getAllbillsdetail();
+                    $mang = $controller->getBilldetail_byMaHD("HD002");
+                    $bill = $mang[0];
+
+                    $html1 =   
+                    '<div class="bill_time_infor">
+                        <div>
+                            <p>' . $bill->getMaHD() . '</p>
+                            <p>Ngày đặt: 01/01/2000</p>
+                            <p>Ngày nhận: 02/02/2002</p>
+                        </div>
+                        <div>
+                            <p>Địa chỉ: 273 An Dương Vương, P1, Q5, TP.HCM</p>
+                        </div>
+                    </div>';
+                    echo($html1);
+
                     foreach($mang as $bill){
-                        $html =   
-                        '<div class="bill_time_infor">
-                            <div>
-                                <p>' . $bill->getMaHD() . '</p>
-                                <p>Ngày đặt: 01/01/2000</p>
-                                <p>Ngày nhận: 02/02/2002</p>
+                        $html2 =
+                        '<div class="all_product">
+                        <div class="product">
+                            <div class="img_product">
+                                <img class="img_product" src="public/data/banner1.jpg" alt="">
                             </div>
-                            <div>
-                                <p>Địa chỉ: 273 An Dương Vương, P1, Q5, TP.HCM</p>
+                            <div class="infor_product">
+                                <p>' . $controller->getProductName_byMaSP($bill->getMaSP()) . '</p>
+                                <p>' . $bill->getSoLuong() . '</p>
                             </div>
-                        </div>
-                        <div class="all_product">
-                            <div class="product">
-                                <div class="img_product">
-                                    <img class="img_product" src="public/data/banner1.jpg" alt="">
-                                </div>
-                                <div class="infor_product">
-                                    <p>' . $bill->getMaSP() . '</p>
-                                    <p>' . $bill->getSoLuong() . '</p>
-                                </div>
-                                <div class="price">
-                                    <p> Giá: ' . $bill->getGiaTien() . '</p>
-                                </div>
+                            <div class="price">
+                                <p> Giá: ' . $bill->getGiaTien() . '</p>
                             </div>
                         </div>
-                        <div class="total_price">
-                            <p>
-                                Thành tiền: 10.000.000đ
-                            </p>
-                        </div>';
-                    echo($html);
-                    }
+                    </div>';
+                        echo($html2);
+                    }    
+                    
+                    $html3 = '<div class="total_price">
+                        <p>
+                            Thành tiền: 10.000.000đ
+                        </p>
+                    </div>';
+                    echo($html3);
+                    
                 
                 ?>
             </div>
+
+            <?php
+
+            $mang = array();
+            $mang = $controller->getProductInfo_byMaSP("SP001");
+                foreach($mang as $data){
+                    echo($data);
+                }    
+                
+            ?>
              
             
         </div>

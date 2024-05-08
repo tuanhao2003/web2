@@ -36,5 +36,14 @@ class c_billdetail{
         return $data;
     }
 
+    public function getProductName_byMaSP($MaSP){
+        $data = $this->m_billdetail->getProductName_byMaSP($MaSP);
+        return $data;
+    }
+
+    public function getProductInfo_byMaSP($MaSP){
+        $data = $this->m_billdetail->getProductInfo_byMaSP($MaSP);
+        return $data;
+    }
 
 }

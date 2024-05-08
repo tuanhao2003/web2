@@ -66,6 +66,11 @@ class m_customer{
             $query = "UPDATE khachhang SET 
             TenKH = '".$arr."' 
             WHERE MaKH = 'KH001'";
+
+            $result = $conn->query($query);
+            $conn->close();
+
+            return $result; 
         } catch (Exception $e) {
             echo "<script>alert('$e');</script>";
             $conn->close();

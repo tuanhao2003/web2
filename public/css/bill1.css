@@ -215,9 +215,9 @@ section{
 
 .infor_bill_detail .product{
     display: flex;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    border-bottom: 2px solid hsl(0, 0%, 73%);
+    margin-top: 18px;
+    margin-bottom: 18px;
+    
 }
 
 .infor_bill_detail .product .infor_product p{
@@ -235,5 +235,6 @@ section{
 .infor_bill_detail .total_price{
     font-size: 25px;
     padding-top: 10px;
-    margin-left: 455px ;
+    border-top: 2px solid hsl(0, 0%, 73%);
+    text-align: right;
 }
