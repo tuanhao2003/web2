@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/web2/public/css/index.css">
-    <link rel="stylesheet" href="/web2/public/css/bill.css">
+    <link rel="stylesheet" href="/web2/public/css/bill1.css">
     <link rel="stylesheet" href="/web2/public/css/index.css">
     <link rel="stylesheet" href="/web2/public/css/admin.css">
     <title>Chi tiết Hóa đơn</title>
@@ -39,43 +39,50 @@
         </div>
         
         <div class="infor_bill_detail">
-
-             <!-- <?php echo($controller->getBilldetail_byMaHD("HD002"));?> -->
-
+            <div class="infor_bill_detail2">
                 <div class="title_detail">
-                    <h2 class="title_name">Chi tiết Hóa đơn</h2>
-                </div>
+                        <h2 class="title_name">Chi tiết Hóa đơn</h2>
+                    </div>
+                <?php 
+                    $mang = array();
+                    $mang = $controller->getAllbillsdetail();
+                    foreach($mang as $bill){
+                        $html =   
+                        '<div class="bill_time_infor">
+                            <div>
+                                <p>' . $bill->getMaHD() . '</p>
+                                <p>Ngày đặt: 01/01/2000</p>
+                                <p>Ngày nhận: 02/02/2002</p>
+                            </div>
+                            <div>
+                                <p>Địa chỉ: 273 An Dương Vương, P1, Q5, TP.HCM</p>
+                            </div>
+                        </div>
+                        <div class="all_product">
+                            <div class="product">
+                                <div class="img_product">
+                                    <img class="img_product" src="public/data/banner1.jpg" alt="">
+                                </div>
+                                <div class="infor_product">
+                                    <p>' . $bill->getMaSP() . '</p>
+                                    <p>' . $bill->getSoLuong() . '</p>
+                                </div>
+                                <div class="price">
+                                    <p> Giá: ' . $bill->getGiaTien() . '</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="total_price">
+                            <p>
+                                Thành tiền: 10.000.000đ
+                            </p>
+                        </div>';
+                    echo($html);
+                    }
                 
-                <div class="bill_time_infor">
-                    <div>
-                        <p>Mã hóa đơn: HD001</p>
-                        <p>Ngày đặt: 01/01/2000</p>
-                        <p>Ngày nhận: 02/02/2002</p>
-                    </div>
-                    <div>
-                        <p>Địa chỉ: 273 An Dương Vương, P1, Q5, TP.HCM</p>
-                    </div>
-                </div>
-                <div class="all_product">
-                    <div class="product">
-                        <div class="img_product">
-                            <img class="img_product" src="/web2/public/data/banner1.jpg" alt="">
-                        </div>
-                        <div class="infor_product">
-                            <p>Apple Watch</p>
-                            <p>Số lượng 1</p>
-                        </div>
-                        <div class="price">
-                            <p>Giá: 5.000.000đ</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="total_price">
-                    <p>
-                        Thành tiền: 10.000.000đ
-                    </p>
-                </div>
-
+                ?>
+            </div>
+             
             
         </div>
 </section>
