@@ -1,7 +1,6 @@
 <?php
 class c_admin
 {
-
     public function __construct($url = null)
     {
         if ($url !== null) {
@@ -26,6 +25,11 @@ class c_admin
     {
         require_once "mvc/controller/c_productsManage.php";
         require_once "mvc/view/admin/v_products.php";
+    }
+
+    public function test(){
+        require_once "mvc/controller/c_productsManage.php";
+        require_once "mvc/view/admin/v_test.php";
     }
 }
 ?>

@@ -1,9 +1,8 @@
 <?php
-// MaVanDon	NgayGiao	NgayDen	TinhTrang	DiaDiem	MaHD	
 class e_giaohang{
     protected $maVanDon;
     protected $ngayGiao;
-    protected $ngayDen;
+    protected $ngayNhan;
     protected $tinhTrang;
     protected $diaDiem;
     protected $maHD;
@@ -11,7 +10,7 @@ class e_giaohang{
     public function __construct(){
         $this->maVanDon = null;
         $this->ngayGiao = null;
-        $this->ngayDen = null;
+        $this->ngayNhan = null;
         $this->tinhTrang = null;
         $this->diaDiem = null;
         $this->maHD = null;
@@ -23,8 +22,8 @@ class e_giaohang{
     public function getNgayGiao($ngayGiao){
         $this->ngayGiao = $ngayGiao;
     }
-    public function getNgayDen($ngayDen){
-        $this->ngayDen = $ngayDen;
+    public function getNgayNhan($ngayNhan){
+        $this->ngayNhan = $ngayNhan;
     }
     public function getTinhTrang($tinhTrang){
         $this->tinhTrang = $tinhTrang;
@@ -42,8 +41,8 @@ class e_giaohang{
     public function setNgayGiao(){
         return $this->ngayGiao;
     }
-    public function setNgayDen(){
-        return $this->ngayDen;
+    public function setNgayNhan(){
+        return $this->ngayNhan;
     }
     public function setTinhTrang(){
         return $this->tinhTrang;

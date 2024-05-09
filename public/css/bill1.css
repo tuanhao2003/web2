@@ -12,6 +12,7 @@ body{
 }
 
 section{
+
     background-color: rgb(240, 240, 240);
     display: flex;
     justify-content: center;
@@ -21,11 +22,9 @@ section{
 .infor_column {
     align-items: center;
     margin-right: 50px;
-    background-color: white;
+    padding-bottom: 210px;
+    /* background-color: brown; */
     margin-top: 70px;
-    padding: 20px;
-    border-radius: 10px;
-    height: 260px;
 }
 
 .infor_column .img_text{
@@ -72,17 +71,21 @@ section{
 
 
 .infor_bill{
-   margin-top: 17px;
+   
 }
 
 .infor_bill h2{
    color: goldenrod;
    font-size: 30px;
-   margin-bottom: 20px;
+}
+
+
+.infor_bill .bill{
+    
 }
 
 .bill_items2{
-    width: 800px;
+    width: 700px;
     background-color: #ffffff;
     border-radius: 10px;
     margin-bottom: 40px;
@@ -169,37 +172,30 @@ section{
 /* Chi tiết hóa đơn ở đây */
 
 .infor_bill_detail{
-    margin-top: 72px;
+    margin-top: 80px;
     display: flex;
     flex-direction: column;
-    
 }
 
-.infor_bill_detail2{
-    background-color: #ffffff;
-    border-radius: 10px;
-    padding: 20px;
-}
 
 
 .infor_bill_detail h2{
     color: goldenrod;
     font-size: 30px;
-    padding-bottom: 10px;
  }
 
  .infor_bill_detail .title_detail{
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
  }
-
 
  .infor_bill_detail .bill_time_infor{
     width: 700px;
     height: 100px;
     border-bottom: 2px solid hsl(0, 0%, 73%);
     border-top: 2px solid hsl(0, 0%, 73%);
-    display: flex;
-    justify-content: space-between;
+
 }
 
 .infor_bill_detail .bill_time_infor p{
@@ -215,26 +211,23 @@ section{
 
 .infor_bill_detail .product{
     display: flex;
-    margin-top: 18px;
-    margin-bottom: 18px;
-    
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid hsl(0, 0%, 73%);
 }
 
 .infor_bill_detail .product .infor_product p{
     padding-top: 10px;
     padding-left: 10px;
-    font-size: large;
 }
 
 .infor_bill_detail .product .price {
     margin-left: auto; /* Đẩy phần tử price sang phải cùng */
     padding-top: 50px;
-    font-size: larger;
 }
 
 .infor_bill_detail .total_price{
     font-size: 25px;
     padding-top: 10px;
-    border-top: 2px solid hsl(0, 0%, 73%);
-    text-align: right;
+    margin-left: auto;
 }

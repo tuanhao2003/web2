@@ -8,13 +8,30 @@ class app
     {
         $this->page = "notFound";
         $this->subPage = "";
-
         $this->mapping();
     }
 
     function mapping()
     {
         if (isset($_GET["url"])) {
+            if(str_contains($_SERVER["REQUEST_URI"], "?")){
+
+                $getParams = explode("?", $_SERVER["REQUEST_URI"])[1];
+                $paramsToArray = [];
+                if(str_contains($getParams, "&")){
+                    $paramsToArray = explode("&", $getParams);
+                }else{
+                    $paramsToArray[]=$getParams;
+                }
+                $paramsObj = new stdClass();
+                foreach ($paramsToArray as $param) {
+                    $key = explode("=", $param)[0];
+                    $value = explode("=", $param)[1];
+                    $paramsObj->$key = $value;
+                }
+                echo "<script>setCookieViaScript('".json_encode($paramsObj)."')</script>";
+            }
+
             $urlPath = explode("/", filter_var(trim($_GET["url"], "/")));
             if (file_exists("mvc/controller/c_" . $urlPath[0] . ".php")) {
                 $this->page = $urlPath[0];
@@ -27,7 +44,8 @@ class app
                     $class = "c_" . $this->page;
                     if (class_exists($class)) {
                         $classInit = new $class();
-                        $methodName = $urlPath[1];
+                        $methodName=$urlPath[1];
+
                         if (method_exists($classInit, $methodName)) {
                             $classInit->$methodName();
                         }else{
@@ -45,3 +63,8 @@ class app
     }
 }
 ?>
+<script>
+    function setCookieViaScript(data){
+        document.cookie = 'paramObj=' + data + '; path=/';
+    }
+</script>
