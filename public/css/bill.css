@@ -168,15 +168,13 @@ section{
 .infor_bill_detail{
     margin-top: 60px;
     display: flex;
+    height: 400px;
     flex-direction: column;
-    
-}
-
-.infor_bill_detail2{
-    background-color: #ffffff;
+    background-color: white;
     border-radius: 10px;
     padding: 20px;
 }
+
 
 
 .infor_bill_detail h2{
@@ -230,5 +228,5 @@ section{
 .infor_bill_detail .total_price{
     font-size: 25px;
     padding-top: 10px;
-    margin-left: 455px ;
+    margin-left: auto;
 }

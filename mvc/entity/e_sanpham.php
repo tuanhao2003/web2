@@ -4,8 +4,8 @@ class e_sanpham
     protected $masp;
     protected $tensp;
     protected $donGia;
-    protected $moTa;
     protected $hinhAnh;
+    protected $moTa;
     protected $trangThaiTonTai;
     protected $maHang;
 
@@ -14,8 +14,8 @@ class e_sanpham
         $this->masp=null;
         $this->tensp=null;
         $this->donGia=0;
-        $this->moTa=null;
         $this->hinhAnh=null;
+        $this->moTa=null;
         $this->trangThaiTonTai=null;
         $this->maHang=null;
     }
@@ -41,18 +41,19 @@ class e_sanpham
         $this->donGia = $donGia;
     }
 
-    public function getmoTa(){
-        return $this->moTa;
-    }
-    public function setmoTa($moTa){
-        $this->moTa = $moTa;
-    }
 
     public function getHinhAnh(){
         return $this->hinhAnh;
     }
     public function setHinhAnh($hinhAnh){
         $this->hinhAnh = $hinhAnh;
+    }
+
+    public function getMoTa(){
+        return $this->moTa;
+    }
+    public function setMoTa($MoTa){
+        $this->moTa = $MoTa;
     }
 
     public function getTrangThaiTonTai(){
@@ -68,5 +69,6 @@ class e_sanpham
     public function setMaHang($maHang){
         $this->maHang = $maHang;
     }
+
 }
 ?>

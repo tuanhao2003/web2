@@ -25,8 +25,8 @@ class m_login
                     if($check->getMatKhau()==$password){
                         $queryClassify = "select PhanQuyen from quyen where MaTK='" . $check->getMatk() . "'";
 
-                        session_start();
-                        $_SESSION['isLoggedIn'] = true;
+                        setcookie('isLoggedIn', true, path:"/");
+                        setcookie('loginingAccount', $check->getMatk(), path:"/");
 
                         if ($conn->query($queryClassify)->fetch_assoc()["PhanQuyen"] == "admin") {
                             header("Location: /web2/admin");
@@ -35,7 +35,6 @@ class m_login
                             header("Location: /web2/home");
                             echo "<script>alert('Welcome!');</script>";
                         }
-                        exit();
                     } else{
                         echo "<script>alert('Invalid password!');</script>";
                     }
@@ -92,6 +91,10 @@ class m_login
         }
     }
 
+    // public function logout(){
+    //     setcookie('isLoggedIn', false, path:"/");
+    // }
+
     public function getAccountByID($ID)
     {
         try {
@@ -124,6 +127,35 @@ class m_login
         try {
             $conn = $this->sql->connect();
             $query = "select * from khachhang where Sdt='" . $phone . "';";
+            $data = $conn->query($query);
+            if ($data->num_rows > 0) {
+                while($row = $data->fetch_assoc()){
+                    $customerInfor = new e_khachhang;
+                    $customerInfor->setMaKH($row["MaKH"]);
+                    $customerInfor->setTenKH($row["TenKH"]);
+                    $customerInfor->setDiaChi($row["DiaChi"]);
+                    $customerInfor->setNgaySinh($row["NgaySinh"]);
+                    $customerInfor->setEmail($row["Email"]);
+                    $customerInfor->setSdt($row["SDT"]);
+                    $customerInfor->setMatk($row["MaTK"]);
+                    $conn->close();
+                    return $customerInfor;
+                }
+            } else {
+                $conn->close();
+                return null;
+            }
+        } catch (Exception $e) {
+            echo "<script>alert('error while check account" . $e . "');</script>";
+            $conn->close();
+            return null;
+        }
+    }
+
+    public function getCustomerByAccountID($id){
+        try {
+            $conn = $this->sql->connect();
+            $query = "select * from khachhang where MaTK='" . $id . "';";
             $data = $conn->query($query);
             if ($data->num_rows > 0) {
                 while($row = $data->fetch_assoc()){

@@ -9,19 +9,22 @@ class c_productsManage
         $this->repository = new m_productsManage();
     }
 
-    public function getProduct($id){
+    public function getProduct($params)
+    {
         $dataToHTML = "";
-        if ($_SERVER["REQUEST_METHOD"] == "GET"){
-            $data = $this->repository->getProduct($id);
-            if (!empty($data)) {
-                $status = $data->getTrangThaiTonTai() == 0 ? 'unchecked' : 'checked';
-                $dataToHTML .= '<tr>
-                    <td><div><img class="img-flu" alt="noImg" src="/public/data/SanPham/' . $data->getHinhAnh() . '"></div></td>
+        if ($_SERVER["REQUEST_METHOD"] == "GET") {
+            if (!empty($params->id)) {
+                $id = $params->id;
+                $data = $this->repository->getProduct($id);
+                if (!empty($data)) {
+                    $status = $data->getTrangThaiTonTai() == 0 ? 'unchecked' : 'checked';
+                    $dataToHTML .= '<tr>
+                    <td><div><img class="img-flu" alt="noImg" src="' . $data->getHinhAnh() . '"></div></td>
                     <td style="display:none;"><p>' . $data->getMasp() . '</p></td>
                     <td><p>' . $data->getTensp() . '</p></td>
                     <td><p>' . $data->getDonGia() . '</p></td>
                     <td><p>' . $data->getGiaBan() . '</p></td>
-                    <td><p>' . $data->getMoTa() . '</p></td>
+                    <td><p>' . $data->getSoLuong() . '</p></td>
                     <td><p>' . $data->getMaHang() . '</p></td>
                     <td>
                         <label class="toggle">
@@ -30,6 +33,7 @@ class c_productsManage
                         </label>
                     </td>
                 </tr>';
+                }
             }
         }
         return $dataToHTML;
@@ -48,7 +52,7 @@ class c_productsManage
                         <td><p>' . $product->getTensp() . '</p></td>
                         <td><p>' . $product->getDonGia() . '</p></td>
                         <td><p>' . $product->getGiaBan() . '</p></td>
-                        <td><p>' . $product->getMoTa() . '</p></td>
+                        <td><p>' . $product->getSoLuong() . '</p></td>
                         <td><p>' . $product->getMaHang() . '</p></td>
                         <td>
                             <label class="toggle">
@@ -71,7 +75,7 @@ class c_productsManage
             $sanpham->setTensp($_POST['tensp']);
             $sanpham->setDonGia($_POST['donGia']);
             $sanpham->setGiaBan($_POST['giaBan']);
-            $sanpham->setMoTa($_POST['MoTa']);
+            $sanpham->setSoLuong($_POST['soLuong']);
             $sanpham->setHinhAnh($_POST['hinhAnh']);
             $sanpham->setTrangThaiTonTai(1);
             $sanpham->setMaHang($_POST['maHang']);
@@ -107,11 +111,11 @@ class c_productsManage
             $sanpham->setTensp($_POST['tensp']);
             $sanpham->setDonGia($_POST['donGia']);
             $sanpham->setGiaBan($_POST['giaBan']);
-            $sanpham->setMoTa($_POST['MoTa']);
+            $sanpham->setSoLuong($_POST['soLuong']);
             $sanpham->setHinhAnh($_POST['hinhAnh']);
             $sanpham->setTrangThaiTonTai($_POST['trangThai']);
             $sanpham->setMaHang($_POST['maHang']);
-            $testString = $sanpham->getMasp().",". $sanpham->getTensp() .",".$sanpham->getDonGia().",". $sanpham->getGiaBan().",".$sanpham->getMoTa().",".$sanpham->getHinhAnh().",".$sanpham->getTrangThaiTonTai().",".$sanpham->getMaHang();
+            $testString = $sanpham->getMasp() . "," . $sanpham->getTensp() . "," . $sanpham->getDonGia() . "," . $sanpham->getGiaBan() . "," . $sanpham->getSoLuong() . "," . $sanpham->getHinhAnh() . "," . $sanpham->getTrangThaiTonTai() . "," . $sanpham->getMaHang();
             echo "<script>alert('$testString')</script>";
             $success = $this->repository->updateProduct($sanpham);
             if ($success) {

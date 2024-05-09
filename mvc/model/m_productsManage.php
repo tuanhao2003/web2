@@ -23,7 +23,7 @@ class m_productsManage
                     $entity->setTensp($row["TenSP"]);
                     $entity->setDonGia($row["DonGia"]);
                     $entity->setGiaBan($row["GiaBan"]);
-                    $entity->setMoTa($row["MoTa"]);
+                    $entity->setSoLuong($row["SoLuong"]);
                     $entity->setHinhAnh($row["HinhAnh"]);
                     $entity->setTrangThaiTonTai($row["TrangThaiTonTai"]);
                     $entity->setMaHang($row["MaHang"]);
@@ -52,7 +52,7 @@ class m_productsManage
                 $entity->setTensp($row["TenSP"]);
                 $entity->setDonGia($row["DonGia"]);
                 $entity->setGiaBan($row["GiaBan"]);
-                $entity->setMoTa($row["MoTa"]);
+                $entity->setSoLuong($row["SoLuong"]);
                 $entity->setHinhAnh($row["HinhAnh"]);
                 $entity->setTrangThaiTonTai($row["TrangThaiTonTai"]);
                 $entity->setMaHang($row["MaHang"]);
@@ -75,7 +75,7 @@ class m_productsManage
         try {
             $conn = $this->sql->connect();
             if ($this->getProduct($entity->getMasp()) == null) {
-                $query = "insert into sanpham(MaSP, TenSP, DonGia, GiaBan, MoTa, HinhAnh, TrangThaiTonTai, MaHang) VALUES ('" . $entity->getMasp() . "','" . $entity->getTensp() . "'," . $entity->getDonGia() . "," . $entity->getGiaBan() . "," . $entity->getMoTa() . ",'" . $entity->getHinhAnh() . "'," . $entity->getTrangThaiTonTai() . ",'" . $entity->getMaHang() . "');";
+                $query = "insert into sanpham(MaSP, TenSP, DonGia, GiaBan, SoLuong, HinhAnh, TrangThaiTonTai, MaHang) VALUES ('" . $entity->getMasp() . "','" . $entity->getTensp() . "'," . $entity->getDonGia() . "," . $entity->getGiaBan() . "," . $entity->getSoLuong() . ",'" . $entity->getHinhAnh() . "'," . $entity->getTrangThaiTonTai() . ",'" . $entity->getMaHang() . "');";
 
                 $conn->query($query);
                 $conn->close();
@@ -118,7 +118,7 @@ class m_productsManage
         try {
             $conn = $this->sql->connect();
             if ($this->getProduct($entity->getMasp()) != null) {
-                $query = "update sanpham set TenSP='".$entity->getTensp()."',DonGia=".$entity->getDonGia().",GiaBan=".$entity->getGiaBan().",MoTa=".$entity->getMoTa().",HinhAnh='".$entity->getHinhAnh()."',TrangThaiTonTai=".$entity->getTrangThaiTonTai().",MaHang='".$entity->getMaHang()."' where MaSP='".$entity->getMasp()."';";
+                $query = "update sanpham set TenSP='".$entity->getTensp()."',DonGia=".$entity->getDonGia().",GiaBan=".$entity->getGiaBan().",SoLuong=".$entity->getSoLuong().",HinhAnh='".$entity->getHinhAnh()."',TrangThaiTonTai=".$entity->getTrangThaiTonTai().",MaHang='".$entity->getMaHang()."' where MaSP='".$entity->getMasp()."';";
 
                 $conn->query($query);
                 $conn->close();

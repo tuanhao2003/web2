@@ -1,7 +1,7 @@
 <header>
     <div class="navBar">
         <div class="logo">
-            <br>
+            <a href="" class="logol">Watch<span>Point</span></a>
         </div>
 
         <div class="searchBar">
