@@ -1,48 +1,41 @@
 <?php
-
 class c_product {
-    protected $m_listproduct;
+    protected $m_product;
     protected $view;
     protected $model;
+    protected $products;
+    protected $currentPage;
+    protected $itemsPerPage;
 
-    public function __construct($url = null){
+    public function __construct($url = null, $currentPage = 1, $itemsPerPage = 9){
         if ($url !== null) {
             $this->view = "mvc/view/user/v_" . $url . ".php";
             $this->model = "mvc/model/m_" . $url . ".php";
             require_once $this->model;
             require_once $this->view;
-            $this->m_listproduct = new m_listproduct();
-        } else {
-            $this->view = "mvc/view/absolutePart/v_notFound.php";
         }
+        $this->m_product = new m_product();
+        $this->currentPage = $currentPage;
+        $this->itemsPerPage = $itemsPerPage;
+        $this->getProductList(); // Gọi phương thức để lấy danh sách sản phẩm khi khởi tạo controller
     }
 
-    public function index() {
-        // Phân trang
-        $limit = 9; // Số sản phẩm trên mỗi trang
-        $currentPage = isset($_GET['page']) ? $_GET['page'] : 1; // Lấy giá trị của tham số 'page' từ URL
-        $currentPage = intval($currentPage); // Chuyển đổi giá trị sang kiểu số nguyên để đảm bảo an toàn
-        $offset = ($currentPage -1) * $limit;
-    
-        // Kiểm tra xem $this->m_listproduct đã được khởi tạo chưa
-        if ($this->m_listproduct) {
-            // Sử dụng model được khởi tạo từ constructor
-            $products = $this->m_listproduct->getProducts($offset, $limit);
-            $totalProducts = $this->m_listproduct->getTotalProducts();
-            $totalPages = ceil($totalProducts / $limit);
-            echo $_GET['page'];
-        } else {
-            // Xử lý khi m_listproduct không tồn tại
-            echo "Không thể tải danh sách sản phẩm.";
-            return;
-        }
-    
-        // Load view
-        include($this->view);
+    // Phương thức để lấy danh sách sản phẩm từ model và gán vào thuộc tính $products
+    public function getProductList() {
+        $start = ($this->currentPage - 1) * $this->itemsPerPage;
+        $this->products = $this->m_product->getListProductPaginated($start, $this->itemsPerPage);
     }
-     
+
+    // Phương thức để trả về danh sách sản phẩm
+    public function getProducts() {
+        return $this->products;
+    }
+
+    // Phương thức để trả về tổng số trang
+    public function getTotalPages() {
+        $totalItems = $this->m_product->getTotalProducts();
+        return ceil($totalItems / $this->itemsPerPage);
+    }
 }
 
-$controller = new c_product();
-$controller->index();
 ?>
