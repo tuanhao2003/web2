@@ -28,3 +28,35 @@
     color: green;
     font-size: 18px;
 }
+
+.hang-container {
+    width: 25%; /* Đặt chiều rộng cho danh mục hãng */
+    float: left; /* Đưa danh mục hãng về bên trái */
+    margin-right: 20px; /* Khoảng cách giữa danh mục hãng và danh sách sản phẩm */
+}
+
+.product-container {
+    width: 70%; /* Đặt chiều rộng cho danh sách sản phẩm */
+    float: left; /* Đưa danh sách sản phẩm về bên phải */
+}
+
+.content-container {
+    width: 100%;
+}
+
+.pagination {
+    clear: both; /* Đảm bảo phân trang nằm bên dưới phần nội dung */
+    margin-top: 20px; /* Khoảng cách giữa nội dung và phân trang */
+}
+
+.pagination-container {
+    clear: both;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.title-container {
+    display: flex;
+    justify-content: center; /* Căn giữa tiêu đề theo chiều ngang */
+}

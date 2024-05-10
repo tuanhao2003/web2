@@ -7,60 +7,81 @@
     <link rel="stylesheet" href="public/css/productstyle.css"> <!-- Đặt đường dẫn thích hợp tới file CSS -->
 </head>
 <body>
-    <h1>Danh mục sản phẩm</h1>
-    <div class="product-container">
-        <?php
+    <div class="title-container">
+        <h1>Danh mục sản phẩm</h1>
+    </div>
+        <!--Thêm mã PHP để lấy danh sách hãng từ controller-->
+    <?php
         require_once "mvc/controller/c_product.php";
-
-        // Lấy trang hiện tại từ cookie nếu có, nếu không sẽ sử dụng trang đầu tiên
-        $currentPage = isset($_COOKIE["paramObj"]) ? json_decode($_COOKIE["paramObj"])->page : 1;
-
-        // Tạo đối tượng controller và truyền trang hiện tại vào
         $controller = new c_product(null, $currentPage);
+        $hangs = $controller->getHangList();
+    ?>
 
-        // Lấy danh sách sản phẩm từ controller
-        $products = $controller->getProducts();
+    <div class="content-container">
+        <!-- Hiển thị danh sách hãng -->
+        <div class="hang-container">
+            <h2>Danh mục hãng</h2>
+            <ul>
+                <?php foreach ($hangs as $hang): ?>
+                    <li><?php echo $hang->getTenHang(); ?></li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
 
-        // Hiển thị sản phẩm
-        foreach ($products as $product) {
-            ?>
-            <div class="product-card">
-                <img src="public/data/Sanpham/<?php echo $product->getHinhAnh(); ?>" alt="<?php echo $product->getTensp(); ?>">
-                <div class="product-info">
-                    <div class="product-name"><?php echo $product->getTensp(); ?></div>
-                    <div class="product-price"><?php echo number_format($product->getDonGia(), 0, ',', '.'); ?> VND</div>
-                </div>
-            </div>
+        <div class="product-container">
             <?php
-        }
-        ?>
+            require_once "mvc/controller/c_product.php";
+
+            // Lấy trang hiện tại từ cookie nếu có, nếu không sẽ sử dụng trang đầu tiên
+            $currentPage = isset($_COOKIE["paramObj"]) ? json_decode($_COOKIE["paramObj"])->page : 1;
+
+            // Tạo đối tượng controller và truyền trang hiện tại vào
+            $controller = new c_product(null, $currentPage);
+
+            // Lấy danh sách sản phẩm từ controller
+            $products = $controller->getProducts();
+
+            // Hiển thị sản phẩm
+            foreach ($products as $product) {
+                ?>
+                <div class="product-card">
+                    <img src="public/data/Sanpham/<?php echo $product->getHinhAnh(); ?>" alt="<?php echo $product->getTensp(); ?>">
+                    <div class="product-info">
+                        <div class="product-name"><?php echo $product->getTensp(); ?></div>
+                        <div class="product-price"><?php echo number_format($product->getDonGia(), 0, ',', '.'); ?> VND</div>
+                    </div>
+                </div>
+                <?php
+            }
+            ?>
+        </div>
     </div>
+    <div class="pagination-container">
+        <!-- Phân trang -->
+        <div class="pagination">
+            <?php
+            // Tính tổng số trang
+            $totalPages = $controller->getTotalPages();
 
-    <!-- Phân trang -->
-    <div class="pagination">
-        <?php
-        // Tính tổng số trang
-        $totalPages = $controller->getTotalPages();
+            // Hiển thị nút "Trang trước" nếu không phải trang đầu tiên
+            if ($currentPage > 1) {
+                echo '<a href="?page='.($currentPage - 1).'" onclick="updateCookie('.($currentPage - 1).')">Trang trước</a>';
+            }
 
-        // Hiển thị nút "Trang trước" nếu không phải trang đầu tiên
-        if ($currentPage > 1) {
-            echo '<a href="?page='.($currentPage - 1).'" onclick="updateCookie('.($currentPage - 1).')">Trang trước</a>';
-        }
+            // Hiển thị các trang
+            for ($i = 1; $i <= $totalPages; $i++) {
+                // Đặt class "active" cho trang hiện tại
+                $activeClass = ($currentPage == $i) ? "active" : "";
+                echo '<a class="'.$activeClass.'" href="?page='.$i.'" onclick="updateCookie('.$i.')">'.$i.'</a>';
+            }
 
-        // Hiển thị các trang
-        for ($i = 1; $i <= $totalPages; $i++) {
-            // Đặt class "active" cho trang hiện tại
-            $activeClass = ($currentPage == $i) ? "active" : "";
-            echo '<a class="'.$activeClass.'" href="?page='.$i.'" onclick="updateCookie('.$i.')">'.$i.'</a>';
-        }
-
-        // Hiển thị nút "Trang kế" nếu không phải trang cuối cùng
-        if ($currentPage < $totalPages) {
-            echo '<a href="?page='.($currentPage + 1).'" onclick="updateCookie('.($currentPage + 1).')">Trang kế</a>';
-        }
-        ?>
+            // Hiển thị nút "Trang kế" nếu không phải trang cuối cùng
+            if ($currentPage < $totalPages) {
+                echo '<a href="?page='.($currentPage + 1).'" onclick="updateCookie('.($currentPage + 1).')">Trang kế</a>';
+            }
+            ?>
+        </div>
     </div>
-
     <!-- JavaScript để cập nhật cookie khi chuyển trang -->
     <script>
         function updateCookie(page) {

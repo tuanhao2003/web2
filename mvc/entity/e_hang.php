@@ -1,5 +1,5 @@
 <?php
-class e_giohang{
+class e_hang{
     protected $maHang;
     protected $tenHang;
 

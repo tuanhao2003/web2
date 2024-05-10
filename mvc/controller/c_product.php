@@ -1,6 +1,10 @@
 <?php
+// Thêm require_once cho model mới
+require_once "mvc/model/m_hang.php";
+
 class c_product {
     protected $m_product;
+    protected $m_hang; // Thêm model mới
     protected $view;
     protected $model;
     protected $products;
@@ -15,6 +19,7 @@ class c_product {
             require_once $this->view;
         }
         $this->m_product = new m_product();
+        $this->m_hang = new m_hang(); // Khởi tạo model mới
         $this->currentPage = $currentPage;
         $this->itemsPerPage = $itemsPerPage;
         $this->getProductList(); // Gọi phương thức để lấy danh sách sản phẩm khi khởi tạo controller
@@ -24,6 +29,11 @@ class c_product {
     public function getProductList() {
         $start = ($this->currentPage - 1) * $this->itemsPerPage;
         $this->products = $this->m_product->getListProductPaginated($start, $this->itemsPerPage);
+    }
+
+    // Phương thức để lấy danh sách hãng từ model và gán vào thuộc tính $hangs
+    public function getHangList() {
+        return $this->m_hang->getHangList();
     }
 
     // Phương thức để trả về danh sách sản phẩm
@@ -37,5 +47,5 @@ class c_product {
         return ceil($totalItems / $this->itemsPerPage);
     }
 }
-
 ?>
+
