@@ -6,7 +6,7 @@
 }
 
 .product-card {
-    width: calc(33.33% - 20px); /* Chiếm 1/3 chiều rộng của container, trừ đi khoảng cách giữa các sản phẩm */
+    width: calc(33.33%); /* Chiếm 1/3 chiều rộng của container, trừ đi khoảng cách giữa các sản phẩm */
     border: 1px solid #ccc;
     border-radius: 5px;
     margin-bottom: 20px;
@@ -37,7 +37,8 @@
 
 .product-container {
     width: 70%; /* Đặt chiều rộng cho danh sách sản phẩm */
-    float: left; /* Đưa danh sách sản phẩm về bên phải */
+    display: flex;
+    justify-content: left; /* Căn giữa tiêu đề theo chiều ngang */
 }
 
 .content-container {
