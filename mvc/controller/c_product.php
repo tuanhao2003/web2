@@ -8,6 +8,7 @@ class c_product {
     protected $view;
     protected $model;
     protected $products;
+    protected $hang;
     protected $currentPage;
     protected $itemsPerPage;
 
@@ -28,7 +29,12 @@ class c_product {
     // Phương thức để lấy danh sách sản phẩm từ model và gán vào thuộc tính $products
     public function getProductList() {
         $start = ($this->currentPage - 1) * $this->itemsPerPage;
-        $this->products = $this->m_product->getListProductPaginated($start, $this->itemsPerPage);
+        $hangFilter = isset($_COOKIE["paramObj"]) && property_exists(json_decode($_COOKIE["paramObj"]), 'hang') ? json_decode($_COOKIE["paramObj"])->hang : null;
+        if ($hangFilter) {
+            $this->products = $this->m_product->getFilteredProductsByHang($start, $this->itemsPerPage, $hangFilter); // Lọc sản phẩm theo hãng
+        } else {
+            $this->products = $this->m_product->getListProductPaginated($start, $this->itemsPerPage);
+        }
     }
 
     // Phương thức để lấy danh sách hãng từ model và gán vào thuộc tính $hangs
@@ -43,9 +49,14 @@ class c_product {
 
     // Phương thức để trả về tổng số trang
     public function getTotalPages() {
-        $totalItems = $this->m_product->getTotalProducts();
+        $hangFilter = isset($_COOKIE["paramObj"]) && property_exists(json_decode($_COOKIE["paramObj"]), 'hang') ? json_decode($_COOKIE["paramObj"])->hang : null;
+        if ($hangFilter) {
+            $totalItems = $this->m_product->getTotalProducts($hangFilter);
+        } else {
+            $totalItems = $this->m_product->getTotalProducts();
+        }
         return ceil($totalItems / $this->itemsPerPage);
-    }
+    }    
 }
 ?>
 

@@ -3,12 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/web2/public/css/index.css">
+    <script src="/web2/public/js/index.js"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <title>Danh mục sản phẩm</title>
     <link rel="stylesheet" href="public/css/productstyle.css"> <!-- Đặt đường dẫn thích hợp tới file CSS -->
 </head>
 <body>
+    <?php include "mvc/view/absolutePart/header.php"; ?>
     <div class="title-container">
-        <h1>Danh mục sản phẩm</h1>
+        <h1>DANH MỤC SẢN PHẨM</h1>
     </div>
         <!--Thêm mã PHP để lấy danh sách hãng từ controller-->
     <?php
@@ -20,10 +24,19 @@
     <div class="content-container">
         <!-- Hiển thị danh sách hãng -->
         <div class="hang-container">
-            <h2>Danh mục hãng</h2>
+            <h2>DANH MỤC</h2>
             <ul>
+                <?php
+                // Kiểm tra xem trang hiện tại có phải là trang chưa được lọc hay không
+                $activeClass = (!isset($_COOKIE["paramObj"]) || (isset($_COOKIE["paramObj"]) && !property_exists(json_decode($_COOKIE["paramObj"]), 'hang'))) ? "active" : "";
+                ?>
+                <li class="<?php echo $activeClass; ?>" onclick="resetFilter()">Tất cả</li>
                 <?php foreach ($hangs as $hang): ?>
-                    <li><?php echo $hang->getTenHang(); ?></li>
+                    <?php
+                    // Kiểm tra xem danh mục hãng hiện tại có phải là danh mục được chọn hay không
+                    $activeClass = (isset($_COOKIE["paramObj"]) && property_exists(json_decode($_COOKIE["paramObj"]), 'hang') && json_decode($_COOKIE["paramObj"])->hang == $hang->getTenHang()) ? "active" : "";
+                    ?>
+                    <li class="<?php echo $activeClass; ?>" onclick="filterByHang('<?php echo $hang->getTenHang(); ?>')"><?php echo $hang->getTenHang(); ?></li>
                 <?php endforeach; ?>
             </ul>
         </div>
@@ -72,7 +85,7 @@
             for ($i = 1; $i <= $totalPages; $i++) {
                 // Đặt class "active" cho trang hiện tại
                 $activeClass = ($currentPage == $i) ? "active" : "";
-                echo '<a class="'.$activeClass.'" href="?page='.$i.'" onclick="updateCookie('.$i.')">'.$i.'</a>';
+                echo '<a class="'.$activeClass.'" href="#" onclick="updateCookie('.$i.')">'.$i.'</a>';
             }
 
             // Hiển thị nút "Trang kế" nếu không phải trang cuối cùng
@@ -85,8 +98,29 @@
     <!-- JavaScript để cập nhật cookie khi chuyển trang -->
     <script>
         function updateCookie(page) {
-            document.cookie = 'paramObj={"page":'+page+'}; path=/';
+            var hang = <?php echo isset($_COOKIE["paramObj"]) && property_exists(json_decode($_COOKIE["paramObj"]), 'hang') ? '"' . json_decode($_COOKIE["paramObj"])->hang . '"' : 'null'; ?>;
+            if (hang) {
+                document.cookie = 'paramObj={"page":' + page + ',"hang":"' + hang + '"}; path=/';
+            } else {
+                document.cookie = 'paramObj={"page":' + page + '}; path=/';
+            }
+            // Sau khi cập nhật cookie, chuyển trang đến trang mới
+            window.location.href = 'http://localhost/web2/product?page=' + page;
         }
     </script>
+    <script>
+        function filterByHang(tenHang) {
+            document.cookie = 'paramObj={"page":1,"hang":"' + tenHang + '"}; path=/'; // Cập nhật cookie với thông tin về hãng
+            window.location.href = 'http://localhost/web2/product'; // Chuyển trang về trang chính
+        }
+    </script>
+    <script>
+        function resetFilter() {
+            document.cookie = 'paramObj=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'; // Xóa cookie
+            window.location.href = 'http://localhost/web2/product'; // Chuyển hướng về trang sản phẩm ban đầu
+        }
+    </script>
+
 </body>
+<?php include "mvc/view/absolutePart/footer.php"; ?>
 </html>
