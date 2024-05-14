@@ -34,7 +34,21 @@ class c_bill{
         $data = $this->m_bill->getbillid($MaHD);
         return $data;
     }
-    
+
+    public function getDeliveryInfo($MaHD){
+        $data = $this->m_bill->getDeliveryInfo($MaHD);
+        return $data;
+    }
+
+    public function getBilldetail_byMaHD_inHD($MaHD){
+        $data = $this->m_bill->getBilldetail_byMaHD_inHD($MaHD);
+        return $data;
+    }
+
+    public function getProductName_byMaSP_inHD($MaSP){
+        $data = $this->m_bill->getProductName_byMaSP_inHD($MaSP);
+        return $data;
+    }
 }
 
 

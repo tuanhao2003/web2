@@ -55,33 +55,35 @@
 
                             echo($html);
 
-                            
-                            $html2 = 
-                            '<div class="bill_product">
-                            <img class="img_product" src="public/data/banner1.jpg" alt="">
-                            <div class="product_infor">
-                                <p> Rolex pro . </p>
-                                <p> Số lượng 1 . </p>
-                            </div>
-                            </div>';
-                            echo($html2);
-
                             $mangsp = array();
-                            // $mangsp = $controller2->getBilldetail_byMaHD("HD002");
-                            foreach($mangsp as $sp){
-
+                            $mangsp = $controller->getBilldetail_byMaHD_inHD("HD002");
+                            foreach($mangsp as $sanpham){
+                                $html2 = 
+                                '<div class="bill_product">
+                                <img class="img_product" src="public/data/banner1.jpg" alt="">
+                                <div class="product_infor">
+                                    <p> ' . $controller->getProductName_byMaSP_inHD($sanpham->getMaSP()) . '</p>
+                                    <p> Số lượng: ' . $sanpham->getSoLuong() . '</p>
+                                </div>
+                                </div>';
+                                echo($html2);
                             };
-                            
+
+                            $giaohang = $controller->getDeliveryInfo("HD002");
+
+                            $gh = $giaohang[0];
+
                             $html3 =
 
                             '<div class="bill_total">
                                 <div class="bill_time">
                                     <p>Ngày Lập: ' . $bill->getNgayLap() . '</p>
+                                    <p>Ngày Giao: ' . $gh->getNgayGiao() . '</p>
                                     <p>Hình thức thanh toán: ' . $bill->getHinhThucTra() . '</p>
                                 </div>
                                 <div class="bill_tong">
-                                    <p>Trạng thái: Đã giao</p>
-                                    <p>Thành tiền: 0</p>
+                                    <p>Trạng thái: '.$gh->getTinhTrang().'</p>
+                                    <p>Thành tiền: '. $bill->getTongGiaGoc() .'</p>
                                 </div>
                             </div>
                         </div>';

@@ -46,4 +46,18 @@ class c_billdetail{
         return $data;
     }
 
+    public function getbillid_fromdetail($MaHD){
+        $data = $this->m_billdetail->getbillid_fromdetail($MaHD);
+        return $data;
+    }
+
+    public function getDeliveryInfo($MaHD){
+        $data = $this->m_billdetail->getDeliveryInfo($MaHD);
+        return $data;
+    }
+
+    public function getCustomerInfoFromBill($MaHD){
+        $data = $this->m_billdetail->getCustomerInfoFromBill($MaHD);
+        return $data;
+    }
 }
