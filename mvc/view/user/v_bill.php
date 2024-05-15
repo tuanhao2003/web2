@@ -38,11 +38,11 @@
             </div>
         </div>
         <div class="infor_bill">
-            <h2 class="title_name">Hóa đơn khách hàng</h2>
+            <h2 class="title_name">Lịch sử mua hàng</h2>
             <div class="bill">
                 <?php 
                     $mang = array();
-                    $mang = $controller->getBillid("HD002");
+                    $mang = $controller->getbillid_byMaKH(json_decode($_COOKIE["paramObj"])->userid);
                     foreach($mang as $bill){
                         $html = 
                         '<div class="bill_items2">
@@ -55,38 +55,44 @@
 
                             echo($html);
 
-                            
-                            $html2 = 
-                            '<div class="bill_product">
-                            <img class="img_product" src="public/data/banner1.jpg" alt="">
-                            <div class="product_infor">
-                                <p> Rolex pro . </p>
-                                <p> Số lượng 1 . </p>
-                            </div>
-                            </div>';
-                            echo($html2);
-
                             $mangsp = array();
-                            // $mangsp = $controller2->getBilldetail_byMaHD("HD002");
-                            foreach($mangsp as $sp){
-
+                            $mangsp = $controller->getBilldetail_byMaHD_inHD($bill->getMaHD());
+                            foreach($mangsp as $sanpham){
+                                $html2 = 
+                                '<div class="bill_product">
+                                <img class="img_product" src="public/data/banner1.jpg" alt="">
+                                <div class="product_infor">
+                                    <p> ' . $controller->getProductName_byMaSP_inHD($sanpham->getMaSP()) . '</p>
+                                    <p> Số lượng: ' . $sanpham->getSoLuong() . '</p>
+                                </div>
+                                </div>';
+                                echo($html2);
                             };
-                            
+
+                            $giaohang = $controller->getDeliveryInfo($bill->getMaHD());
+
                             $html3 =
 
                             '<div class="bill_total">
                                 <div class="bill_time">
                                     <p>Ngày Lập: ' . $bill->getNgayLap() . '</p>
+                                    <p>Ngày Giao: ' . $giaohang->getNgayGiao() . '</p>
                                     <p>Hình thức thanh toán: ' . $bill->getHinhThucTra() . '</p>
                                 </div>
                                 <div class="bill_tong">
-                                    <p>Trạng thái: Đã giao</p>
-                                    <p>Thành tiền: 0</p>
+                                    <p>Trạng thái: '.$giaohang->getTinhTrang().'</p>
+                                    <p>Thành tiền: '. $bill->getTongGiaGoc() .'</p>
                                 </div>
                             </div>
                         </div>';
                         echo($html3);
                     }
+
+                    $mang2 = array("KH002","Momo","2024-01-01 00:00:00",200000); 
+                    // $controller->addBill($mang2);  // Thêm hóa đơn mới khi thanh toán
+
+                    $mang3 = array("2024-01-01 00:00:00","2024-01-01 00:00:00", "Đang giao", "Đường A, Phường B","HD003");
+                    // $controller->addDeliveryInfo($mang3); // Thêm giao hàng mới kèm theo hóa đơn
                 ?>
             </div>
         </div>

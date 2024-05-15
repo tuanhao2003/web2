@@ -16,41 +16,41 @@ class e_giaohang{
         $this->maHD = null;
     }
 
-    public function getMaVanDon($maVanDon){
+    public function setMaVanDon($maVanDon){
         $this->maVanDon = $maVanDon;
     }
-    public function getNgayGiao($ngayGiao){
+    public function setNgayGiao($ngayGiao){
         $this->ngayGiao = $ngayGiao;
     }
-    public function getNgayNhan($ngayNhan){
+    public function setNgayNhan($ngayNhan){
         $this->ngayNhan = $ngayNhan;
     }
-    public function getTinhTrang($tinhTrang){
+    public function setTinhTrang($tinhTrang){
         $this->tinhTrang = $tinhTrang;
     }
-    public function getDiaDiem($diaDiem){
+    public function setDiaDiem($diaDiem){
         $this->diaDiem = $diaDiem;
     }
-    public function getMaHD($maHD){
+    public function setMaHoaDon($maHD){
         $this->maHD = $maHD;
     }
 
-    public function setMaVanDon(){
+    public function getMaVanDon(){
         return $this->maVanDon;
     }
-    public function setNgayGiao(){
+    public function getNgayGiao(){
         return $this->ngayGiao;
     }
-    public function setNgayNhan(){
+    public function getNgayNhan(){
         return $this->ngayNhan;
     }
-    public function setTinhTrang(){
+    public function getTinhTrang(){
         return $this->tinhTrang;
     }
-    public function setDiaDiem(){
+    public function getDiaDiem(){
         return $this->diaDiem;
     }
-    public function setMaHoaDon(){
+    public function getMaHoaDon(){
         return $this->maHD;
     }
 }

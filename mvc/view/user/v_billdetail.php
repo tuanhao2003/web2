@@ -45,18 +45,24 @@
                     </div>
                 <?php 
                     $mang = array();
-                    $mang = $controller->getBilldetail_byMaHD("HD002");
-                    $bill = $mang[0];
+                    $mang = $controller->getBilldetail_byMaHD(json_decode($_COOKIE["paramObj"])->billid);
+
+                    $hoadon = $controller->getbillid_fromdetail(json_decode($_COOKIE["paramObj"])->billid);
+
+                    $giaohang = $controller->getDeliveryInfo(json_decode($_COOKIE["paramObj"])->billid);
+
+                    $khachhang = $controller->getCustomerInfoFromBill(json_decode($_COOKIE["paramObj"])->billid);
 
                     $html1 =   
                     '<div class="bill_time_infor">
                         <div>
-                            <p>' . $bill->getMaHD() . '</p>
-                            <p>Ngày đặt: 01/01/2000</p>
-                            <p>Ngày nhận: 02/02/2002</p>
+                            <p>' . $hoadon->getMaHD() . '</p>
+                            <p>Ngày đặt: ' . $hoadon->getNgayLap() . '</p>
+                            <p>Ngày giao:' . $giaohang->getNgayGiao() . '</p>
                         </div>
                         <div>
-                            <p>Địa chỉ: 273 An Dương Vương, P1, Q5, TP.HCM</p>
+                            <p>Địa chỉ: ' . $giaohang->getDiaDiem() . '</p>
+                            <p>Khách hàng: ' . $khachhang->getTenKH() . '</p>
                         </div>
                     </div>';
                     echo($html1);
@@ -81,9 +87,7 @@
                     }    
                     
                     $html3 = '<div class="total_price">
-                        <p>
-                            Thành tiền: 10.000.000đ
-                        </p>
+                        <p> Thành tiền: ' . $hoadon->getTongGiaGoc() . '</p>
                     </div>';
                     echo($html3);
                     
@@ -93,13 +97,13 @@
 
             <?php
 
-            $mang = array();
-            $mang = $controller->getProductInfo_byMaSP("SP001");
-                foreach($mang as $data){
-                    echo($data);
-                }    
+            // $mang = array();
+            // $mang = $controller->getProductInfo_byMaSP("SP001");
+            //     foreach($mang as $data){
+            //         echo($data);
+            //     }    
                 
-            ?>
+            // ?>
              
             
         </div>

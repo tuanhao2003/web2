@@ -29,7 +29,7 @@ class app
                     $value = explode("=", $param)[1];
                     $paramsObj->$key = $value;
                 }
-                setcookie("paramObj", json_encode($paramsObj), path:"/", expires_or_options:5);
+                setcookie("paramObj", json_encode($paramsObj), path:"/", expires_or_options: 5);
                 $_COOKIE["paramObj"] = json_encode($paramsObj);
             }
 

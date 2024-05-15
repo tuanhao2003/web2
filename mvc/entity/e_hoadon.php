@@ -24,7 +24,7 @@ class e_hoadon{
         $this ->ngayLap = $ngayLap;
     }
     public function setTongGiaGoc($TongGiaGoc){
-        $this ->TongGiaGoc = $TongGiaGoc;
+        $this ->tongGiaGoc = $TongGiaGoc;
     }
     public function setHinhThucTra($hinhThucTra){
         $this ->hinhThucTra = $hinhThucTra;
