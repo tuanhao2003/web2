@@ -49,6 +49,33 @@ class c_bill{
         $data = $this->m_bill->getProductName_byMaSP_inHD($MaSP);
         return $data;
     }
+
+    public function autoIDHD(){
+        $listHD = $this->m_bill->getAllbills();
+        $length = count($listHD);
+        return "HD" . ($length + 1);
+    }
+    
+    public function addBill($arr){
+        $id = $this->autoIDHD();
+        $this->m_bill->addBill($id,$arr);
+    }
+
+    public function autoIDGH(){
+        $listHD = $this->m_bill->getAllbills();
+        $length = count($listHD);
+        return "VD" . ($length);
+    }
+
+    public function addDeliveryInfo($arr){
+        $maVanDon = $this->autoIDGH();
+        echo($maVanDon);
+        echo($arr[2]);
+        $this->m_bill->addDeliveryInfo($maVanDon,$arr);
+    }
+
+
+    
 }
 
 

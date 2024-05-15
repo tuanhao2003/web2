@@ -71,24 +71,28 @@
 
                             $giaohang = $controller->getDeliveryInfo("HD002");
 
-                            $gh = $giaohang[0];
-
                             $html3 =
 
                             '<div class="bill_total">
                                 <div class="bill_time">
                                     <p>Ngày Lập: ' . $bill->getNgayLap() . '</p>
-                                    <p>Ngày Giao: ' . $gh->getNgayGiao() . '</p>
+                                    <p>Ngày Giao: ' . $giaohang->getNgayGiao() . '</p>
                                     <p>Hình thức thanh toán: ' . $bill->getHinhThucTra() . '</p>
                                 </div>
                                 <div class="bill_tong">
-                                    <p>Trạng thái: '.$gh->getTinhTrang().'</p>
+                                    <p>Trạng thái: '.$giaohang->getTinhTrang().'</p>
                                     <p>Thành tiền: '. $bill->getTongGiaGoc() .'</p>
                                 </div>
                             </div>
                         </div>';
                         echo($html3);
                     }
+
+                    $mang2 = array("KH002","Momo","2024-01-01 00:00:00",200000); 
+                    $controller->addBill($mang2);  // Thêm hóa đơn mới khi thanh toán
+
+                    $mang3 = array("2024-01-01 00:00:00","2024-01-01 00:00:00", "Đang giao", "Đường A, Phường B","HD003");
+                    $controller->addDeliveryInfo($mang3); // Thêm giao hàng mới kèm theo hóa đơn
                 ?>
             </div>
         </div>

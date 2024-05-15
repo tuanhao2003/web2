@@ -44,9 +44,10 @@
         ?>
 
         <?php
-
+        
         $mang = array();
-        $mang = $controller->getUser_byid("KH001");
+        $mang = $controller->getUser_byid(json_decode($_COOKIE["paramObj"])->userid);
+        
         foreach($mang as $data){
             echo($data->getEmail());
             echo($data->getNgaySinh());

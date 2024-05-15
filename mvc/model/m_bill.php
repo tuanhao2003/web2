@@ -70,22 +70,22 @@ class m_bill{
             $conn = $this->sql->connect();
             $query = "SELECT * FROM giaohang WHERE MaHD = '". $maHD ."'";
             $data = $conn->query($query);
-            $arr = array();
+            $entity = new e_giaohang();
             if($data->num_rows > 0){
                 while ($row = $data->fetch_assoc()) {
-                    $entity = new e_giaohang();
+                   
                     $entity->setMaVanDon($row["MaVanDon"]);
                     $entity->setNgayGiao($row["NgayGiao"]);
                     $entity->setTinhTrang($row["TinhTrang"]);
                     $entity->setDiaDiem($row["DiaDiem"]);
                     $entity->setMaHoaDon($row["MaHD"]);
-                    $arr[] = $entity;
+                  
 
                 }
             }
     
             $conn->close();
-            return $arr;
+            return $entity;
         } catch (Exception $e) {
             echo "<script>alert('$e');</script>";
             $conn->close();
@@ -140,6 +140,51 @@ class m_bill{
             return null;
         }
     }
+
+    public function addBill($maHD, $arr){
+        try {
+            $conn = $this->sql->connect();
+            
+            $query = "INSERT INTO hoadon (MaHD, MaKH, HinhThucTra, NgayLap, TongGiaGoc) 
+                      VALUES ('". $maHD ."',
+                        '". $arr[0] ."', 
+                        '". $arr[1] ."', 
+                        '". $arr[2] ."', 
+                        '". $arr[3] ."')";
+            
+            $conn->query($query);
+            $conn->close();
+            return true;
+        } catch (Exception $e) {
+            echo "<script>alert('$e');</script>";
+            $conn->close();
+            return false;
+        }
+    }
+
+    public function addDeliveryInfo($maVanDon, $arr){
+        try {
+            $conn = $this->sql->connect();
+
+            $query = "INSERT INTO giaohang (MaVanDon, NgayGiao, NgayNhán, TinhTrang, DiaDiem, MaHD) 
+                      VALUES ('". $maVanDon ."', 
+                              '". $arr[0] ."', 
+                              '". $arr[1] ."', 
+                              '". $arr[2] ."', 
+                              '". $arr[3] ."', 
+                              '". $arr[4] ."')";
+        
+            $conn->query($query);
+            $conn->close();
+            return true;
+        } catch (Exception $e) {
+            echo "<script>alert('$e');</script>";
+            $conn->close();
+            return false;
+        }
+    }
+    
+    
  
 }
 ?>
