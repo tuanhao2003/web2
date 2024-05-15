@@ -14,8 +14,8 @@ class app
     function mapping()
     {
         if (isset($_GET["url"])) {
+            
             if(str_contains($_SERVER["REQUEST_URI"], "?")){
-
                 $getParams = explode("?", $_SERVER["REQUEST_URI"])[1];
                 $paramsToArray = [];
                 if(str_contains($getParams, "&")){
@@ -29,8 +29,10 @@ class app
                     $value = explode("=", $param)[1];
                     $paramsObj->$key = $value;
                 }
-                echo "<script>setCookieViaScript('".json_encode($paramsObj)."')</script>";
+                setcookie("paramObj", json_encode($paramsObj), path:"/", expires_or_options:5);
+                $_COOKIE["paramObj"] = json_encode($paramsObj);
             }
+
 
             $urlPath = explode("/", filter_var(trim($_GET["url"], "/")));
             if (file_exists("mvc/controller/c_" . $urlPath[0] . ".php")) {
@@ -63,8 +65,3 @@ class app
     }
 }
 ?>
-<script>
-    function setCookieViaScript(data){
-        document.cookie = 'paramObj=' + data + '; path=/';
-    }
-</script>

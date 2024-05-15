@@ -1,0 +1,87 @@
+/* CSS for product detail page */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.product-detail {
+    display: flex;
+    max-width: 1000px;
+    width: 100%;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.product-image {
+    flex: 1;
+    max-width: 600px;
+}
+
+.product-info p.price {
+    font-size: 24px; /* Adjust this value to change the font size of the price */
+}
+
+.product-image img {
+    width: 600px;
+    height: 600px;
+    object-fit: cover;
+}
+
+.product-info {
+    flex: 1;
+    margin-left: 20px;
+    padding-top: 50px; /* Adjust this value to lower the content */
+}
+
+.product-info h2 {
+    margin-top: 0;
+    font-size: 40px; /* Increase this value to make the product name larger */
+
+}
+
+.quantity-control {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.quantity-control button {
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+    text-align: center;
+    background-color: #000000;
+    color: rgb(218,165,32);
+    border-radius: 5px; /* Bo tròn các góc của nút */
+}
+
+.quantity-control input {
+    width: 50px;
+    text-align: center;
+    margin: 0 10px;
+}
+
+.add-to-cart {
+    margin-top: 10px;
+    padding: 10px 60px;
+    background-color: #000000;
+    color: rgb(218,165,32);
+    border: none;
+    cursor: pointer;
+    font-weight: bold; /* Make the text bold */
+    font-size: 20px; /* Increase font size to make the text larger */
+    border-radius: 5px; /* Bo tròn các góc của nút */
+}
+
+.add-to-cart:hover {
+    background-color: #181818;
+    color: rgb(255, 221, 176);
+}
+
+.product-description {
+    width: 100%;
+    max-width: 1000px;
+    margin-top: 20px;
+}
