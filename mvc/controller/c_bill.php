@@ -35,6 +35,10 @@ class c_bill{
         return $data;
     }
 
+    public function getbillid_byMaKH($ma){
+        $data = $this->m_bill->getbillid_byMaKH($ma);
+        return $data;
+    }
     public function getDeliveryInfo($MaHD){
         $data = $this->m_bill->getDeliveryInfo($MaHD);
         return $data;

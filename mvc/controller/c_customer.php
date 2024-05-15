@@ -41,7 +41,9 @@ class c_customer{
             $email = $_POST['email'];
             $diachi = $_POST['diachi'];
             $sdt = $_POST['sdt'];
-            $result = $this->m_customer->save_info($name);
+            $result = $this->m_customer->save_info($name, $email, $diachi, $sdt);
+            error_log("Error message", 3, "/path/to/error.log");
+            echo($name);
             if($result === true) {
                 return "Lưu thông tin thành công!";
             } else {

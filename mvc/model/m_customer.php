@@ -59,13 +59,17 @@ class m_customer{
         }
     }
 
-    public function save_info($arr){
+    public function save_info($name, $email, $diachi, $sdt){
         try{
             $conn = $this->sql->connect();
 
             $query = "UPDATE khachhang SET 
-            TenKH = '".$arr."' 
-            WHERE MaKH = 'KH001'";
+            TenKH = '".$name."' 
+             DiaChi = '".$email."',
+             NgaySinh = '2020-01-01 00:00:00',
+             Email = '".$diachi."',
+             SDT = '".$sdt."'
+            WHERE MaKH = 'KH002'";
 
             $result = $conn->query($query);
             $conn->close();

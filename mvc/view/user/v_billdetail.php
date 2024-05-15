@@ -45,13 +45,13 @@
                     </div>
                 <?php 
                     $mang = array();
-                    $mang = $controller->getBilldetail_byMaHD("HD002");
+                    $mang = $controller->getBilldetail_byMaHD(json_decode($_COOKIE["paramObj"])->billid);
 
-                    $hoadon = $controller->getbillid_fromdetail("HD002");
+                    $hoadon = $controller->getbillid_fromdetail(json_decode($_COOKIE["paramObj"])->billid);
 
-                    $giaohang = $controller->getDeliveryInfo("HD002");
+                    $giaohang = $controller->getDeliveryInfo(json_decode($_COOKIE["paramObj"])->billid);
 
-                    $khachhang = $controller->getCustomerInfoFromBill("HD002");
+                    $khachhang = $controller->getCustomerInfoFromBill(json_decode($_COOKIE["paramObj"])->billid);
 
                     $html1 =   
                     '<div class="bill_time_infor">
@@ -97,13 +97,13 @@
 
             <?php
 
-            $mang = array();
-            $mang = $controller->getProductInfo_byMaSP("SP001");
-                foreach($mang as $data){
-                    echo($data);
-                }    
+            // $mang = array();
+            // $mang = $controller->getProductInfo_byMaSP("SP001");
+            //     foreach($mang as $data){
+            //         echo($data);
+            //     }    
                 
-            ?>
+            // ?>
              
             
         </div>

@@ -64,6 +64,33 @@ class m_bill{
             return null;
         }
     }
+
+    public function getbillid_byMaKH($ma){
+        try {
+            $conn = $this->sql->connect();
+            $query = "SELECT * FROM hoadon WHERE MaKH = '". $ma ."'";
+            $data = $conn->query($query);
+            $arr = array();
+            if($data->num_rows > 0){
+                while ($row = $data->fetch_assoc()) {
+                    $entity = new e_hoadon();
+                    $entity->setMaHD($row["MaHD"]);
+                    $entity->setMaKH($row["MaKH"]);
+                    $entity->setNgayLap($row["NgayLap"]);
+                    $entity->setTongGiaGoc($row["TongGiaGoc"]);
+                    $entity->setHinhThucTra($row["HinhThucTra"]);
+                    $arr[] = $entity;
+                }
+            }
+
+            $conn->close();
+            return $arr;
+        } catch (Exception $e) {
+            echo "<script>alert('$e');</script>";
+            $conn->close();
+            return null;
+        }
+    }
     
     public function getDeliveryInfo($maHD){
         try {

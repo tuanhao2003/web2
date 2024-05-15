@@ -38,11 +38,11 @@
             </div>
         </div>
         <div class="infor_bill">
-            <h2 class="title_name">Hóa đơn khách hàng</h2>
+            <h2 class="title_name">Lịch sử mua hàng</h2>
             <div class="bill">
                 <?php 
                     $mang = array();
-                    $mang = $controller->getBillid("HD002");
+                    $mang = $controller->getbillid_byMaKH(json_decode($_COOKIE["paramObj"])->userid);
                     foreach($mang as $bill){
                         $html = 
                         '<div class="bill_items2">
@@ -56,7 +56,7 @@
                             echo($html);
 
                             $mangsp = array();
-                            $mangsp = $controller->getBilldetail_byMaHD_inHD("HD002");
+                            $mangsp = $controller->getBilldetail_byMaHD_inHD($bill->getMaHD());
                             foreach($mangsp as $sanpham){
                                 $html2 = 
                                 '<div class="bill_product">
@@ -69,7 +69,7 @@
                                 echo($html2);
                             };
 
-                            $giaohang = $controller->getDeliveryInfo("HD002");
+                            $giaohang = $controller->getDeliveryInfo($bill->getMaHD());
 
                             $html3 =
 
@@ -89,10 +89,10 @@
                     }
 
                     $mang2 = array("KH002","Momo","2024-01-01 00:00:00",200000); 
-                    $controller->addBill($mang2);  // Thêm hóa đơn mới khi thanh toán
+                    // $controller->addBill($mang2);  // Thêm hóa đơn mới khi thanh toán
 
                     $mang3 = array("2024-01-01 00:00:00","2024-01-01 00:00:00", "Đang giao", "Đường A, Phường B","HD003");
-                    $controller->addDeliveryInfo($mang3); // Thêm giao hàng mới kèm theo hóa đơn
+                    // $controller->addDeliveryInfo($mang3); // Thêm giao hàng mới kèm theo hóa đơn
                 ?>
             </div>
         </div>

@@ -2,6 +2,12 @@
 <?php
     require_once "mvc/controller/c_admin.php";
     $controller = new c_customer();
+
+    if(isset($_POST['save_but']))
+    {
+        $controller->save_info();
+    } 
+
 ?>
 
 
@@ -39,22 +45,23 @@
             </div>
         </div>
         <?php
-            $thongtin = array("Trần Kiệt", "Đường 1", "1991-01-01 00:00:00","a@a", "01234" );
-            $controller->update_info($thongtin);
+            // $thongtin = array("Trần Kiệt", "Đường 1", "1991-01-01 00:00:00","a@a", "01234" );
+            // $controller->update_info($thongtin);
         ?>
 
         <?php
         
         $mang = array();
         $mang = $controller->getUser_byid(json_decode($_COOKIE["paramObj"])->userid);
+        // $mang = $controller->getUser_byid("KH002");
         
         foreach($mang as $data){
-            echo($data->getEmail());
-            echo($data->getNgaySinh());
+            // echo($data->getEmail());
+            // echo($data->getNgaySinh());
             $html = 
             '<div class="information_customer">
                 <div class="information_customer_text">
-                    <form action="<?php $controller->saveinfo(); ?>" method="POST">
+                    <form>
                     <h1 class="title_form">Thông tin khách hàng</h1>
                         <table>
                             <tr>
@@ -115,7 +122,7 @@
                                 </td>
                             </tr>
                         </table>
-                        <input class="save_btn" type="submit" value"Lưu">
+                        <input id="save_but" class="save_btn" type="submit" value"Lưu">
                         
                     </form>
                 </div>
