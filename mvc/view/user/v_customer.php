@@ -22,13 +22,17 @@
 <body >
     <?php require "mvc/view/absolutePart/header.php"; ?>
     <section>
-        <div class="infor_column">
+
+        <?php
+            $data = $controller->getUser_byid(json_decode($_COOKIE["paramObj"])->userid);
+
+            $html = '<div class="infor_column">
             <div class="img_text">
                 <div>
                     <img class="infor_img" src="/web2/public/data/banner1.jpg" alt=""><br>
                 </div>
                 <div class="infor_text">
-                    <p>Danh2003</p>
+                    <p>'.$data->getTenKH().'</p>
                 </div>
             </div>
             <div class="infor_personal">
@@ -43,7 +47,11 @@
                 <img src="/web2/public/data/bill.png" alt="">
                 <a href="">Hóa đơn</a>
             </div>
-        </div>
+        </div>';
+
+        echo($html);
+        ?>
+        
         <?php
             // $thongtin = array("Trần Kiệt", "Đường 1", "1991-01-01 00:00:00","a@a", "01234" );
             // $controller->update_info($thongtin);
@@ -51,28 +59,38 @@
 
         <?php
         
-        $mang = array();
-        $mang = $controller->getUser_byid(json_decode($_COOKIE["paramObj"])->userid);
-        // $mang = $controller->getUser_byid("KH002");
-        
-        foreach($mang as $data){
-            // echo($data->getEmail());
-            // echo($data->getNgaySinh());
+        $data = $controller->getUser_byid(json_decode($_COOKIE["paramObj"])->userid);
+
+            $birthdate = $data->getNgaySinh();
+            list($year, $month, $day) = explode('-', $birthdate);
+
+            $days = range(1, 31);
+            $months = range(1, 12);
+            $years = range(1950, date("Y"));
+
+            $dayOptions = "";
+            foreach ($days as $d) {
+                $selected = ($d == $day) ? "selected" : "";
+                $dayOptions .= "<option value='$d' $selected>$d</option>";
+            }
+
+            $monthOptions = "";
+            foreach ($months as $m) {
+                $selected = ($m == $month) ? "selected" : "";
+                $monthOptions .= "<option value='$m' $selected>$m</option>";
+            }
+
+            $yearOptions = "";
+            foreach ($years as $y) {
+                $selected = ($y == $year) ? "selected" : "";
+                $yearOptions .= "<option value='$y' $selected>$y</option>";
+            }
             $html = 
             '<div class="information_customer">
                 <div class="information_customer_text">
                     <form>
                     <h1 class="title_form">Thông tin khách hàng</h1>
                         <table>
-                            <tr>
-                                <td class="td_name">
-                                    <label for="username">Tên đăng nhập:</label>
-                                </td>
-                                <td>
-                                    <label for="name_username">Danh2003</label> <br>
-                                </td>
-                            </tr>
-
                             <tr>
                                 <td class="td_name">
                                     <label for="username">Tên</label>
@@ -110,15 +128,16 @@
                                     <label for="ngaysinh">Ngày sinh</label>
                                 </td>
                                 <td>
-                                    <select name="ngay" id="ngay">
-                                        <option>30</option>
-                                    </select>
-                                    <select name="thang" id="thang">
-                                        <option>12</option>
-                                    </select>
-                                    <select name="nam" id="nam">
-                                        <option>2000</option>
-                                    </select><br>
+                                
+                                    <select name="ngay" id="ngay">'
+                                    . $dayOptions .
+                                    '</select>
+                                    <select name="thang" id="thang">'
+                                    . $monthOptions .
+                                    '</select>
+                                    <select name="nam" id="nam">'
+                                    . $yearOptions .
+                                    '</select><br>
                                 </td>
                             </tr>
                         </table>
@@ -137,8 +156,7 @@
             </div>';
 
             echo($html);
-        }
-        
+
     ?>
 
         

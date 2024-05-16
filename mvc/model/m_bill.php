@@ -8,6 +8,7 @@ class m_bill{
         require_once 'mvc/entity/e_hoadon.php';
         require_once 'mvc/entity/e_giaohang.php';
         require_once 'mvc/entity/e_cthoadon.php';
+        require 'mvc/entity/e_khachhang.php';
         $this->sql = new database();
     }
 
@@ -211,7 +212,32 @@ class m_bill{
         }
     }
     
-    
+    public function getUser_byid_inhd($id){
+        try {
+            $conn=$this->sql->connect();
+            $query = "SELECT * from khachhang WHERE MaKH = '" . $id . "'";
+            $data = $conn->query($query);
+            $entity = new e_khachhang();
+            if ($data->num_rows > 0) {
+                while ($row = $data->fetch_assoc()) {
+                    
+                    $entity->setMaKH($row["MaKH"]);
+                    $entity->setTenKH($row["TenKH"]);
+                    $entity->setDiaChi($row["DiaChi"]);
+                    $entity->setngaySinh($row["NgaySinh"]);
+                    $entity->setEmail($row["Email"]);
+                    $entity->setSdt($row["SDT"]);
+                    $entity->setMaTK($row["MaTK"]);
+                }
+            }
+            $conn->close();
+            return $entity;
+        } catch (Exception $e) {
+            echo "<script>alert('$e');</script>";
+            $conn->close();
+            return null;
+        }
+    }
  
 }
 ?>

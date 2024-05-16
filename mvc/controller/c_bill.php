@@ -78,8 +78,11 @@ class c_bill{
         $this->m_bill->addDeliveryInfo($maVanDon,$arr);
     }
 
-
-    
+    public function getUser_byid_inhd($id){
+        $data = $this->m_bill->getUser_byid_inhd($id);
+        return $data;
+    }
+ 
 }
 
 

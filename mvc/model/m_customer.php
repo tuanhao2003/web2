@@ -14,10 +14,10 @@ class m_customer{
             $conn=$this->sql->connect();
             $query = "SELECT * from khachhang WHERE MaKH = '" . $id . "'";
             $data = $conn->query($query);
-            $arr = array();
+            $entity = new e_khachhang();
             if ($data->num_rows > 0) {
                 while ($row = $data->fetch_assoc()) {
-                    $entity = new e_khachhang();
+                    
                     $entity->setMaKH($row["MaKH"]);
                     $entity->setTenKH($row["TenKH"]);
                     $entity->setDiaChi($row["DiaChi"]);
@@ -25,11 +25,10 @@ class m_customer{
                     $entity->setEmail($row["Email"]);
                     $entity->setSdt($row["SDT"]);
                     $entity->setMaTK($row["MaTK"]);
-                    $arr[] = $entity;
                 }
             }
             $conn->close();
-            return $arr;
+            return $entity;
         } catch (Exception $e) {
             echo "<script>alert('$e');</script>";
             $conn->close();

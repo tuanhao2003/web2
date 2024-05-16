@@ -15,13 +15,17 @@
 <body>
 
 <section>
-        <div class="infor_column">
+        <?php
+
+            $khachhang = $controller->getCustomerInfoFromBill(json_decode($_COOKIE["paramObj"])->billid);
+
+            $html = '<div class="infor_column">
             <div class="img_text">
                 <div>
                     <img class="infor_img" src="/web2/public/data/banner1.jpg" alt=""><br>
                 </div>
                 <div class="infor_text">
-                    <p>Danh2003</p>
+                    <p>'.$khachhang->getTenKH().'</p>
                 </div>
             </div>
             <div class="infor_personal">
@@ -36,7 +40,9 @@
                 <img src="/web2/public/data/bill.png" alt="">
                 <a href="">Hóa đơn</a>
             </div>
-        </div>
+        </div>';
+        echo($html);
+        ?>
         
         <div class="infor_bill_detail">
             <div class="infor_bill_detail2">
