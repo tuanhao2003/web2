@@ -13,7 +13,7 @@
     <title>Chi tiết Hóa đơn</title>
 </head>
 <body>
-
+<?php require "mvc/view/absolutePart/header.php"; ?>
 <section>
         <?php
 
@@ -102,14 +102,9 @@
             </div>
 
             <?php
-
-            // $mang = array();
-            // $mang = $controller->getProductInfo_byMaSP("SP001");
-            //     foreach($mang as $data){
-            //         echo($data);
-            //     }    
-                
-            // ?>
+                $arr = array("SP002",1,300000); 
+                // $controller->addBilldetail(json_decode($_COOKIE["paramObj"])->billid,$arr);
+            ?>
              
             
         </div>

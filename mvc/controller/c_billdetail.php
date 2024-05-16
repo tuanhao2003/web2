@@ -60,4 +60,8 @@ class c_billdetail{
         $data = $this->m_billdetail->getCustomerInfoFromBill($MaHD);
         return $data;
     }
+
+    public function addBilldetail($id, $arr){
+        $this->m_billdetail->addBilldetail($id,$arr);
+    }
 }

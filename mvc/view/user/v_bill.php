@@ -14,6 +14,7 @@
     <title>Hóa đơn</title>
 </head>
 <body>
+<?php require "mvc/view/absolutePart/header.php"; ?>
     <section>
         <?php
 

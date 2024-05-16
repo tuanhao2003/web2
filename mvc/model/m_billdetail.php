@@ -197,5 +197,24 @@ class m_billdetail{
         }
     }
     
+    public function addBilldetail($maHD, $arr){
+        try {
+            $conn = $this->sql->connect();
+            
+            $query = "INSERT INTO cthoadon (MaHD, MaSP, SoLuong, GiaTien) 
+                      VALUES ('". $maHD ."',
+                        '". $arr[0] ."', 
+                        '". $arr[1] ."', 
+                        '". $arr[2] ."')";
+            
+            $conn->query($query);
+            $conn->close();
+            return true;
+        } catch (Exception $e) {
+            echo "<script>alert('$e');</script>";
+            $conn->close();
+            return false;
+        }
+    }
     
 }
