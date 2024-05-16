@@ -58,11 +58,13 @@
             foreach ($products as $product) {
                 ?>
                 <div class="product-card">
-                    <img src="public/data/Sanpham/<?php echo $product->getHinhAnh(); ?>" alt="<?php echo $product->getTensp(); ?>">
-                    <div class="product-info">
-                        <div class="product-name"><?php echo $product->getTensp(); ?></div>
-                        <div class="product-price"><?php echo number_format($product->getDonGia(), 0, ',', '.'); ?> VND</div>
-                    </div>
+                    <a href="http://localhost/web2/productdetail?masp=<?php echo $product->getMasp(); ?>">
+                        <img src="public/data/Sanpham/<?php echo $product->getHinhAnh(); ?>" alt="<?php echo $product->getTensp(); ?>">
+                        <div class="product-info">
+                            <div class="product-name"><?php echo $product->getTensp(); ?></div>
+                            <div class="product-price"><?php echo number_format($product->getDonGia(), 0, ',', '.'); ?> VND</div>
+                        </div>
+                    </a>
                 </div>
                 <?php
             }

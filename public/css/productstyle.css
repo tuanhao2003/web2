@@ -79,6 +79,7 @@
     margin-top: 40px;
     margin-left: 50px;
     color: rgb(218, 165, 32);
+    font-weight: bold; /* Make the text bold */
 }
 
 /* Khi rê chuột vào danh mục hãng */
@@ -206,6 +207,7 @@
     color: rgb(218, 165, 32); /* Màu chữ màu vàng */
     margin: 0; /* Loại bỏ margin mặc định của thẻ h1 */
     font-size: 45px;
+    font-weight: bold; /* Make the text bold */
 }
 
 .title-container {
