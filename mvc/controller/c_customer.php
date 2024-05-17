@@ -36,15 +36,12 @@ class c_customer{
     }
 
     public function save_info(){
-        echo "<script>alert('Controller');</script>";
-
         if($_SERVER["REQUEST_METHOD"] == "POST"){
             $name = $_POST['name'];
             $email = $_POST['email'];
             $address = $_POST['address'];
             $phone = $_POST['phone'];
             $ngaysinh = $_POST['ngaysinh'];
-            echo "<script>alert('".$ngaysinh."');</script>";
             $result = $this->m_customer->save_info( $_POST['userid'], $name, $email, $address, $phone, $ngaysinh);
             error_log("Error message", 3, "/path/to/error.log");
             echo($name);
@@ -55,10 +52,14 @@ class c_customer{
             }
         }
     }
-
-    public function getUser_byemail($email){
-        $data = $this->m_customer->getUser_byemail($email);
+    
+    public function getAccountInfo_byMaTK($maTK){
+        $data = $this->m_customer->getAccountInfo_byMaTK($maTK);
         return $data;
     }
-    
+
+    public function updateAccountImageUrl($maTK, $urlHinh) {
+        $data = $this->m_customer->updateAccountImageUrl($maTK, $urlHinh);
+        return $data;
+    }
 }

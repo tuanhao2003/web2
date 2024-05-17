@@ -6,6 +6,7 @@ class m_customer{
     {
         require_once 'mvc/config/database.php';
         require_once 'mvc/entity/e_khachhang.php';
+        require_once 'mvc/entity/e_taikhoan.php';
         $this->sql = new database();
     }
 
@@ -60,12 +61,9 @@ class m_customer{
     }
 
     public function save_info($userid, $name, $email, $diachi, $sdt, $ngaysinh) {
-        echo "<script>alert('Thông tin đã qua model');</script>";
+
         try {
             $conn = $this->sql->connect();
-            echo "<script>alert('".$userid."');</script>";
-            
-            // Sử dụng câu lệnh chuẩn bị trước để ngăn ngừa SQL injection
             $query = "UPDATE khachhang SET 
                 TenKH = ?, 
                 DiaChi = ?, 
@@ -79,7 +77,7 @@ class m_customer{
                 $stmt->bind_param("ssssss", $name, $diachi, $ngaysinh, $email, $sdt, $userid);
                 $result = $stmt->execute();
                 $stmt->close();
-                echo "<script>alert('Thông tin đã update');</script>";
+                echo "<script>alert('Cập nhật thông tin thành công');</script>";
                 return $result; 
             } else {
                 throw new Exception("Failed to prepare statement");
@@ -90,6 +88,47 @@ class m_customer{
                 $conn->close();
             }
             return false;
+        }
+    }
+
+    public function getAccountInfo_byMaTK($maTK) {
+        try {
+            $conn = $this->sql->connect();
+            $query = "SELECT tk.MaTK, tk.TenDangNhap, tk.MatKhau, tk.TrangThai, tk.URLHinh
+                      FROM TaiKhoan tk
+                      JOIN KhachHang kh ON kh.MaTK = tk.MaTK
+                      WHERE kh.MaTK = '" . $maTK . "'";
+            $data = $conn->query($query);
+            $account = new e_taikhoan(); 
+            if ($data->num_rows > 0) {
+                while ($row = $data->fetch_assoc()) {
+                    $account->setMaTK($row["MaTK"]);
+                    $account->setTenDangNhap($row["TenDangNhap"]);
+                    $account->setMatKhau($row["MatKhau"]);
+                    $account->setTrangThai($row["TrangThai"]);
+                    $account->setURLHinh($row["URLHinh"]);
+                }
+            }
+            $conn->close();
+            return $account;
+        } catch (Exception $e) {
+            echo "<script>alert('$e');</script>";
+            $conn->close();
+            return null;
+        }
+    }
+    
+    public function updateAccountImageUrl($maTK, $urlHinh) {
+        try {
+            $conn = $this->sql->connect();
+            $query = "UPDATE TaiKhoan SET URLHinh = '".$urlHinh."' WHERE MaTK = '".$maTK."'";
+            $conn->query($query);
+            $conn->close();
+            return true; // Trả về true nếu cập nhật thành công
+        } catch (Exception $e) {
+            echo "<script>alert('$e');</script>";
+            $conn->close();
+            return false; // Trả về false nếu có lỗi xảy ra
         }
     }
     

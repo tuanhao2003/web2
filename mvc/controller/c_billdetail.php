@@ -64,4 +64,14 @@ class c_billdetail{
     public function addBilldetail($id, $arr){
         $this->m_billdetail->addBilldetail($id,$arr);
     }
+
+    public function getAccountInfo_byMaTK($maTK){
+        $data = $this->m_billdetail->getAccountInfo_byMaTK($maTK);
+        return $data;
+    }
+
+    public function getProductInfo_byMaSP_detail($maSP) {
+        $data = $this->m_billdetail->getProductInfo_byMaSP_detail($maSP);
+        return $data;
+    }
 }

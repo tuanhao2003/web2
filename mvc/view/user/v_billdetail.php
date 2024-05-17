@@ -2,6 +2,7 @@
 <?php 
     require_once "mvc/controller/c_admin.php";
     $controller = new c_billdetail();
+    $account = $controller->getAccountInfo_byMaTK("TK001");
 ?>
 <head>
     <meta charset="UTF-8">
@@ -22,7 +23,7 @@
             $html = '<div class="infor_column">
             <div class="img_text">
                 <div>
-                    <img class="infor_img" src="/web2/public/data/banner1.jpg" alt=""><br>
+                    <img class="infor_img" src="/web2/public/data/'.$account->getUrlHinh().'" alt=""><br>
                 </div>
                 <div class="infor_text">
                     <p>'.$khachhang->getTenKH().'</p>
@@ -38,7 +39,7 @@
             </div>
             <div class="infor_personal">
                 <img src="/web2/public/data/bill.png" alt="">
-                <a href="">Hóa đơn</a>
+                <a href="bill?userid='.$khachhang->getMaKH().'">Hóa đơn</a>
             </div>
         </div>';
         echo($html);
@@ -74,14 +75,16 @@
                     echo($html1);
 
                     foreach($mang as $bill){
+
+                        $data_sp = $controller->getProductInfo_byMaSP_detail($bill->getMaSP());
                         $html2 =
                         '<div class="all_product">
                         <div class="product">
                             <div class="img_product">
-                                <img class="img_product" src="public/data/banner1.jpg" alt="">
+                                <img class="img_product" src="public/data/' . $data_sp->getHinhAnh() . '" alt="">
                             </div>
                             <div class="infor_product">
-                                <p>' . $controller->getProductName_byMaSP($bill->getMaSP()) . '</p>
+                                <p>' . $data_sp->getTensp() . '</p>
                                 <p>' . $bill->getSoLuong() . '</p>
                             </div>
                             <div class="price">

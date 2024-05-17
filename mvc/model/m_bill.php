@@ -8,7 +8,9 @@ class m_bill{
         require_once 'mvc/entity/e_hoadon.php';
         require_once 'mvc/entity/e_giaohang.php';
         require_once 'mvc/entity/e_cthoadon.php';
-        require 'mvc/entity/e_khachhang.php';
+        require_once 'mvc/entity/e_khachhang.php';
+        require_once 'mvc/entity/e_taikhoan.php';
+        require_once 'mvc/entity/e_sanpham.php';
         $this->sql = new database();
     }
 
@@ -239,5 +241,58 @@ class m_bill{
         }
     }
  
+    public function getAccountInfo_byMaTK($maTK) {
+        try {
+            $conn = $this->sql->connect();
+            $query = "SELECT tk.MaTK, tk.TenDangNhap, tk.MatKhau, tk.TrangThai, tk.URLHinh
+                      FROM TaiKhoan tk
+                      JOIN KhachHang kh ON kh.MaTK = tk.MaTK
+                      WHERE kh.MaTK = '" . $maTK . "'";
+            $data = $conn->query($query);
+            $account = new e_taikhoan(); 
+            if ($data->num_rows > 0) {
+                while ($row = $data->fetch_assoc()) {
+                    $account->setMaTK($row["MaTK"]);
+                    $account->setTenDangNhap($row["TenDangNhap"]);
+                    $account->setMatKhau($row["MatKhau"]);
+                    $account->setTrangThai($row["TrangThai"]);
+                    $account->setURLHinh($row["URLHinh"]);
+                }
+            }
+            $conn->close();
+            return $account;
+        } catch (Exception $e) {
+            echo "<script>alert('$e');</script>";
+            $conn->close();
+            return null;
+        }
+    }
+
+    public function getProductInfo_byMaSP($maSP) {
+        try {
+            $conn = $this->sql->connect();
+            $query = "SELECT * FROM SanPham WHERE MaSP = '" . $maSP . "'";
+            $data = $conn->query($query);
+            $product = new e_sanpham(); // Giả định rằng bạn có một lớp e_sanpham để chứa thông tin sản phẩm
+            if ($data->num_rows > 0) {
+                while ($row = $data->fetch_assoc()) {
+                    $product->setMaSP($row["MaSP"]);
+                    $product->setTenSP($row["TenSP"]);
+                    $product->setDonGia($row["DonGia"]);
+                    $product->setHinhAnh($row["HinhAnh"]);
+                    $product->setMoTa($row["MoTa"]);
+                    $product->setTrangThaiTonTai($row["TrangThaiTonTai"]);
+                    $product->setMaHang($row["MaHang"]);
+                }
+            }
+            $conn->close();
+            return $product;
+        } catch (Exception $e) {
+            echo "<script>alert('$e');</script>";
+            $conn->close();
+            return null;
+        }
+    }
+    
 }
 ?>

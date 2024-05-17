@@ -17,18 +17,6 @@ class c_bill{
         $this->m_bill = new m_bill();
     }
 
-    public function getAllbills(){
-        
-        $data = $this->m_bill->getAllbills();
-        return $data;
-    }
-    
-    public function getbill_view(){
-    
-        $data = $this->m_bill->getAllbills();
-        return $data;
-    }
-
     public function getBillid($MaHD){
 
         $data = $this->m_bill->getbillid($MaHD);
@@ -83,6 +71,15 @@ class c_bill{
         return $data;
     }
  
+    public function getAccountInfo_byMaTK($maTK){
+        $data = $this->m_bill->getAccountInfo_byMaTK($maTK);
+        return $data;
+    }
+
+    public function getProductInfo_byMaSP($maSP) {
+        $data = $this->m_bill->getProductInfo_byMaSP($maSP);
+        return $data;
+    }
 }
 
 

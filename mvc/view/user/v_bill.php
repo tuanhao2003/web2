@@ -2,7 +2,7 @@
 <?php 
     require_once "mvc/controller/c_admin.php";
     $controller = new c_bill();
-    // $controller2 = new c_billdetail();
+    $account = $controller->getAccountInfo_byMaTK("TK001");
 ?>
 <head>
     <meta charset="UTF-8">
@@ -23,7 +23,7 @@
             $html = '<div class="infor_column">
             <div class="img_text">
                 <div>
-                    <img class="infor_img" src="/web2/public/data/banner1.jpg" alt=""><br>
+                    <img class="infor_img" src="/web2/public/data/'.$account->getUrlHinh().'" alt=""><br>
                 </div>
                 <div class="infor_text">
                     <p>'.$khachhang->getTenKH().'</p>
@@ -39,7 +39,7 @@
             </div>
             <div class="infor_personal">
                 <img src="/web2/public/data/bill.png" alt="">
-                <a href="">Hóa đơn</a>
+                <a href="bill?userid='.$khachhang->getMaKH().'">Hóa đơn</a>
             </div>
         </div>';
         echo($html);
@@ -67,11 +67,13 @@
                             $mangsp = array();
                             $mangsp = $controller->getBilldetail_byMaHD_inHD($bill->getMaHD());
                             foreach($mangsp as $sanpham){
+                            
+                                $data_sp = $controller->getProductInfo_byMaSP($sanpham->getMaSP());
                                 $html2 = 
                                 '<div class="bill_product">
-                                <img class="img_product" src="public/data/banner1.jpg" alt="">
+                                <img class="img_product" src="public/data/' . $data_sp->getHinhAnh() . '" alt="">
                                 <div class="product_infor">
-                                    <p> ' . $controller->getProductName_byMaSP_inHD($sanpham->getMaSP()) . '</p>
+                                    <p> ' . $data_sp->getTensp() . '</p>
                                     <p> Số lượng: ' . $sanpham->getSoLuong() . '</p>
                                 </div>
                                 </div>';
