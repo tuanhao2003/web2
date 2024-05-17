@@ -47,6 +47,7 @@
         
         <div class="infor_bill">
             <h2 class="title_name">Lịch sử mua hàng</h2>
+            <a href=""></a>
             <div class="bill">
                 <?php 
                     $mang = array();
@@ -58,7 +59,7 @@
                                 <div class="id_bill">
                                     <p>' . $bill->getMaHD() . '</p>
                                 </div>
-                                <button>Xem chi tiết</button>
+                                <button><a href="/web2/billdetail?billid=' . $bill->getMaHD() . '">Xem chi tiết</a></button>
                             </div>';
 
                             echo($html);
