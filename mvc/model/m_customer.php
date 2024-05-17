@@ -4,8 +4,8 @@ class m_customer{
     protected $sql;
     public function __construct()
     {
-        require 'mvc/config/database.php';
-        require 'mvc/entity/e_khachhang.php';
+        require_once 'mvc/config/database.php';
+        require_once 'mvc/entity/e_khachhang.php';
         $this->sql = new database();
     }
 
@@ -37,6 +37,7 @@ class m_customer{
     }
 
     public function update_info($arr){
+
         try{
             $conn = $this->sql->connect();
 
@@ -58,28 +59,41 @@ class m_customer{
         }
     }
 
-    public function save_info($name, $email, $diachi, $sdt){
-        try{
+    public function save_info($userid, $name, $email, $diachi, $sdt, $ngaysinh) {
+        echo "<script>alert('Thông tin đã qua model');</script>";
+        try {
             $conn = $this->sql->connect();
-
+            echo "<script>alert('".$userid."');</script>";
+            
+            // Sử dụng câu lệnh chuẩn bị trước để ngăn ngừa SQL injection
             $query = "UPDATE khachhang SET 
-            TenKH = '".$name."' 
-             DiaChi = '".$email."',
-             NgaySinh = '2020-01-01 00:00:00',
-             Email = '".$diachi."',
-             SDT = '".$sdt."'
-            WHERE MaKH = 'KH002'";
-
-            $result = $conn->query($query);
-            $conn->close();
-
-            return $result; 
+                TenKH = ?, 
+                DiaChi = ?, 
+                NgaySinh = ?, 
+                Email = ?, 
+                SDT = ?
+                WHERE MaKH = ?";
+            
+            $stmt = $conn->prepare($query);
+            if ($stmt) {
+                $stmt->bind_param("ssssss", $name, $diachi, $ngaysinh, $email, $sdt, $userid);
+                $result = $stmt->execute();
+                $stmt->close();
+                echo "<script>alert('Thông tin đã update');</script>";
+                return $result; 
+            } else {
+                throw new Exception("Failed to prepare statement");
+            }
         } catch (Exception $e) {
-            echo "<script>alert('$e');</script>";
-            $conn->close();
+            echo "<script>alert('".$e->getMessage()."');</script>";
+            if (isset($conn)) {
+                $conn->close();
+            }
             return false;
         }
     }
+    
+
     
 }
 

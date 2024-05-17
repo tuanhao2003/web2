@@ -2,11 +2,15 @@
 <?php
     require_once "mvc/controller/c_admin.php";
     $controller = new c_customer();
+    $userid = json_decode($_COOKIE["paramObj"])->userid;
+    $data = $controller->getUser_byid($userid);
+    if ($_SERVER['REQUEST_METHOD'] == "POST") {
+        if (isset($_POST['update_cus'])) {
+            $controller->save_info();
+        }
+    }
 
-    if(isset($_POST['save_but']))
-    {
-        $controller->save_info();
-    } 
+
 
 ?>
 
@@ -24,8 +28,6 @@
     <section>
 
         <?php
-            $data = $controller->getUser_byid(json_decode($_COOKIE["paramObj"])->userid);
-
             $html = '<div class="infor_column">
             <div class="img_text">
                 <div>
@@ -50,49 +52,16 @@
         </div>';
 
         echo($html);
-        ?>
         
-        <?php
-            // $thongtin = array("Trần Kiệt", "Đường 1", "1991-01-01 00:00:00","a@a", "01234" );
-            // $controller->update_info($thongtin);
-        ?>
-
-        <?php
-        
-        $data = $controller->getUser_byid(json_decode($_COOKIE["paramObj"])->userid);
-
-            $birthdate = $data->getNgaySinh();
-            list($year, $month, $day) = explode('-', $birthdate);
-
-            $days = range(1, 31);
-            $months = range(1, 12);
-            $years = range(1950, date("Y"));
-
-            $dayOptions = "";
-            foreach ($days as $d) {
-                $selected = ($d == $day) ? "selected" : "";
-                $dayOptions .= "<option value='$d' $selected>$d</option>";
-            }
-
-            $monthOptions = "";
-            foreach ($months as $m) {
-                $selected = ($m == $month) ? "selected" : "";
-                $monthOptions .= "<option value='$m' $selected>$m</option>";
-            }
-
-            $yearOptions = "";
-            foreach ($years as $y) {
-                $selected = ($y == $year) ? "selected" : "";
-                $yearOptions .= "<option value='$y' $selected>$y</option>";
-            }
             $html = 
             '<div class="information_customer">
                 <div class="information_customer_text">
-                    <form>
+                    <form method = "POST">
                     <h1 class="title_form">Thông tin khách hàng</h1>
                         <table>
                             <tr>
                                 <td class="td_name">
+                                <input type="text" name="userid" value="'.$userid.'" required><br>
                                     <label for="username">Tên</label>
                                 </td>
                                 <td>
@@ -104,7 +73,7 @@
                                     <label for="email">Email</label>
                                 </td>
                                 <td>
-                                    <input class="inp_text" type="text" id="email" name="email value="'.$data->getEmail().'" required><br>
+                                    <input class="inp_text" type="text" id="email" name="email" value="'.$data->getEmail().'" required><br>
                                 </td>
                             </tr>
                             <tr>
@@ -120,7 +89,7 @@
                                     <label for="SĐT">Số điện thoại</label>
                                 </td>
                                 <td>
-                                    <input class="inp_text" type="text" id="SĐT" name="SĐT" value="'.$data->getSdt().'"><br>
+                                    <input class="inp_text" type="text" id="SĐT" name="phone" value="'.$data->getSdt().'"><br>
                                 </td>
                             </tr>
                             <tr>
@@ -128,20 +97,11 @@
                                     <label for="ngaysinh">Ngày sinh</label>
                                 </td>
                                 <td>
-                                
-                                    <select name="ngay" id="ngay">'
-                                    . $dayOptions .
-                                    '</select>
-                                    <select name="thang" id="thang">'
-                                    . $monthOptions .
-                                    '</select>
-                                    <select name="nam" id="nam">'
-                                    . $yearOptions .
-                                    '</select><br>
+                                    <input class="inp_text" type="date" name="ngaysinh" value="'.$data->getNgaySinh().'"><br>
                                 </td>
                             </tr>
                         </table>
-                        <input id="save_but" class="save_btn" type="submit" value"Lưu">
+                        <button class="save_btn" type="submit" name="update_cus">Lưu</button>
                         
                     </form>
                 </div>

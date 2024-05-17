@@ -36,12 +36,16 @@ class c_customer{
     }
 
     public function save_info(){
-        if($_SERVER["REQUEST-METHOD"] == "POST"){
+        echo "<script>alert('Controller');</script>";
+
+        if($_SERVER["REQUEST_METHOD"] == "POST"){
             $name = $_POST['name'];
             $email = $_POST['email'];
-            $diachi = $_POST['diachi'];
-            $sdt = $_POST['sdt'];
-            $result = $this->m_customer->save_info($name, $email, $diachi, $sdt);
+            $address = $_POST['address'];
+            $phone = $_POST['phone'];
+            $ngaysinh = $_POST['ngaysinh'];
+            echo "<script>alert('".$ngaysinh."');</script>";
+            $result = $this->m_customer->save_info( $_POST['userid'], $name, $email, $address, $phone, $ngaysinh);
             error_log("Error message", 3, "/path/to/error.log");
             echo($name);
             if($result === true) {
@@ -50,6 +54,11 @@ class c_customer{
                 return "Đã xảy ra lỗi trong quá trình lưu thông tin.";
             }
         }
+    }
+
+    public function getUser_byemail($email){
+        $data = $this->m_customer->getUser_byemail($email);
+        return $data;
     }
     
 }
