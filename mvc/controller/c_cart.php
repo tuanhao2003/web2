@@ -10,7 +10,7 @@ class c_cart {
 
     public function getCartItems() {
         if ($_SERVER["REQUEST_METHOD"]=="GET"){
-            if (!isset($_COOKIE['loginingAccount'])) {
+            if (isset($_COOKIE['loginingAccount']) ? $_COOKIE['loginingAccount'] : null) {
                 echo json_encode(["error" => "Bạn cần đăng nhập để xem giỏ hàng."]);
                 return;
             }

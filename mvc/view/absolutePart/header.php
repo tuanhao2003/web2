@@ -82,10 +82,16 @@ require_once "mvc/controller/c_cart.php";
 <?php
 $controller = new c_cart();
 $cartItems = $controller->getCartItems();
+$matk = isset($_COOKIE['loginingAccount']) ? $_COOKIE['loginingAccount'] : null;
 ?>
 
 <script>
     document.getElementById('showCartBtn').addEventListener('click', function(event) {
+        let maTk = "<?php echo $matk ?>";
+        if (!maTk) {
+            alert("Bạn cần đăng nhập để xem giỏ hàng.");
+            return;
+        }
         event.preventDefault();
         let cartHtml = '';
         cartHtml += '<ul>';
