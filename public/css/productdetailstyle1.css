@@ -1,11 +1,3 @@
-/* CSS for product detail page */
-.container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-}
-
 .product-detail {
     display: flex;
     max-width: 1000px;

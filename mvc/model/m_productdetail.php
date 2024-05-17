@@ -2,6 +2,7 @@
 
 require_once "mvc/entity/e_sanpham.php";
 require_once "mvc/config/database.php";
+require_once "mvc/entity/e_giohang.php";
 
 class m_productdetail {
     protected $conn;
@@ -44,6 +45,41 @@ class m_productdetail {
             return null;
         }
     }
-}
 
+    public function addToCart($maTK, $maSP, $quantity) {
+        // Lấy mã khách hàng từ mã tài khoản
+        $maKH = $this->getMaKH($maTK);
+
+        // Nếu không tìm thấy mã khách hàng, không thêm vào giỏ hàng
+        if($maKH == null) {
+            return false;
+        }
+
+        // Thêm sản phẩm vào giỏ hàng
+        for ($i = 0; $i < $quantity; $i++) {
+            $query = "INSERT INTO GioHang (MaKH, MaSP) VALUES (?, ?)";
+            $stmt = $this->conn->prepare($query);
+            $stmt->bind_param("ss", $maKH, $maSP);
+            $result = $stmt->execute();
+        }
+
+        return $result;
+    }
+
+    // Phương thức để lấy mã khách hàng từ mã tài khoản
+    private function getMaKH($maTK) {
+        $query = "SELECT MaKH FROM KhachHang WHERE MaTK = ?";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bind_param("s", $maTK);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            return $row['MaKH'];
+        } else {
+            return null;
+        }
+    }
+}
 ?>

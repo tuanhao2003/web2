@@ -1,7 +1,4 @@
 <?php
-// Thêm require_once cho model mới
-require_once "mvc/model/m_hang.php";
-
 class c_productdetail {
     protected $view;
     protected $model;
@@ -15,6 +12,7 @@ class c_productdetail {
             require_once $this->model;
             require_once $this->view;
         }
+        require_once "mvc/model/m_productdetail.php";
         $this->m_sanpham = new m_productdetail();
         $this->masp = $masp;
     }    
@@ -23,6 +21,16 @@ class c_productdetail {
     public function getProductDetail() {
         return $this->m_sanpham->getProductDetail($this->masp);
     }
+
+    // Phương thức để thêm sản phẩm vào giỏ hàng
+    public function addToCart() {
+        $result = $this->m_sanpham->addToCart($_POST['maTk'], $_POST['masp'], $_POST['quantity']);
+        if ($result) {
+            echo "Thêm vào giỏ hàng thành công!";
+        } else {
+            echo "Thêm vào giỏ hàng thất bại!";
+
+        }
+    }
 }
 ?>
-
